@@ -1,0 +1,1540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF5111CB20D0266900E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BF5111CC20D0266900E87696 /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
+		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF5111D520D0279400E87696 /* lex.cif.c in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */; };
+		BF5111DE20D0324A00E87696 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111DD20D0324A00E87696 /* AppDelegate.m */; };
+		BF5111E120D0324A00E87696 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111E020D0324A00E87696 /* ViewController.m */; };
+		BF5111E320D0324B00E87696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5111E220D0324B00E87696 /* Assets.xcassets */; };
+		BF5111E620D0324B00E87696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5111E420D0324B00E87696 /* Main.storyboard */; };
+		BF5111E920D0324C00E87696 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111E820D0324C00E87696 /* main.m */; };
+		BF5111EE20D0325900E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BF5111F120D032BA00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
+		BF5111F220D032BF00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BF5111F320D033A200E87696 /* CIFParser.framework in Resources */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BF5111F420D0345700E87696 /* Lexer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111D220D026DA00E87696 /* Lexer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF5111F720D0425800E87696 /* ParserImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F520D0425800E87696 /* ParserImpl.h */; };
+		BF5111F820D0425800E87696 /* ParserImpl.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111F620D0425800E87696 /* ParserImpl.c */; };
+		BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F920D0456F00E87696 /* CIFHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111FA20D0456F00E87696 /* CIFHandler.m */; };
+		BF51120520D05F6000E87696 /* TagString.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51120320D05F6000E87696 /* TagString.h */; };
+		BF51120620D05F6000E87696 /* TagString.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51120320D05F6000E87696 /* TagString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF51120720D05F6000E87696 /* TagString.c in Sources */ = {isa = PBXBuildFile; fileRef = BF51120420D05F6000E87696 /* TagString.c */; };
+		BF51120820D05F6000E87696 /* TagString.c in Sources */ = {isa = PBXBuildFile; fileRef = BF51120420D05F6000E87696 /* TagString.c */; };
+		BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51120F20D062BE00E87696 /* AppDelegate.swift */; };
+		BF51121420D062BF00E87696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF51121320D062BF00E87696 /* Assets.xcassets */; };
+		BF51121D20D062EA00E87696 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */; };
+		BF51121F20D062FA00E87696 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */; };
+		BF51122020D062FD00E87696 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */; };
+		BF51122120D0630100E87696 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D331FDF0F86007D7785 /* Utilities.swift */; };
+		BF51122220D0630700E87696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2E021FDDE7110031EBA7 /* Main.storyboard */; };
+		BF51122320D0633100E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BF51122620D0637900E87696 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F811FDED68E00D1F251 /* Molecule.swift */; };
+		BF51122720D0637C00E87696 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */; };
+		BF51122820D0638000E87696 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C41FE0DFF300A561A3 /* StructConf.swift */; };
+		BF51122920D0638400E87696 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F851FDED6EE00D1F251 /* AtomSite.swift */; };
+		BF51122A20D063B000E87696 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DA01FDD78430031EBA7 /* CIFValue.m */; };
+		BF51122B20D063B700E87696 /* CIFValue.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
+		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
+		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BF557F821FDED68E00D1F251 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F811FDED68E00D1F251 /* Molecule.swift */; };
+		BF557F861FDED6EE00D1F251 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F851FDED6EE00D1F251 /* AtomSite.swift */; };
+		BF557F8E1FDF0A2A00D1F251 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BF7A2D691FDD673D0031EBA7 /* CIFReader.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D671FDD673D0031EBA7 /* CIFReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2D831FDD68500031EBA7 /* CIFLexer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D721FDD67AC0031EBA7 /* CIFLexer.m */; };
+		BF7A2D911FDD77900031EBA7 /* CIFData.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D8F1FDD77900031EBA7 /* CIFData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2D921FDD77900031EBA7 /* CIFData.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D901FDD77900031EBA7 /* CIFData.m */; };
+		BF7A2D951FDD779F0031EBA7 /* CIFLoop.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D931FDD779F0031EBA7 /* CIFLoop.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2D961FDD779F0031EBA7 /* CIFLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D941FDD779F0031EBA7 /* CIFLoop.m */; };
+		BF7A2D991FDD77AA0031EBA7 /* CIFItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D971FDD77AA0031EBA7 /* CIFItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2D9A1FDD77AA0031EBA7 /* CIFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */; };
+		BF7A2D9D1FDD77B90031EBA7 /* CIFSaveFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */; };
+		BF7A2D9E1FDD77B90031EBA7 /* CIFSaveFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */; };
+		BF7A2DA11FDD78430031EBA7 /* CIFValue.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2DA21FDD78430031EBA7 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DA01FDD78430031EBA7 /* CIFValue.m */; };
+		BF7A2DA51FDD7E3F0031EBA7 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2DA61FDD7E3F0031EBA7 /* CIFParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */; };
+		BF7A2DAC1FDD83B00031EBA7 /* CIFParserImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */; };
+		BF7A2DAD1FDD83B00031EBA7 /* CIFParserImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DAB1FDD83B00031EBA7 /* CIFParserImpl.m */; };
+		BF7A2DB21FDD85200031EBA7 /* CIFTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DB01FDD85200031EBA7 /* CIFTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2DB31FDD85200031EBA7 /* CIFTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DB11FDD85200031EBA7 /* CIFTag.m */; };
+		BF7A2DB91FDD89890031EBA7 /* CIFRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DB71FDD89890031EBA7 /* CIFRule.h */; };
+		BF7A2DBA1FDD89890031EBA7 /* CIFRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DB81FDD89890031EBA7 /* CIFRule.m */; };
+		BF7A2DBC1FDD89A40031EBA7 /* CIFParseRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DBB1FDD89A40031EBA7 /* CIFParseRule.h */; };
+		BF7A2DBF1FDD8A3A0031EBA7 /* CIFDataRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DBD1FDD8A3A0031EBA7 /* CIFDataRule.h */; };
+		BF7A2DC01FDD8A3A0031EBA7 /* CIFDataRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DBE1FDD8A3A0031EBA7 /* CIFDataRule.m */; };
+		BF7A2DC31FDD8A7E0031EBA7 /* CIFItemRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DC11FDD8A7E0031EBA7 /* CIFItemRule.h */; };
+		BF7A2DC41FDD8A7E0031EBA7 /* CIFItemRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DC21FDD8A7E0031EBA7 /* CIFItemRule.m */; };
+		BF7A2DC71FDD8A890031EBA7 /* CIFLoopRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DC51FDD8A890031EBA7 /* CIFLoopRule.h */; };
+		BF7A2DC81FDD8A890031EBA7 /* CIFLoopRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DC61FDD8A890031EBA7 /* CIFLoopRule.m */; };
+		BF7A2DD11FDD8E3E0031EBA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DD01FDD8E3E0031EBA7 /* AppDelegate.m */; };
+		BF7A2DD41FDD8E3E0031EBA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DD31FDD8E3E0031EBA7 /* ViewController.m */; };
+		BF7A2DD61FDD8E3E0031EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DD51FDD8E3E0031EBA7 /* Assets.xcassets */; };
+		BF7A2DD91FDD8E3E0031EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DD71FDD8E3E0031EBA7 /* Main.storyboard */; };
+		BF7A2DDC1FDD8E3E0031EBA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DDB1FDD8E3E0031EBA7 /* main.m */; };
+		BF7A2DE21FDD8E4C0031EBA7 /* CIFReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */; };
+		BF7A2DE51FDD8E770031EBA7 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DE41FDD8E770031EBA7 /* TestObject.m */; };
+		BF7A2DE71FDD91670031EBA7 /* CaCuO2.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DE61FDD91660031EBA7 /* CaCuO2.cif */; };
+		BF7A2DE91FDDA6610031EBA7 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DE81FDDA6610031EBA7 /* 1gof.cif */; };
+		BF7A2DEB1FDDB3690031EBA7 /* cif_core.dic in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */; };
+		BF7A2DEE1FDDC4B50031EBA7 /* CIF.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DEC1FDDC4B50031EBA7 /* CIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF7A2DEF1FDDC4B50031EBA7 /* CIF.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DED1FDDC4B50031EBA7 /* CIF.m */; };
+		BF7A2DF21FDDD3060031EBA7 /* CIFSaveRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2DF01FDDD3060031EBA7 /* CIFSaveRule.h */; };
+		BF7A2DF31FDDD3060031EBA7 /* CIFSaveRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DF11FDDD3060031EBA7 /* CIFSaveRule.m */; };
+		BF7A2DF51FDDD5A30031EBA7 /* cif_mm.dic in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */; };
+		BF7A2DFD1FDDE7110031EBA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DFC1FDDE7110031EBA7 /* AppDelegate.swift */; };
+		BF7A2DFF1FDDE7110031EBA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */; };
+		BF7A2E011FDDE7110031EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2E001FDDE7110031EBA7 /* Assets.xcassets */; };
+		BF7A2E041FDDE7110031EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2E021FDDE7110031EBA7 /* Main.storyboard */; };
+		BF7A2E0F1FDDE73B0031EBA7 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */; };
+		BF7A2E121FDDE7910031EBA7 /* CIFReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */; };
+		BF7A2E141FDDE8910031EBA7 /* CIFReader.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF7C487320CF4E1C003CDD5B /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
+		BFA48D341FDF0F86007D7785 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D331FDF0F86007D7785 /* Utilities.swift */; };
+		BFA48D3A1FDF6B62007D7785 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */; };
+		BFA7618720CF358800D5266D /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
+		BFF875C51FE0DFF300A561A3 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C41FE0DFF300A561A3 /* StructConf.swift */; };
+		BFF875C71FE10B8800A561A3 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */; };
+		BFF875CC1FE45DD400A561A3 /* CIFLoop+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CB1FE45DD400A561A3 /* CIFLoop+Access.swift */; };
+		BFF875CF1FE4A74C00A561A3 /* CIFLexer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D741FDD67AC0031EBA7 /* CIFLexer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF5111C920D0266900E87696 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5111C320D0266800E87696;
+			remoteInfo = CIFParser;
+		};
+		BF5111D320D0271B00E87696 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5111A520D0243800E87696;
+			remoteInfo = Lexer;
+		};
+		BF5111EF20D0326200E87696 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5111C320D0266800E87696;
+			remoteInfo = CIFParser;
+		};
+		BF51122420D0634000E87696 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5111C320D0266800E87696;
+			remoteInfo = CIFParser;
+		};
+		BF7A2D891FDD6F480031EBA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7A2D7B1FDD67EB0031EBA7;
+			remoteInfo = CIFLexer;
+		};
+		BF7A2E101FDDE78E0031EBA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7A2D631FDD673D0031EBA7;
+			remoteInfo = CIFReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF5111BE20D0264800E87696 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2E131FDDE87F0031EBA7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF5111CC20D0266900E87696 /* CIFParser.framework in CopyFiles */,
+				BF7A2E141FDDE8910031EBA7 /* CIFReader.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BF5111A920D0256F00E87696 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		BF5111AA20D0256F00E87696 /* Parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Parser.c; sourceTree = "<group>"; };
+		BF5111C420D0266800E87696 /* CIFParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5111C620D0266900E87696 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
+		BF5111C720D0266900E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5111D220D026DA00E87696 /* Lexer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
+		BF5111DA20D0324A00E87696 /* CIFTest3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5111DC20D0324A00E87696 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BF5111DD20D0324A00E87696 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BF5111DF20D0324A00E87696 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BF5111E020D0324A00E87696 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BF5111E220D0324B00E87696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF5111E520D0324B00E87696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF5111E720D0324C00E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5111E820D0324C00E87696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF5111EA20D0324C00E87696 /* CIFTest3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest3.entitlements; sourceTree = "<group>"; };
+		BF5111F520D0425800E87696 /* ParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParserImpl.h; sourceTree = "<group>"; };
+		BF5111F620D0425800E87696 /* ParserImpl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ParserImpl.c; sourceTree = "<group>"; };
+		BF5111F920D0456F00E87696 /* CIFHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFHandler.h; sourceTree = "<group>"; };
+		BF5111FA20D0456F00E87696 /* CIFHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFHandler.m; sourceTree = "<group>"; };
+		BF51120320D05F6000E87696 /* TagString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagString.h; sourceTree = "<group>"; };
+		BF51120420D05F6000E87696 /* TagString.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TagString.c; sourceTree = "<group>"; };
+		BF51120D20D062BE00E87696 /* CIFTest4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF51120F20D062BE00E87696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF51121320D062BF00E87696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF51121820D062BF00E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF51121920D062BF00E87696 /* CIFTest4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest4.entitlements; sourceTree = "<group>"; };
+		BF557F811FDED68E00D1F251 /* Molecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
+		BF557F851FDED6EE00D1F251 /* AtomSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomSite.swift; sourceTree = "<group>"; };
+		BF557F871FDF017F00D1F251 /* 1bna.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1bna.cif; sourceTree = "<group>"; };
+		BF557F891FDF09F200D1F251 /* 1wns.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1wns.cif; sourceTree = "<group>"; };
+		BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3ixn.cif; sourceTree = "<group>"; };
+		BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7A2D671FDD673D0031EBA7 /* CIFReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFReader.h; sourceTree = "<group>"; };
+		BF7A2D681FDD673D0031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7A2D711FDD67AC0031EBA7 /* test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
+		BF7A2D721FDD67AC0031EBA7 /* CIFLexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFLexer.m; sourceTree = "<group>"; };
+		BF7A2D731FDD67AC0031EBA7 /* CIFLexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = CIFLexer.l; sourceTree = "<group>"; };
+		BF7A2D741FDD67AC0031EBA7 /* CIFLexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFLexer.h; sourceTree = "<group>"; };
+		BF7A2D751FDD67AC0031EBA7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lex.cif.h; path = Lexer/lex.cif.h; sourceTree = SOURCE_ROOT; };
+		BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lex.cif.c; path = Lexer/lex.cif.c; sourceTree = SOURCE_ROOT; };
+		BF7A2D8F1FDD77900031EBA7 /* CIFData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFData.h; sourceTree = "<group>"; };
+		BF7A2D901FDD77900031EBA7 /* CIFData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFData.m; sourceTree = "<group>"; };
+		BF7A2D931FDD779F0031EBA7 /* CIFLoop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoop.h; sourceTree = "<group>"; };
+		BF7A2D941FDD779F0031EBA7 /* CIFLoop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFLoop.m; sourceTree = "<group>"; };
+		BF7A2D971FDD77AA0031EBA7 /* CIFItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFItem.h; sourceTree = "<group>"; };
+		BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFItem.m; sourceTree = "<group>"; };
+		BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFSaveFrame.h; sourceTree = "<group>"; };
+		BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFSaveFrame.m; sourceTree = "<group>"; };
+		BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFValue.h; sourceTree = "<group>"; };
+		BF7A2DA01FDD78430031EBA7 /* CIFValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFValue.m; sourceTree = "<group>"; };
+		BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
+		BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFParser.m; sourceTree = "<group>"; };
+		BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParserImpl.h; sourceTree = "<group>"; };
+		BF7A2DAB1FDD83B00031EBA7 /* CIFParserImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFParserImpl.m; sourceTree = "<group>"; };
+		BF7A2DB01FDD85200031EBA7 /* CIFTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFTag.h; sourceTree = "<group>"; };
+		BF7A2DB11FDD85200031EBA7 /* CIFTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFTag.m; sourceTree = "<group>"; };
+		BF7A2DB71FDD89890031EBA7 /* CIFRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFRule.h; sourceTree = "<group>"; };
+		BF7A2DB81FDD89890031EBA7 /* CIFRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFRule.m; sourceTree = "<group>"; };
+		BF7A2DBB1FDD89A40031EBA7 /* CIFParseRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParseRule.h; sourceTree = "<group>"; };
+		BF7A2DBD1FDD8A3A0031EBA7 /* CIFDataRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFDataRule.h; sourceTree = "<group>"; };
+		BF7A2DBE1FDD8A3A0031EBA7 /* CIFDataRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFDataRule.m; sourceTree = "<group>"; };
+		BF7A2DC11FDD8A7E0031EBA7 /* CIFItemRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFItemRule.h; sourceTree = "<group>"; };
+		BF7A2DC21FDD8A7E0031EBA7 /* CIFItemRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFItemRule.m; sourceTree = "<group>"; };
+		BF7A2DC51FDD8A890031EBA7 /* CIFLoopRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoopRule.h; sourceTree = "<group>"; };
+		BF7A2DC61FDD8A890031EBA7 /* CIFLoopRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFLoopRule.m; sourceTree = "<group>"; };
+		BF7A2DCD1FDD8E3E0031EBA7 /* CIFTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7A2DCF1FDD8E3E0031EBA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BF7A2DD01FDD8E3E0031EBA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BF7A2DD21FDD8E3E0031EBA7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BF7A2DD31FDD8E3E0031EBA7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BF7A2DD51FDD8E3E0031EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF7A2DD81FDD8E3E0031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF7A2DDA1FDD8E3E0031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7A2DDB1FDD8E3E0031EBA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF7A2DDD1FDD8E3E0031EBA7 /* CIFTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest.entitlements; sourceTree = "<group>"; };
+		BF7A2DE31FDD8E770031EBA7 /* TestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		BF7A2DE41FDD8E770031EBA7 /* TestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
+		BF7A2DE61FDD91660031EBA7 /* CaCuO2.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CaCuO2.cif; path = CIFLexer/TestFiles/CaCuO2.cif; sourceTree = SOURCE_ROOT; };
+		BF7A2DE81FDDA6610031EBA7 /* 1gof.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1gof.cif; path = CIFLexer/TestFiles/1gof.cif; sourceTree = SOURCE_ROOT; };
+		BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_core.dic; sourceTree = "<group>"; };
+		BF7A2DEC1FDDC4B50031EBA7 /* CIF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIF.h; sourceTree = "<group>"; };
+		BF7A2DED1FDDC4B50031EBA7 /* CIF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIF.m; sourceTree = "<group>"; };
+		BF7A2DF01FDDD3060031EBA7 /* CIFSaveRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFSaveRule.h; sourceTree = "<group>"; };
+		BF7A2DF11FDDD3060031EBA7 /* CIFSaveRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFSaveRule.m; sourceTree = "<group>"; };
+		BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_mm.dic; sourceTree = "<group>"; };
+		BF7A2DFA1FDDE7110031EBA7 /* CIFTest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7A2DFC1FDDE7110031EBA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF7A2E001FDDE7110031EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF7A2E031FDDE7110031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF7A2E051FDDE7110031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7A2E061FDDE7110031EBA7 /* CIFTest2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest2.entitlements; sourceTree = "<group>"; };
+		BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		BFA48D331FDF0F86007D7785 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Lattices.swift"; sourceTree = "<group>"; };
+		BFF875C41FE0DFF300A561A3 /* StructConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructConf.swift; sourceTree = "<group>"; };
+		BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructSheetRange.swift; sourceTree = "<group>"; };
+		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
+		BFF875CB1FE45DD400A561A3 /* CIFLoop+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFLoop+Access.swift"; sourceTree = "<group>"; };
+		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF5111C020D0266800E87696 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5111D720D0324A00E87696 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5111EE20D0325900E87696 /* CIFParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF51120A20D062BE00E87696 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF51122320D0633100E87696 /* CIFParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2D601FDD673D0031EBA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DCA1FDD8E3E0031EBA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7A2DE21FDD8E4C0031EBA7 /* CIFReader.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DF71FDDE7110031EBA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5111CB20D0266900E87696 /* CIFParser.framework in Frameworks */,
+				BF7A2E121FDDE7910031EBA7 /* CIFReader.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF5111C520D0266800E87696 /* CIFParser */ = {
+			isa = PBXGroup;
+			children = (
+				BF5111C620D0266900E87696 /* CIFParser.h */,
+				BF5111A920D0256F00E87696 /* Parser.h */,
+				BF5111AA20D0256F00E87696 /* Parser.c */,
+				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
+				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
+				BF5111C720D0266900E87696 /* Info.plist */,
+				BF5111F520D0425800E87696 /* ParserImpl.h */,
+				BF5111F620D0425800E87696 /* ParserImpl.c */,
+				BF5111F920D0456F00E87696 /* CIFHandler.h */,
+				BF5111FA20D0456F00E87696 /* CIFHandler.m */,
+				BF51120320D05F6000E87696 /* TagString.h */,
+				BF51120420D05F6000E87696 /* TagString.c */,
+			);
+			path = CIFParser;
+			sourceTree = "<group>";
+		};
+		BF5111DB20D0324A00E87696 /* CIFTest3 */ = {
+			isa = PBXGroup;
+			children = (
+				BF5111DC20D0324A00E87696 /* AppDelegate.h */,
+				BF5111DD20D0324A00E87696 /* AppDelegate.m */,
+				BF5111DF20D0324A00E87696 /* ViewController.h */,
+				BF5111E020D0324A00E87696 /* ViewController.m */,
+				BF5111E220D0324B00E87696 /* Assets.xcassets */,
+				BF5111E420D0324B00E87696 /* Main.storyboard */,
+				BF5111E720D0324C00E87696 /* Info.plist */,
+				BF5111E820D0324C00E87696 /* main.m */,
+				BF5111EA20D0324C00E87696 /* CIFTest3.entitlements */,
+			);
+			path = CIFTest3;
+			sourceTree = "<group>";
+		};
+		BF51120E20D062BE00E87696 /* CIFTest4 */ = {
+			isa = PBXGroup;
+			children = (
+				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
+				BF51121320D062BF00E87696 /* Assets.xcassets */,
+				BF51121820D062BF00E87696 /* Info.plist */,
+				BF51121920D062BF00E87696 /* CIFTest4.entitlements */,
+			);
+			path = CIFTest4;
+			sourceTree = "<group>";
+		};
+		BF557F831FDED69F00D1F251 /* Molecule */ = {
+			isa = PBXGroup;
+			children = (
+				BF557F841FDED6B300D1F251 /* Atom */,
+				BF557F811FDED68E00D1F251 /* Molecule.swift */,
+			);
+			path = Molecule;
+			sourceTree = "<group>";
+		};
+		BF557F841FDED6B300D1F251 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				BF557F851FDED6EE00D1F251 /* AtomSite.swift */,
+				BFF875C41FE0DFF300A561A3 /* StructConf.swift */,
+				BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */,
+			);
+			path = Atom;
+			sourceTree = "<group>";
+		};
+		BF7A2D5A1FDD673D0031EBA7 = {
+			isa = PBXGroup;
+			children = (
+				BF7A2D701FDD67770031EBA7 /* Lexer */,
+				BF5111C520D0266800E87696 /* CIFParser */,
+				BF7A2D661FDD673D0031EBA7 /* Parser */,
+				BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */,
+				BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */,
+				BF5111DB20D0324A00E87696 /* CIFTest3 */,
+				BF51120E20D062BE00E87696 /* CIFTest4 */,
+				BF7A2D651FDD673D0031EBA7 /* Products */,
+				BF7A2DE11FDD8E4C0031EBA7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BF7A2D651FDD673D0031EBA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */,
+				BF7A2DCD1FDD8E3E0031EBA7 /* CIFTest.app */,
+				BF7A2DFA1FDDE7110031EBA7 /* CIFTest2.app */,
+				BF5111C420D0266800E87696 /* CIFParser.framework */,
+				BF5111DA20D0324A00E87696 /* CIFTest3.app */,
+				BF51120D20D062BE00E87696 /* CIFTest4.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF7A2D661FDD673D0031EBA7 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2DB41FDD88A30031EBA7 /* CIF */,
+				BF7A2DB61FDD89750031EBA7 /* Rule */,
+				BF7A2DB51FDD88BB0031EBA7 /* Parser */,
+				BF7A2D671FDD673D0031EBA7 /* CIFReader.h */,
+				BF7A2D681FDD673D0031EBA7 /* Info.plist */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		BF7A2D701FDD67770031EBA7 /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				BF5111D220D026DA00E87696 /* Lexer.h */,
+				BF7A2D741FDD67AC0031EBA7 /* CIFLexer.h */,
+				BF7A2D721FDD67AC0031EBA7 /* CIFLexer.m */,
+				BF7A2D731FDD67AC0031EBA7 /* CIFLexer.l */,
+				BF7A2D751FDD67AC0031EBA7 /* Makefile */,
+				BF7A2D711FDD67AC0031EBA7 /* test.sh */,
+			);
+			path = Lexer;
+			sourceTree = "<group>";
+		};
+		BF7A2DB41FDD88A30031EBA7 /* CIF */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2DEC1FDDC4B50031EBA7 /* CIF.h */,
+				BF7A2DED1FDDC4B50031EBA7 /* CIF.m */,
+				BF7A2D8F1FDD77900031EBA7 /* CIFData.h */,
+				BF7A2D901FDD77900031EBA7 /* CIFData.m */,
+				BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */,
+				BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */,
+				BF7A2D931FDD779F0031EBA7 /* CIFLoop.h */,
+				BF7A2D941FDD779F0031EBA7 /* CIFLoop.m */,
+				BF7A2D971FDD77AA0031EBA7 /* CIFItem.h */,
+				BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */,
+				BF7A2DB01FDD85200031EBA7 /* CIFTag.h */,
+				BF7A2DB11FDD85200031EBA7 /* CIFTag.m */,
+				BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */,
+				BF7A2DA01FDD78430031EBA7 /* CIFValue.m */,
+			);
+			path = CIF;
+			sourceTree = "<group>";
+		};
+		BF7A2DB51FDD88BB0031EBA7 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */,
+				BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */,
+				BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */,
+				BF7A2DAB1FDD83B00031EBA7 /* CIFParserImpl.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		BF7A2DB61FDD89750031EBA7 /* Rule */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2DBB1FDD89A40031EBA7 /* CIFParseRule.h */,
+				BF7A2DB71FDD89890031EBA7 /* CIFRule.h */,
+				BF7A2DB81FDD89890031EBA7 /* CIFRule.m */,
+				BF7A2DBD1FDD8A3A0031EBA7 /* CIFDataRule.h */,
+				BF7A2DBE1FDD8A3A0031EBA7 /* CIFDataRule.m */,
+				BF7A2DF01FDDD3060031EBA7 /* CIFSaveRule.h */,
+				BF7A2DF11FDDD3060031EBA7 /* CIFSaveRule.m */,
+				BF7A2DC11FDD8A7E0031EBA7 /* CIFItemRule.h */,
+				BF7A2DC21FDD8A7E0031EBA7 /* CIFItemRule.m */,
+				BF7A2DC51FDD8A890031EBA7 /* CIFLoopRule.h */,
+				BF7A2DC61FDD8A890031EBA7 /* CIFLoopRule.m */,
+			);
+			path = Rule;
+			sourceTree = "<group>";
+		};
+		BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */ = {
+			isa = PBXGroup;
+			children = (
+				BF7A2DCF1FDD8E3E0031EBA7 /* AppDelegate.h */,
+				BF7A2DD01FDD8E3E0031EBA7 /* AppDelegate.m */,
+				BF7A2DD21FDD8E3E0031EBA7 /* ViewController.h */,
+				BF7A2DD31FDD8E3E0031EBA7 /* ViewController.m */,
+				BF7A2DD51FDD8E3E0031EBA7 /* Assets.xcassets */,
+				BF7A2DD71FDD8E3E0031EBA7 /* Main.storyboard */,
+				BF7A2DDA1FDD8E3E0031EBA7 /* Info.plist */,
+				BF7A2DDB1FDD8E3E0031EBA7 /* main.m */,
+				BF7A2DDD1FDD8E3E0031EBA7 /* CIFTest.entitlements */,
+				BF7A2DE31FDD8E770031EBA7 /* TestObject.h */,
+				BF7A2DE41FDD8E770031EBA7 /* TestObject.m */,
+				BF7A2DE61FDD91660031EBA7 /* CaCuO2.cif */,
+				BF7A2DE81FDDA6610031EBA7 /* 1gof.cif */,
+				BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */,
+				BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */,
+				BF557F871FDF017F00D1F251 /* 1bna.cif */,
+				BF557F891FDF09F200D1F251 /* 1wns.cif */,
+				BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */,
+				BFF875C81FE3133100A561A3 /* 3j3y.cif */,
+			);
+			path = CIFTest;
+			sourceTree = "<group>";
+		};
+		BF7A2DE11FDD8E4C0031EBA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */ = {
+			isa = PBXGroup;
+			children = (
+				BFF875D01FE4B1BD00A561A3 /* Parser */,
+				BFF875CB1FE45DD400A561A3 /* CIFLoop+Access.swift */,
+				BF557F831FDED69F00D1F251 /* Molecule */,
+				BF7A2DFC1FDDE7110031EBA7 /* AppDelegate.swift */,
+				BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */,
+				BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */,
+				BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */,
+				BFA48D331FDF0F86007D7785 /* Utilities.swift */,
+				BF7A2E001FDDE7110031EBA7 /* Assets.xcassets */,
+				BF7A2E021FDDE7110031EBA7 /* Main.storyboard */,
+				BF7A2E051FDDE7110031EBA7 /* Info.plist */,
+				BF7A2E061FDDE7110031EBA7 /* CIFTest2.entitlements */,
+			);
+			path = CIFTest2;
+			sourceTree = "<group>";
+		};
+		BFF875D01FE4B1BD00A561A3 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BFF875CD1FE4A4E700A561A3 /* TestParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BF5111C120D0266800E87696 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5111C820D0266900E87696 /* CIFParser.h in Headers */,
+				BF5111F720D0425800E87696 /* ParserImpl.h in Headers */,
+				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
+				BF51122B20D063B700E87696 /* CIFValue.h in Headers */,
+				BF51120620D05F6000E87696 /* TagString.h in Headers */,
+				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
+				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2D611FDD673D0031EBA7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7A2D691FDD673D0031EBA7 /* CIFReader.h in Headers */,
+				BF7A2DA51FDD7E3F0031EBA7 /* CIFParser.h in Headers */,
+				BF7A2DEE1FDDC4B50031EBA7 /* CIF.h in Headers */,
+				BF51120520D05F6000E87696 /* TagString.h in Headers */,
+				BF7A2D911FDD77900031EBA7 /* CIFData.h in Headers */,
+				BF7A2D951FDD779F0031EBA7 /* CIFLoop.h in Headers */,
+				BF7A2D991FDD77AA0031EBA7 /* CIFItem.h in Headers */,
+				BF7A2DB21FDD85200031EBA7 /* CIFTag.h in Headers */,
+				BF7A2DA11FDD78430031EBA7 /* CIFValue.h in Headers */,
+				BFF875CF1FE4A74C00A561A3 /* CIFLexer.h in Headers */,
+				BF7A2DC71FDD8A890031EBA7 /* CIFLoopRule.h in Headers */,
+				BF7A2D9D1FDD77B90031EBA7 /* CIFSaveFrame.h in Headers */,
+				BF7A2DBC1FDD89A40031EBA7 /* CIFParseRule.h in Headers */,
+				BF7A2DBF1FDD8A3A0031EBA7 /* CIFDataRule.h in Headers */,
+				BF7A2DAC1FDD83B00031EBA7 /* CIFParserImpl.h in Headers */,
+				BF7A2DF21FDDD3060031EBA7 /* CIFSaveRule.h in Headers */,
+				BF7A2DC31FDD8A7E0031EBA7 /* CIFItemRule.h in Headers */,
+				BF7A2DB91FDD89890031EBA7 /* CIFRule.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		BF5111A520D0243800E87696 /* Lexer */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = BF5111A620D0243800E87696 /* Build configuration list for PBXLegacyTarget "Lexer" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/jun/Xcode/Frameworks/CIFParser/Lexer;
+			dependencies = (
+			);
+			name = Lexer;
+			passBuildSettingsInEnvironment = 1;
+			productName = Parser;
+		};
+		BF7A2D7B1FDD67EB0031EBA7 /* Parser__ */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = BF7A2D7C1FDD67EB0031EBA7 /* Build configuration list for PBXLegacyTarget "Parser__" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/jun/Xcode/Frameworks/CIFParser/CIFParser;
+			dependencies = (
+			);
+			name = Parser__;
+			passBuildSettingsInEnvironment = 1;
+			productName = CIFLexer;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		BF5111C320D0266800E87696 /* CIFParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5111CD20D0266900E87696 /* Build configuration list for PBXNativeTarget "CIFParser" */;
+			buildPhases = (
+				BF5111BF20D0266800E87696 /* Sources */,
+				BF5111C020D0266800E87696 /* Frameworks */,
+				BF5111C120D0266800E87696 /* Headers */,
+				BF5111C220D0266800E87696 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF5111D420D0271B00E87696 /* PBXTargetDependency */,
+			);
+			name = CIFParser;
+			productName = CIFParser;
+			productReference = BF5111C420D0266800E87696 /* CIFParser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF5111D920D0324A00E87696 /* CIFTest3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "CIFTest3" */;
+			buildPhases = (
+				BF5111D620D0324A00E87696 /* Sources */,
+				BF5111D720D0324A00E87696 /* Frameworks */,
+				BF5111D820D0324A00E87696 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF5111F020D0326200E87696 /* PBXTargetDependency */,
+			);
+			name = CIFTest3;
+			productName = CIFTest3;
+			productReference = BF5111DA20D0324A00E87696 /* CIFTest3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF51120C20D062BE00E87696 /* CIFTest4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "CIFTest4" */;
+			buildPhases = (
+				BF51120920D062BE00E87696 /* Sources */,
+				BF51120A20D062BE00E87696 /* Frameworks */,
+				BF51120B20D062BE00E87696 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF51122520D0634000E87696 /* PBXTargetDependency */,
+			);
+			name = CIFTest4;
+			productName = CIFTest4;
+			productReference = BF51120D20D062BE00E87696 /* CIFTest4.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF7A2D631FDD673D0031EBA7 /* CIFReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF7A2D6C1FDD673D0031EBA7 /* Build configuration list for PBXNativeTarget "CIFReader" */;
+			buildPhases = (
+				BF7A2D5F1FDD673D0031EBA7 /* Sources */,
+				BF7A2D601FDD673D0031EBA7 /* Frameworks */,
+				BF7A2D611FDD673D0031EBA7 /* Headers */,
+				BF7A2D621FDD673D0031EBA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF7A2D8A1FDD6F480031EBA7 /* PBXTargetDependency */,
+			);
+			name = CIFReader;
+			productName = CIFReader;
+			productReference = BF7A2D641FDD673D0031EBA7 /* CIFReader.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF7A2DCC1FDD8E3E0031EBA7 /* CIFTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF7A2DDE1FDD8E3E0031EBA7 /* Build configuration list for PBXNativeTarget "CIFTest" */;
+			buildPhases = (
+				BF7A2DC91FDD8E3E0031EBA7 /* Sources */,
+				BF7A2DCA1FDD8E3E0031EBA7 /* Frameworks */,
+				BF7A2DCB1FDD8E3E0031EBA7 /* Resources */,
+				BF5111BE20D0264800E87696 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CIFTest;
+			productName = CIFTest;
+			productReference = BF7A2DCD1FDD8E3E0031EBA7 /* CIFTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF7A2DF91FDDE7110031EBA7 /* CIFTest2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF7A2E071FDDE7110031EBA7 /* Build configuration list for PBXNativeTarget "CIFTest2" */;
+			buildPhases = (
+				BF7A2DF61FDDE7110031EBA7 /* Sources */,
+				BF7A2DF71FDDE7110031EBA7 /* Frameworks */,
+				BF7A2DF81FDDE7110031EBA7 /* Resources */,
+				BF7A2E131FDDE87F0031EBA7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF7A2E111FDDE78E0031EBA7 /* PBXTargetDependency */,
+				BF5111CA20D0266900E87696 /* PBXTargetDependency */,
+			);
+			name = CIFTest2;
+			productName = CIFTest2;
+			productReference = BF7A2DFA1FDDE7110031EBA7 /* CIFTest2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF7A2D5B1FDD673D0031EBA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Jun Narumi";
+				TargetAttributes = {
+					BF5111A520D0243800E87696 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
+					BF5111C320D0266800E87696 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
+					BF5111D920D0324A00E87696 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
+					BF51120C20D062BE00E87696 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
+					BF7A2D631FDD673D0031EBA7 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					BF7A2D7B1FDD67EB0031EBA7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					BF7A2DCC1FDD8E3E0031EBA7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					BF7A2DF91FDDE7110031EBA7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BF7A2D5E1FDD673D0031EBA7 /* Build configuration list for PBXProject "CIFParser" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF7A2D5A1FDD673D0031EBA7;
+			productRefGroup = BF7A2D651FDD673D0031EBA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF7A2D7B1FDD67EB0031EBA7 /* Parser__ */,
+				BF7A2D631FDD673D0031EBA7 /* CIFReader */,
+				BF7A2DCC1FDD8E3E0031EBA7 /* CIFTest */,
+				BF7A2DF91FDDE7110031EBA7 /* CIFTest2 */,
+				BF5111A520D0243800E87696 /* Lexer */,
+				BF5111C320D0266800E87696 /* CIFParser */,
+				BF5111D920D0324A00E87696 /* CIFTest3 */,
+				BF51120C20D062BE00E87696 /* CIFTest4 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF5111C220D0266800E87696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5111D820D0324A00E87696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5111F320D033A200E87696 /* CIFParser.framework in Resources */,
+				BF5111F120D032BA00E87696 /* 3j3y.cif in Resources */,
+				BF5111F220D032BF00E87696 /* 1wns.cif in Resources */,
+				BF5111E320D0324B00E87696 /* Assets.xcassets in Resources */,
+				BF5111E620D0324B00E87696 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF51120B20D062BE00E87696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */,
+				BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */,
+				BF51122220D0630700E87696 /* Main.storyboard in Resources */,
+				BF51121420D062BF00E87696 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2D621FDD673D0031EBA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DCB1FDD8E3E0031EBA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7A2DD61FDD8E3E0031EBA7 /* Assets.xcassets in Resources */,
+				BF7A2DE91FDDA6610031EBA7 /* 1gof.cif in Resources */,
+				BF7A2DE71FDD91670031EBA7 /* CaCuO2.cif in Resources */,
+				BF7C487320CF4E1C003CDD5B /* 3j3y.cif in Resources */,
+				BF7A2DD91FDD8E3E0031EBA7 /* Main.storyboard in Resources */,
+				BF7A2DEB1FDDB3690031EBA7 /* cif_core.dic in Resources */,
+				BF7A2DF51FDDD5A30031EBA7 /* cif_mm.dic in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DF81FDDE7110031EBA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF557F8E1FDF0A2A00D1F251 /* 1wns.cif in Resources */,
+				BF7A2E011FDDE7110031EBA7 /* Assets.xcassets in Resources */,
+				BF7A2E041FDDE7110031EBA7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF5111BF20D0266800E87696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF51122A20D063B000E87696 /* CIFValue.m in Sources */,
+				BF51120820D05F6000E87696 /* TagString.c in Sources */,
+				BF5111D520D0279400E87696 /* lex.cif.c in Sources */,
+				BF5111F820D0425800E87696 /* ParserImpl.c in Sources */,
+				BF5111D020D0267500E87696 /* Parser.c in Sources */,
+				BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5111D620D0324A00E87696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF5111E120D0324A00E87696 /* ViewController.m in Sources */,
+				BF5111E920D0324C00E87696 /* main.m in Sources */,
+				BF5111DE20D0324A00E87696 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF51120920D062BE00E87696 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF51121F20D062FA00E87696 /* SCNGeometry+Lattices.swift in Sources */,
+				BF51122620D0637900E87696 /* Molecule.swift in Sources */,
+				BF51122020D062FD00E87696 /* Test.swift in Sources */,
+				BF51121D20D062EA00E87696 /* ViewController.swift in Sources */,
+				BF51122120D0630100E87696 /* Utilities.swift in Sources */,
+				BF51122920D0638400E87696 /* AtomSite.swift in Sources */,
+				BF51122720D0637C00E87696 /* StructSheetRange.swift in Sources */,
+				BF51122820D0638000E87696 /* StructConf.swift in Sources */,
+				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
+				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2D5F1FDD673D0031EBA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7A2DC41FDD8A7E0031EBA7 /* CIFItemRule.m in Sources */,
+				BF7A2DF31FDDD3060031EBA7 /* CIFSaveRule.m in Sources */,
+				BF7A2D961FDD779F0031EBA7 /* CIFLoop.m in Sources */,
+				BF7A2DA21FDD78430031EBA7 /* CIFValue.m in Sources */,
+				BF7A2D921FDD77900031EBA7 /* CIFData.m in Sources */,
+				BF7A2DC81FDD8A890031EBA7 /* CIFLoopRule.m in Sources */,
+				BF7A2D9E1FDD77B90031EBA7 /* CIFSaveFrame.m in Sources */,
+				BF7A2DEF1FDDC4B50031EBA7 /* CIF.m in Sources */,
+				BF7A2DC01FDD8A3A0031EBA7 /* CIFDataRule.m in Sources */,
+				BF7A2D831FDD68500031EBA7 /* CIFLexer.m in Sources */,
+				BF7A2DA61FDD7E3F0031EBA7 /* CIFParser.m in Sources */,
+				BF7A2DBA1FDD89890031EBA7 /* CIFRule.m in Sources */,
+				BF7A2DB31FDD85200031EBA7 /* CIFTag.m in Sources */,
+				BF7A2D9A1FDD77AA0031EBA7 /* CIFItem.m in Sources */,
+				BF7A2DAD1FDD83B00031EBA7 /* CIFParserImpl.m in Sources */,
+				BF51120720D05F6000E87696 /* TagString.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DC91FDD8E3E0031EBA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7A2DD41FDD8E3E0031EBA7 /* ViewController.m in Sources */,
+				BF7A2DDC1FDD8E3E0031EBA7 /* main.m in Sources */,
+				BF7A2DE51FDD8E770031EBA7 /* TestObject.m in Sources */,
+				BF7A2DD11FDD8E3E0031EBA7 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7A2DF61FDDE7110031EBA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFA48D341FDF0F86007D7785 /* Utilities.swift in Sources */,
+				BF7A2DFF1FDDE7110031EBA7 /* ViewController.swift in Sources */,
+				BF7A2DFD1FDDE7110031EBA7 /* AppDelegate.swift in Sources */,
+				BF7A2E0F1FDDE73B0031EBA7 /* Test.swift in Sources */,
+				BF557F821FDED68E00D1F251 /* Molecule.swift in Sources */,
+				BFA48D3A1FDF6B62007D7785 /* SCNGeometry+Lattices.swift in Sources */,
+				BFF875C51FE0DFF300A561A3 /* StructConf.swift in Sources */,
+				BF557F861FDED6EE00D1F251 /* AtomSite.swift in Sources */,
+				BFF875CC1FE45DD400A561A3 /* CIFLoop+Access.swift in Sources */,
+				BFF875C71FE10B8800A561A3 /* StructSheetRange.swift in Sources */,
+				BFA7618720CF358800D5266D /* TestParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF5111CA20D0266900E87696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5111C320D0266800E87696 /* CIFParser */;
+			targetProxy = BF5111C920D0266900E87696 /* PBXContainerItemProxy */;
+		};
+		BF5111D420D0271B00E87696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5111A520D0243800E87696 /* Lexer */;
+			targetProxy = BF5111D320D0271B00E87696 /* PBXContainerItemProxy */;
+		};
+		BF5111F020D0326200E87696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5111C320D0266800E87696 /* CIFParser */;
+			targetProxy = BF5111EF20D0326200E87696 /* PBXContainerItemProxy */;
+		};
+		BF51122520D0634000E87696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5111C320D0266800E87696 /* CIFParser */;
+			targetProxy = BF51122420D0634000E87696 /* PBXContainerItemProxy */;
+		};
+		BF7A2D8A1FDD6F480031EBA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7A2D7B1FDD67EB0031EBA7 /* Parser__ */;
+			targetProxy = BF7A2D891FDD6F480031EBA7 /* PBXContainerItemProxy */;
+		};
+		BF7A2E111FDDE78E0031EBA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7A2D631FDD673D0031EBA7 /* CIFReader */;
+			targetProxy = BF7A2E101FDDE78E0031EBA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF5111E420D0324B00E87696 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF5111E520D0324B00E87696 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF7A2DD71FDD8E3E0031EBA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF7A2DD81FDD8E3E0031EBA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BF7A2E021FDDE7110031EBA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF7A2E031FDDE7110031EBA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF5111A720D0243800E87696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF5111A820D0243800E87696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF5111CE20D0266900E87696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CIFParser/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFParser;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF5111CF20D0266900E87696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CIFParser/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFParser;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BF5111EC20D0324C00E87696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CIFTest3/CIFTest3.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF5111ED20D0324C00E87696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CIFTest3/CIFTest3.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest3/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF51121B20D062BF00E87696 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CIFTest4/CIFTest4.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest4/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		BF51121C20D062BF00E87696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CIFTest4/CIFTest4.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest4/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		BF7A2D6A1FDD673D0031EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BF7A2D6B1FDD673D0031EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF7A2D6D1FDD673D0031EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CIFReader/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BF7A2D6E1FDD673D0031EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CIFReader/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		BF7A2D7D1FDD67EB0031EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF7A2D7E1FDD67EB0031EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF7A2DDF1FDD8E3E0031EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CIFTest/CIFTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF7A2DE01FDD8E3E0031EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CIFTest/CIFTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF7A2E081FDDE7110031EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		BF7A2E091FDDE7110031EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = CIFTest2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF5111A620D0243800E87696 /* Build configuration list for PBXLegacyTarget "Lexer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5111A720D0243800E87696 /* Debug */,
+				BF5111A820D0243800E87696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5111CD20D0266900E87696 /* Build configuration list for PBXNativeTarget "CIFParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5111CE20D0266900E87696 /* Debug */,
+				BF5111CF20D0266900E87696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "CIFTest3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5111EC20D0324C00E87696 /* Debug */,
+				BF5111ED20D0324C00E87696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "CIFTest4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF51121B20D062BF00E87696 /* Debug */,
+				BF51121C20D062BF00E87696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7A2D5E1FDD673D0031EBA7 /* Build configuration list for PBXProject "CIFParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7A2D6A1FDD673D0031EBA7 /* Debug */,
+				BF7A2D6B1FDD673D0031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7A2D6C1FDD673D0031EBA7 /* Build configuration list for PBXNativeTarget "CIFReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7A2D6D1FDD673D0031EBA7 /* Debug */,
+				BF7A2D6E1FDD673D0031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7A2D7C1FDD67EB0031EBA7 /* Build configuration list for PBXLegacyTarget "Parser__" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7A2D7D1FDD67EB0031EBA7 /* Debug */,
+				BF7A2D7E1FDD67EB0031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7A2DDE1FDD8E3E0031EBA7 /* Build configuration list for PBXNativeTarget "CIFTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7A2DDF1FDD8E3E0031EBA7 /* Debug */,
+				BF7A2DE01FDD8E3E0031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7A2E071FDDE7110031EBA7 /* Build configuration list for PBXNativeTarget "CIFTest2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7A2E081FDDE7110031EBA7 /* Debug */,
+				BF7A2E091FDDE7110031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+}

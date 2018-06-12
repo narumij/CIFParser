@@ -1,0 +1,85 @@
+data_Untitled
+
+_cell_angle_alpha	90
+_cell_angle_beta	90
+_cell_angle_gamma	90
+_cell_length_a	3.86
+_cell_length_b	3.86
+_cell_length_c	3.18
+
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-x,-y,z
+-y,x,z
+y,-x,z
+-x,y,-z
+x,-y,-z
+y,x,-z
+-y,-x,-z
+-x,-y,-z
+x,y,-z
+y,-x,-z
+-y,x,-z
+x,-y,z
+-x,y,z
+-y,-x,z
+y,x,z
+
+loop_
+_atom_site_type_symbol
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Ca Ca 0.5 0.5 0.5
+Cu Cu 0.0000 0.0000 0.0000
+O O 0.5 0.0000 0.0000
+
+loop_
+    _geom_bond_atom_site_label_1
+    _geom_bond_atom_site_label_2
+    _geom_bond_site_symmetry_1
+    _geom_bond_site_symmetry_2
+    _geom_bond_distance
+    _geom_bond_publ_flag
+
+Cu O 1_555 1_555 ? ?
+Cu O 1_555 3_555 ? ?
+Cu O 1_555 1_455 ? ?
+Cu O 1_555 3_545 ? ?
+
+Cu O 1_655 1_655 ? ?
+Cu O 1_655 3_655 ? ?
+Cu O 1_655 1_555 ? ?
+Cu O 1_655 3_645 ? ?
+
+Cu O 1_565 1_565 ? ?
+Cu O 1_565 3_565 ? ?
+Cu O 1_565 1_465 ? ?
+Cu O 1_565 3_555 ? ?
+
+Cu O 1_665 1_665 ? ?
+Cu O 1_665 3_665 ? ?
+Cu O 1_665 1_565 ? ?
+Cu O 1_665 3_655 ? ?
+
+Cu O 1_556 1_556 ? ?
+Cu O 1_556 3_556 ? ?
+Cu O 1_556 1_456 ? ?
+Cu O 1_556 3_546 ? ?
+
+Cu O 1_656 1_656 ? ?
+Cu O 1_656 3_656 ? ?
+Cu O 1_656 1_556 ? ?
+Cu O 1_656 3_646 ? ?
+
+Cu O 1_566 1_566 ? ?
+Cu O 1_566 3_566 ? ?
+Cu O 1_566 1_466 ? ?
+Cu O 1_566 3_556 ? ?
+
+Cu O 1_666 1_666 ? ?
+Cu O 1_666 3_666 ? ?
+Cu O 1_666 1_566 ? ?
+Cu O 1_666 3_656 ? ?
