@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF4CC1EE20D0A87B00A55A32 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DA01FDD78430031EBA7 /* CIFValue.m */; };
+		BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F320D0AA2000A55A32 /* CIFValue.m */; };
+		BF4CC1F620D0AB2C00A55A32 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */; };
+		BF4CC1FA20D0AB3B00A55A32 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */; };
+		BF4CC1FB20D0AB3B00A55A32 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */; };
+		BF4CC1FC20D0AB3B00A55A32 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */; };
+		BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */; };
+		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
+		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
+		BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20120D0AB4800A55A32 /* Utilities.swift */; };
 		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
 		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,16 +38,8 @@
 		BF51120820D05F6000E87696 /* TagString.c in Sources */ = {isa = PBXBuildFile; fileRef = BF51120420D05F6000E87696 /* TagString.c */; };
 		BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51120F20D062BE00E87696 /* AppDelegate.swift */; };
 		BF51121420D062BF00E87696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF51121320D062BF00E87696 /* Assets.xcassets */; };
-		BF51121D20D062EA00E87696 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */; };
-		BF51121F20D062FA00E87696 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */; };
-		BF51122020D062FD00E87696 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */; };
-		BF51122120D0630100E87696 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA48D331FDF0F86007D7785 /* Utilities.swift */; };
 		BF51122220D0630700E87696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A2E021FDDE7110031EBA7 /* Main.storyboard */; };
 		BF51122320D0633100E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
-		BF51122620D0637900E87696 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F811FDED68E00D1F251 /* Molecule.swift */; };
-		BF51122720D0637C00E87696 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */; };
-		BF51122820D0638000E87696 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C41FE0DFF300A561A3 /* StructConf.swift */; };
-		BF51122920D0638400E87696 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F851FDED6EE00D1F251 /* AtomSite.swift */; };
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
 		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
@@ -80,6 +80,16 @@
 
 /* Begin PBXFileReference section */
 		BF4CC1EA20D0A85C00A55A32 /* CIFTest4-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CIFTest4-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF4CC1F220D0AA2000A55A32 /* CIFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFValue.h; sourceTree = "<group>"; };
+		BF4CC1F320D0AA2000A55A32 /* CIFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFValue.m; sourceTree = "<group>"; };
+		BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Molecule.swift; path = CIFTest4/Molecule/Molecule.swift; sourceTree = SOURCE_ROOT; };
+		BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomSite.swift; path = CIFTest4/Molecule/Atom/AtomSite.swift; sourceTree = SOURCE_ROOT; };
+		BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructSheetRange.swift; path = CIFTest4/Molecule/Atom/StructSheetRange.swift; sourceTree = SOURCE_ROOT; };
+		BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructConf.swift; path = CIFTest4/Molecule/Atom/StructConf.swift; sourceTree = SOURCE_ROOT; };
+		BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF4CC1FF20D0AB4800A55A32 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Lattices.swift"; sourceTree = "<group>"; };
+		BF4CC20120D0AB4800A55A32 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BF5111A920D0256F00E87696 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		BF5111AA20D0256F00E87696 /* Parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Parser.c; sourceTree = "<group>"; };
 		BF5111C420D0266800E87696 /* CIFParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,13 +120,9 @@
 		BF51122F20D09F1C00E87696 /* Handlers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handlers.h; sourceTree = "<group>"; };
 		BF51123020D0A2F100E87696 /* DummyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyHandler.h; sourceTree = "<group>"; };
 		BF51123120D0A2F100E87696 /* DummyHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyHandler.m; sourceTree = "<group>"; };
-		BF557F811FDED68E00D1F251 /* Molecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
-		BF557F851FDED6EE00D1F251 /* AtomSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomSite.swift; sourceTree = "<group>"; };
 		BF557F871FDF017F00D1F251 /* 1bna.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1bna.cif; sourceTree = "<group>"; };
 		BF557F891FDF09F200D1F251 /* 1wns.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1wns.cif; sourceTree = "<group>"; };
 		BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3ixn.cif; sourceTree = "<group>"; };
-		BF7A2D671FDD673D0031EBA7 /* CIFReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFReader.h; sourceTree = "<group>"; };
-		BF7A2D681FDD673D0031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF7A2D711FDD67AC0031EBA7 /* test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
 		BF7A2D721FDD67AC0031EBA7 /* CIFLexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFLexer.m; sourceTree = "<group>"; };
 		BF7A2D731FDD67AC0031EBA7 /* CIFLexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = CIFLexer.l; sourceTree = "<group>"; };
@@ -124,63 +130,10 @@
 		BF7A2D751FDD67AC0031EBA7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lex.cif.h; path = Lexer/lex.cif.h; sourceTree = SOURCE_ROOT; };
 		BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lex.cif.c; path = Lexer/lex.cif.c; sourceTree = SOURCE_ROOT; };
-		BF7A2D8F1FDD77900031EBA7 /* CIFData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFData.h; sourceTree = "<group>"; };
-		BF7A2D901FDD77900031EBA7 /* CIFData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFData.m; sourceTree = "<group>"; };
-		BF7A2D931FDD779F0031EBA7 /* CIFLoop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoop.h; sourceTree = "<group>"; };
-		BF7A2D941FDD779F0031EBA7 /* CIFLoop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFLoop.m; sourceTree = "<group>"; };
-		BF7A2D971FDD77AA0031EBA7 /* CIFItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFItem.h; sourceTree = "<group>"; };
-		BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFItem.m; sourceTree = "<group>"; };
-		BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFSaveFrame.h; sourceTree = "<group>"; };
-		BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFSaveFrame.m; sourceTree = "<group>"; };
-		BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CIFValue.h; path = ../Parser/CIF/CIFValue.h; sourceTree = "<group>"; };
-		BF7A2DA01FDD78430031EBA7 /* CIFValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CIFValue.m; path = ../Parser/CIF/CIFValue.m; sourceTree = "<group>"; };
-		BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
-		BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFParser.m; sourceTree = "<group>"; };
-		BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParserImpl.h; sourceTree = "<group>"; };
-		BF7A2DAB1FDD83B00031EBA7 /* CIFParserImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFParserImpl.m; sourceTree = "<group>"; };
-		BF7A2DB01FDD85200031EBA7 /* CIFTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFTag.h; sourceTree = "<group>"; };
-		BF7A2DB11FDD85200031EBA7 /* CIFTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFTag.m; sourceTree = "<group>"; };
-		BF7A2DB71FDD89890031EBA7 /* CIFRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFRule.h; sourceTree = "<group>"; };
-		BF7A2DB81FDD89890031EBA7 /* CIFRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFRule.m; sourceTree = "<group>"; };
-		BF7A2DBB1FDD89A40031EBA7 /* CIFParseRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParseRule.h; sourceTree = "<group>"; };
-		BF7A2DBD1FDD8A3A0031EBA7 /* CIFDataRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFDataRule.h; sourceTree = "<group>"; };
-		BF7A2DBE1FDD8A3A0031EBA7 /* CIFDataRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFDataRule.m; sourceTree = "<group>"; };
-		BF7A2DC11FDD8A7E0031EBA7 /* CIFItemRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFItemRule.h; sourceTree = "<group>"; };
-		BF7A2DC21FDD8A7E0031EBA7 /* CIFItemRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFItemRule.m; sourceTree = "<group>"; };
-		BF7A2DC51FDD8A890031EBA7 /* CIFLoopRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoopRule.h; sourceTree = "<group>"; };
-		BF7A2DC61FDD8A890031EBA7 /* CIFLoopRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFLoopRule.m; sourceTree = "<group>"; };
-		BF7A2DCF1FDD8E3E0031EBA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BF7A2DD01FDD8E3E0031EBA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BF7A2DD21FDD8E3E0031EBA7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BF7A2DD31FDD8E3E0031EBA7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BF7A2DD51FDD8E3E0031EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BF7A2DD81FDD8E3E0031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF7A2DDA1FDD8E3E0031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF7A2DDB1FDD8E3E0031EBA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BF7A2DDD1FDD8E3E0031EBA7 /* CIFTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest.entitlements; sourceTree = "<group>"; };
-		BF7A2DE31FDD8E770031EBA7 /* TestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
-		BF7A2DE41FDD8E770031EBA7 /* TestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
-		BF7A2DE61FDD91660031EBA7 /* CaCuO2.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CaCuO2.cif; path = CIFLexer/TestFiles/CaCuO2.cif; sourceTree = SOURCE_ROOT; };
-		BF7A2DE81FDDA6610031EBA7 /* 1gof.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1gof.cif; path = CIFLexer/TestFiles/1gof.cif; sourceTree = SOURCE_ROOT; };
 		BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_core.dic; sourceTree = "<group>"; };
-		BF7A2DEC1FDDC4B50031EBA7 /* CIF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIF.h; sourceTree = "<group>"; };
-		BF7A2DED1FDDC4B50031EBA7 /* CIF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIF.m; sourceTree = "<group>"; };
-		BF7A2DF01FDDD3060031EBA7 /* CIFSaveRule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFSaveRule.h; sourceTree = "<group>"; };
-		BF7A2DF11FDDD3060031EBA7 /* CIFSaveRule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFSaveRule.m; sourceTree = "<group>"; };
 		BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_mm.dic; sourceTree = "<group>"; };
-		BF7A2DFC1FDDE7110031EBA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BF7A2E001FDDE7110031EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7A2E031FDDE7110031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF7A2E051FDDE7110031EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF7A2E061FDDE7110031EBA7 /* CIFTest2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest2.entitlements; sourceTree = "<group>"; };
-		BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		BFA48D331FDF0F86007D7785 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Lattices.swift"; sourceTree = "<group>"; };
-		BFF875C41FE0DFF300A561A3 /* StructConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructConf.swift; sourceTree = "<group>"; };
-		BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructSheetRange.swift; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
-		BFF875CB1FE45DD400A561A3 /* CIFLoop+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFLoop+Access.swift"; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,8 +205,16 @@
 		BF51120E20D062BE00E87696 /* CIFTest4 */ = {
 			isa = PBXGroup;
 			children = (
-				BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */,
-				BF7A2DA01FDD78430031EBA7 /* CIFValue.m */,
+				BFF875D01FE4B1BD00A561A3 /* Parser */,
+				BF557F831FDED69F00D1F251 /* Molecule */,
+				BF4CC20120D0AB4800A55A32 /* Utilities.swift */,
+				BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */,
+				BF4CC1FF20D0AB4800A55A32 /* Test.swift */,
+				BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */,
+				BF7A2E021FDDE7110031EBA7 /* Main.storyboard */,
+				BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */,
+				BF4CC1F220D0AA2000A55A32 /* CIFValue.h */,
+				BF4CC1F320D0AA2000A55A32 /* CIFValue.m */,
 				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
 				BF51121320D062BF00E87696 /* Assets.xcassets */,
 				BF51121820D062BF00E87696 /* Info.plist */,
@@ -267,17 +228,18 @@
 			isa = PBXGroup;
 			children = (
 				BF557F841FDED6B300D1F251 /* Atom */,
-				BF557F811FDED68E00D1F251 /* Molecule.swift */,
+				BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */,
 			);
-			path = Molecule;
+			name = Molecule;
+			path = CIFTest2/Molecule;
 			sourceTree = "<group>";
 		};
 		BF557F841FDED6B300D1F251 /* Atom */ = {
 			isa = PBXGroup;
 			children = (
-				BF557F851FDED6EE00D1F251 /* AtomSite.swift */,
-				BFF875C41FE0DFF300A561A3 /* StructConf.swift */,
-				BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */,
+				BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */,
+				BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */,
+				BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */,
 			);
 			path = Atom;
 			sourceTree = "<group>";
@@ -287,9 +249,7 @@
 			children = (
 				BF7A2D701FDD67770031EBA7 /* Lexer */,
 				BF5111C520D0266800E87696 /* CIFParser */,
-				BF7A2D661FDD673D0031EBA7 /* Parser */,
 				BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */,
-				BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */,
 				BF5111DB20D0324A00E87696 /* CIFTest3 */,
 				BF51120E20D062BE00E87696 /* CIFTest4 */,
 				BF7A2D651FDD673D0031EBA7 /* Products */,
@@ -307,18 +267,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF7A2D661FDD673D0031EBA7 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				BF7A2DB41FDD88A30031EBA7 /* CIF */,
-				BF7A2DB61FDD89750031EBA7 /* Rule */,
-				BF7A2DB51FDD88BB0031EBA7 /* Parser */,
-				BF7A2D671FDD673D0031EBA7 /* CIFReader.h */,
-				BF7A2D681FDD673D0031EBA7 /* Info.plist */,
-			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
 		BF7A2D701FDD67770031EBA7 /* Lexer */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,70 +280,9 @@
 			path = Lexer;
 			sourceTree = "<group>";
 		};
-		BF7A2DB41FDD88A30031EBA7 /* CIF */ = {
-			isa = PBXGroup;
-			children = (
-				BF7A2DEC1FDDC4B50031EBA7 /* CIF.h */,
-				BF7A2DED1FDDC4B50031EBA7 /* CIF.m */,
-				BF7A2D8F1FDD77900031EBA7 /* CIFData.h */,
-				BF7A2D901FDD77900031EBA7 /* CIFData.m */,
-				BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */,
-				BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */,
-				BF7A2D931FDD779F0031EBA7 /* CIFLoop.h */,
-				BF7A2D941FDD779F0031EBA7 /* CIFLoop.m */,
-				BF7A2D971FDD77AA0031EBA7 /* CIFItem.h */,
-				BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */,
-				BF7A2DB01FDD85200031EBA7 /* CIFTag.h */,
-				BF7A2DB11FDD85200031EBA7 /* CIFTag.m */,
-			);
-			path = CIF;
-			sourceTree = "<group>";
-		};
-		BF7A2DB51FDD88BB0031EBA7 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */,
-				BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */,
-				BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */,
-				BF7A2DAB1FDD83B00031EBA7 /* CIFParserImpl.m */,
-			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
-		BF7A2DB61FDD89750031EBA7 /* Rule */ = {
-			isa = PBXGroup;
-			children = (
-				BF7A2DBB1FDD89A40031EBA7 /* CIFParseRule.h */,
-				BF7A2DB71FDD89890031EBA7 /* CIFRule.h */,
-				BF7A2DB81FDD89890031EBA7 /* CIFRule.m */,
-				BF7A2DBD1FDD8A3A0031EBA7 /* CIFDataRule.h */,
-				BF7A2DBE1FDD8A3A0031EBA7 /* CIFDataRule.m */,
-				BF7A2DF01FDDD3060031EBA7 /* CIFSaveRule.h */,
-				BF7A2DF11FDDD3060031EBA7 /* CIFSaveRule.m */,
-				BF7A2DC11FDD8A7E0031EBA7 /* CIFItemRule.h */,
-				BF7A2DC21FDD8A7E0031EBA7 /* CIFItemRule.m */,
-				BF7A2DC51FDD8A890031EBA7 /* CIFLoopRule.h */,
-				BF7A2DC61FDD8A890031EBA7 /* CIFLoopRule.m */,
-			);
-			path = Rule;
-			sourceTree = "<group>";
-		};
 		BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */ = {
 			isa = PBXGroup;
 			children = (
-				BF7A2DCF1FDD8E3E0031EBA7 /* AppDelegate.h */,
-				BF7A2DD01FDD8E3E0031EBA7 /* AppDelegate.m */,
-				BF7A2DD21FDD8E3E0031EBA7 /* ViewController.h */,
-				BF7A2DD31FDD8E3E0031EBA7 /* ViewController.m */,
-				BF7A2DD51FDD8E3E0031EBA7 /* Assets.xcassets */,
-				BF7A2DD71FDD8E3E0031EBA7 /* Main.storyboard */,
-				BF7A2DDA1FDD8E3E0031EBA7 /* Info.plist */,
-				BF7A2DDB1FDD8E3E0031EBA7 /* main.m */,
-				BF7A2DDD1FDD8E3E0031EBA7 /* CIFTest.entitlements */,
-				BF7A2DE31FDD8E770031EBA7 /* TestObject.h */,
-				BF7A2DE41FDD8E770031EBA7 /* TestObject.m */,
-				BF7A2DE61FDD91660031EBA7 /* CaCuO2.cif */,
-				BF7A2DE81FDDA6610031EBA7 /* 1gof.cif */,
 				BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */,
 				BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */,
 				BF557F871FDF017F00D1F251 /* 1bna.cif */,
@@ -416,18 +303,6 @@
 		BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */ = {
 			isa = PBXGroup;
 			children = (
-				BFF875D01FE4B1BD00A561A3 /* Parser */,
-				BFF875CB1FE45DD400A561A3 /* CIFLoop+Access.swift */,
-				BF557F831FDED69F00D1F251 /* Molecule */,
-				BF7A2DFC1FDDE7110031EBA7 /* AppDelegate.swift */,
-				BF7A2DFE1FDDE7110031EBA7 /* ViewController.swift */,
-				BFA48D391FDF6B62007D7785 /* SCNGeometry+Lattices.swift */,
-				BF7A2E0E1FDDE73B0031EBA7 /* Test.swift */,
-				BFA48D331FDF0F86007D7785 /* Utilities.swift */,
-				BF7A2E001FDDE7110031EBA7 /* Assets.xcassets */,
-				BF7A2E021FDDE7110031EBA7 /* Main.storyboard */,
-				BF7A2E051FDDE7110031EBA7 /* Info.plist */,
-				BF7A2E061FDDE7110031EBA7 /* CIFTest2.entitlements */,
 			);
 			path = CIFTest2;
 			sourceTree = "<group>";
@@ -644,17 +519,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF51121F20D062FA00E87696 /* SCNGeometry+Lattices.swift in Sources */,
-				BF51122620D0637900E87696 /* Molecule.swift in Sources */,
-				BF51122020D062FD00E87696 /* Test.swift in Sources */,
-				BF51121D20D062EA00E87696 /* ViewController.swift in Sources */,
-				BF51122120D0630100E87696 /* Utilities.swift in Sources */,
-				BF51122920D0638400E87696 /* AtomSite.swift in Sources */,
-				BF51122720D0637C00E87696 /* StructSheetRange.swift in Sources */,
-				BF51122820D0638000E87696 /* StructConf.swift in Sources */,
+				BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */,
+				BF4CC1F620D0AB2C00A55A32 /* Molecule.swift in Sources */,
+				BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */,
+				BF4CC1FB20D0AB3B00A55A32 /* StructSheetRange.swift in Sources */,
 				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
-				BF4CC1EE20D0A87B00A55A32 /* CIFValue.m in Sources */,
+				BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */,
+				BF4CC1FC20D0AB3B00A55A32 /* StructConf.swift in Sources */,
+				BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */,
+				BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */,
 				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
+				BF4CC1FA20D0AB3B00A55A32 /* AtomSite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,14 +563,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF5111E520D0324B00E87696 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BF7A2DD71FDD8E3E0031EBA7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF7A2DD81FDD8E3E0031EBA7 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
