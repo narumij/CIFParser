@@ -86,12 +86,7 @@ int Parse( FILE * fp, Handlers *h )
 
 void ctxCleanUp( Ctx *ctx ) {
     DeleteTags(&ctx->tags);
-    if ( ctx->itemTag.text ) {
-        FREE(ctx->itemTag.text, 2);
-//        ctx->itemTag.len = 0;
-//        ctx->itemTag.tag = 0;
-        DeepClearString(&ctx->itemTag);
-    }
+    DeepClearString(&ctx->itemTag);
 }
 
 /*
@@ -167,7 +162,6 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
             return PSComplete;
         case LTag:
             ctx->dataCurrent = itemParse;
-//            prepareItem( ctx, lex );
             CopyString( &ctx->itemTag, lex->text, lex->len );
             return PSCarryOn;
         case LLoop_:
@@ -198,10 +192,6 @@ int isValueTag(Lex *lex ) {
     }
     return 0;
 }
-
-//void prepareItem( Ctx *ctx, Lex *lex ) {
-//    CopyString(&ctx->itemTag, lex->text, lex->len);
-//}
 
 ParseState itemParse( Ctx *ctx, Lex *lex ) {
     if ( !isValueTag(lex) ) {
