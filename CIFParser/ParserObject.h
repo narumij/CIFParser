@@ -16,10 +16,6 @@
 
 #include "Handlers.h"
 
-<<<<<<< HEAD
-// 読んでいて辛いので、もう少しわかりやすくしたい
-=======
->>>>>>> work
 typedef enum ParseState {
     PSUnexpectedToken,
     PSCarryOn,
