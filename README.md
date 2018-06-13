@@ -21,6 +21,9 @@ file in the repository.
 
 * [flex](https://www.gnu.org/software/flex/) - The Fast Lexical Analyzer used
 
+* [1wns](https://files.rcsb.org/download/1WNS.cif) - 同梱できなかったのでダウンロードしてCIF Filesフォルダに配置してください
+* [3j3y](https://files.rcsb.org/download/3J3Y.cif) - 同梱できなかったのでダウンロードしてCIF Filesフォルダに配置してください
+
 ## Acknowledgments
 
-同梱している1wnsと3j3yは[RCSB PDB](https://www.rcsb.org)よりお借りしています。とても助かりました。感謝しています。
+1wnsと3j3yは[RCSB PDB](https://www.rcsb.org)よりお借りしました。とても助かりました。感謝しています。
