@@ -1,2 +1,3 @@
 *.cif
 *~
+.DS_Store
