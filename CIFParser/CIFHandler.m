@@ -11,9 +11,9 @@
 
 #import "CIFTag.h"
 
-static void HandleBeginData( void *ctx, const char* text, size_t len )
+static void HandleBeginData( void *ctx, const Lex *lex )
 {
-    [(__bridge id<CIFHandler>)ctx beginData:text :len];
+    [(__bridge id<CIFHandler>)ctx beginData:lex];
 }
 
 static void HandleItem( void *ctx, const CIFTag *tag, Lex *lex )

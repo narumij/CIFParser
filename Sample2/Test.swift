@@ -56,7 +56,7 @@ extension AtomSite {
 
 class Simple: CIFHandler {
 
-    func beginData(_ valueText: UnsafePointer<Int8>!, _ valueTextLen: Int) {
+    func beginData(_ lex: UnsafePointer<Lex>!) {
     }
 
     func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<Lex>!) {

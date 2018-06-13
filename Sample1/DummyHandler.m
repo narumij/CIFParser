@@ -10,9 +10,9 @@
 
 @implementation DummyHandler
 
--(void)beginData:(const char *)valueText :(size_t)valueTextLen
+-(void)beginData:(const Lex *)lex
 {
-    NSLog(@"begin data ** %s",valueText);
+    NSLog(@"begin data ** %s",lex->text);
 }
 
 -(void)item:(const CIFTag *)tag :(const Lex *)lex

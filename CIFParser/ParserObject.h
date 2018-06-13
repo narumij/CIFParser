@@ -14,6 +14,8 @@
 #include "CIFTag.h"
 #include "CIFLoopTag.h"
 
+#include "Handlers.h"
+
 // 読んでいて辛いので、もう少しわかりやすくしたい
 typedef enum ParseState {
     PSUnexpectedToken,
@@ -39,5 +41,13 @@ struct ParserObject {
     CIFLoopTag loopTag;
     int loopTagIndex;
 };
+
+static inline void CallBackItem( ParserObject *ctx, Lex *value ) {
+    ctx->handlers->item(ctx->handlers->ctx, &ctx->itemTag, value );
+}
+
+static inline void CallBackLoopItem( ParserObject *ctx, Lex *value ) {
+    ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, value );
+}
 
 #endif /* ParserImpl_h */

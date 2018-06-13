@@ -13,7 +13,7 @@
 #import "CIFLoopTag.h"
 
 @protocol CIFHandler
--(void)beginData:(const char *)valueText :(size_t)valueTextLen;
+-(void)beginData:(const Lex *)lex;
 -(void)item:(const CIFTag *)tag :(const Lex *)lex;
 -(void)beginLoop:(const CIFLoopTag *)tags;
 -(void)loopItem:(const CIFLoopTag *)tags :(size_t)tagIndex :(const Lex *)lex;

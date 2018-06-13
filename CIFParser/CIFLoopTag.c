@@ -34,29 +34,29 @@ static void IncreaseCapacity( CIFLoopTag *xs ) {
     xs->capacity = newCapacity;
 }
 
-void AppendTag( CIFLoopTag *stack, Lex *lex ) {
+void CIFLoopTagAdd( CIFLoopTag *stack, Lex *lex ) {
     if ( stack->capacity <= (stack->count + 1) )
         IncreaseCapacity(stack);
     CIFTagAssignString( &stack->list[stack->count], lex->text, lex->len );
     stack->count += 1;
 }
 
-int CountTag( CIFLoopTag *stack ) {
+size_t CIFLoopTagCount( CIFLoopTag *stack ) {
     return stack->count;
 }
 
-void ClearTag( CIFLoopTag *stack ) {
+void CIFLoopTagClear( CIFLoopTag *stack ) {
     for (int i = 0; i < stack->capacity; ++i ) {
         CIFTagClearString(&stack->list[i]);
     }
     stack->count = 0;
 }
 
-const char *GetText( CIFLoopTag *stack, int idx ) {
+const char *CIFLoopTagGetText( CIFLoopTag *stack, int idx ) {
     return stack->list[idx].text;
 }
 
-size_t GetLen( CIFLoopTag *stack, int idx ) {
+size_t CIFLoopTagGetLen( CIFLoopTag *stack, int idx ) {
     return stack->list[idx].len;
 }
 

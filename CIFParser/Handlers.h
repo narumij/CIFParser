@@ -9,11 +9,11 @@
 #ifndef Handlers_h
 #define Handlers_h
 
-#include "Parser.h"
+//#include "Parser.h"
 
 typedef struct Handlers {
     void *ctx;
-    void (*beginData)( void* ctx, const char* text, size_t len );
+    void (*beginData)( void* ctx, const Lex* value );
     void (*item)( void *ctx, const CIFTag *tag, Lex *value );
     void (*beginLoop)( void *ctx, CIFLoopTag *tags );
     void (*loopItem)( void *ctx, CIFLoopTag *tags, size_t itemIndex, Lex *value );

@@ -118,7 +118,7 @@ ParseState rootParse( ParserObject *ctx, Lex *lex ) {
 
     if ( lex->tag == LData_ ) {
         ctx->parseFuncInRoot = dataParse;
-        ctx->handlers->beginData( ctx->handlers->ctx, lex->text, lex->len );
+        ctx->handlers->beginData( ctx->handlers->ctx, lex );
         return PSCarryOn;
     }
 
@@ -196,8 +196,7 @@ ParseState itemParse( ParserObject *ctx, Lex *lex ) {
         assert(0);
         return PSUnexpectedToken;
     }
-    CIFTag tag = { ctx->itemTag.text, ctx->itemTag.len };
-    ctx->handlers->item( ctx->handlers->ctx, &tag, lex );
+    CallBackItem(ctx, lex);
     return PSComplete;
 }
 
@@ -208,7 +207,7 @@ ParseState loopParse( ParserObject *ctx, Lex *lex ) {
     if ( ctx->loopParseState == LPSTags )
     {
         if (lex->tag == LTag) {
-            AppendTag( &ctx->loopTag, lex );
+            CIFLoopTagAdd( &ctx->loopTag, lex );
         } else {
             ctx->loopParseState = 1;
             ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->loopTag );
@@ -218,16 +217,17 @@ ParseState loopParse( ParserObject *ctx, Lex *lex ) {
     if ( ctx->loopParseState == LPSValues )
     {
         if (isValueTag(lex)) {
-            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, lex );
+//            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, lex );
+            CallBackLoopItem( ctx, lex );
             ctx->loopTagIndex += 1;
-            if ( ctx->loopTagIndex == CountTag( &ctx->loopTag ) ) {
+            if ( ctx->loopTagIndex == CIFLoopTagCount( &ctx->loopTag ) ) {
                 ctx->handlers->loopItemTerm(ctx->handlers->ctx);
                 ctx->loopTagIndex = 0;
             }
         } else {
             ctx->handlers->endLoop( ctx->handlers->ctx );
             ctx->loopTagIndex = 0;
-            ClearTag(&ctx->loopTag);
+            CIFLoopTagClear(&ctx->loopTag);
             return PSShouldBack;
         }
     }

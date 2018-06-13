@@ -19,14 +19,14 @@ typedef struct CIFTag CIFTag;
 typedef struct CIFLoopTag {
     CIFTag *list;
     int capacity;
-    int count;
+    size_t count;
 } CIFLoopTag;
 
-void AppendTag( CIFLoopTag *stack, struct Lex *lex );
-int CountTag( CIFLoopTag *stack );
-void ClearTag( CIFLoopTag *stack );
-const char *GetText( CIFLoopTag *stack, int idx );
-size_t GetLen( CIFLoopTag *stack, int idx );
+void CIFLoopTagAdd( CIFLoopTag *stack, struct Lex *lex );
+size_t CIFLoopTagCount( CIFLoopTag *stack );
+void CIFLoopTagClear( CIFLoopTag *stack );
+const char *CIFLoopTagGetText( CIFLoopTag *stack, int idx );
+//size_t CIFLoopTagGetLen( CIFLoopTag *stack, int idx );
 
 void DeleteTags( CIFLoopTag *stack );
 
