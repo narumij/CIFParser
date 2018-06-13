@@ -9,40 +9,6 @@
 #import "CIFHandler.h"
 #include "Handlers.h"
 
-//@implementation DummyHandler
-//-(void)beginData:(const char *)valueText :(size_t)valueTextLen
-//{
-//    NSLog(@"begin data ** %s",valueText);
-//}
-//-(void)item:(const TagText *)tag :(const Lex *)lex
-//{
-//    NSLog( @"item ( %s : %s )", tag->text, lex->text );
-//}
-//NSArray<NSString*>* StringsFromTagList( TagList *tags ) {
-//    NSMutableArray *mArray = @[].mutableCopy;
-//    for ( int i = 0; i < tags->count; ++i) {
-//        NSString *str = [NSString stringWithUTF8String:tags->list[i].text];
-//        [mArray addObject:str];
-//    }
-//    return mArray;
-//}
-//-(void)beginLoop:(TagList *)tags {
-//    NSLog(@"begin loop %@",StringsFromTagList(tags));
-//}
-//-(void)loopItem:(TagList *)tags
-//               :(size_t)tagIndex
-//               :(const Lex *)lex
-//{
-//    NSLog(@"loop item [ %zd : %s ]",tagIndex,lex->text);
-//}
-//-(void)loopItemTerm
-//{
-//}
-//-(void)endLoop
-//{
-//}
-//@end
-
 static void HandleBeginData( void *ctx, const char* text, size_t len )
 {
     [(__bridge id<CIFHandler>)ctx beginData:text :len];
@@ -80,7 +46,7 @@ static void HandleEndData( void *ctx )
     NSLog(@"end data");
 }
 
-Handlers prepareHandlers( id<CIFHandler> handler ) {
+static Handlers prepareHandlers( id<CIFHandler> handler ) {
     Handlers h;
     h.ctx = (__bridge void *)handler;
     h.item = HandleItem;
@@ -91,6 +57,9 @@ Handlers prepareHandlers( id<CIFHandler> handler ) {
     h.endLoop = HandleEndLoop;
     h.endData = HandleEndData;
     return h;
+}
+
+void releaseHandlers( Handlers *handlers ) {
 }
 
 @implementation NewParser
@@ -107,6 +76,7 @@ Handlers prepareHandlers( id<CIFHandler> handler ) {
 {
     Handlers hh = prepareHandlers(handler);
     Parse(fp, &hh);
+    releaseHandlers( &hh );
 }
 
 @end

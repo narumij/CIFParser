@@ -29,10 +29,8 @@
 		BF5111EE20D0325900E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
 		BF5111F120D032BA00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
 		BF5111F220D032BF00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
-		BF5111F320D033A200E87696 /* CIFParser.framework in Resources */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
 		BF5111F420D0345700E87696 /* Lexer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111D220D026DA00E87696 /* Lexer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111F720D0425800E87696 /* ParserImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F520D0425800E87696 /* ParserImpl.h */; };
-		BF5111F820D0425800E87696 /* ParserImpl.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111F620D0425800E87696 /* ParserImpl.c */; };
 		BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F920D0456F00E87696 /* CIFHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111FA20D0456F00E87696 /* CIFHandler.m */; };
 		BF51120620D05F6000E87696 /* TagString.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51120320D05F6000E87696 /* TagString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -106,7 +104,6 @@
 		BF5111E820D0324C00E87696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF5111EA20D0324C00E87696 /* CIFTest3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest3.entitlements; sourceTree = "<group>"; };
 		BF5111F520D0425800E87696 /* ParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParserImpl.h; sourceTree = "<group>"; };
-		BF5111F620D0425800E87696 /* ParserImpl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ParserImpl.c; sourceTree = "<group>"; };
 		BF5111F920D0456F00E87696 /* CIFHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFHandler.h; sourceTree = "<group>"; };
 		BF5111FA20D0456F00E87696 /* CIFHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFHandler.m; sourceTree = "<group>"; };
 		BF51120320D05F6000E87696 /* TagString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagString.h; sourceTree = "<group>"; };
@@ -119,9 +116,7 @@
 		BF51122F20D09F1C00E87696 /* Handlers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handlers.h; sourceTree = "<group>"; };
 		BF51123020D0A2F100E87696 /* DummyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyHandler.h; sourceTree = "<group>"; };
 		BF51123120D0A2F100E87696 /* DummyHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyHandler.m; sourceTree = "<group>"; };
-		BF557F871FDF017F00D1F251 /* 1bna.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1bna.cif; sourceTree = "<group>"; };
 		BF557F891FDF09F200D1F251 /* 1wns.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1wns.cif; sourceTree = "<group>"; };
-		BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3ixn.cif; sourceTree = "<group>"; };
 		BF7A2D711FDD67AC0031EBA7 /* test.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
 		BF7A2D721FDD67AC0031EBA7 /* CIFLexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFLexer.m; sourceTree = "<group>"; };
 		BF7A2D731FDD67AC0031EBA7 /* CIFLexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = CIFLexer.l; sourceTree = "<group>"; };
@@ -129,8 +124,6 @@
 		BF7A2D751FDD67AC0031EBA7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lex.cif.h; path = Lexer/lex.cif.h; sourceTree = SOURCE_ROOT; };
 		BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lex.cif.c; path = Lexer/lex.cif.c; sourceTree = SOURCE_ROOT; };
-		BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_core.dic; sourceTree = "<group>"; };
-		BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cif_mm.dic; sourceTree = "<group>"; };
 		BF7A2E031FDDE7110031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
@@ -170,14 +163,13 @@
 				BF5111F920D0456F00E87696 /* CIFHandler.h */,
 				BF5111FA20D0456F00E87696 /* CIFHandler.m */,
 				BF5111A920D0256F00E87696 /* Parser.h */,
+				BF5111F520D0425800E87696 /* ParserImpl.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
 				BF51120320D05F6000E87696 /* TagString.h */,
 				BF51120420D05F6000E87696 /* TagString.c */,
 				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
 				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
 				BF51122F20D09F1C00E87696 /* Handlers.h */,
-				BF5111F520D0425800E87696 /* ParserImpl.h */,
-				BF5111F620D0425800E87696 /* ParserImpl.c */,
 				BF5111C720D0266900E87696 /* Info.plist */,
 			);
 			path = CIFParser;
@@ -281,11 +273,7 @@
 		BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */,
-				BF7A2DF41FDDD5A30031EBA7 /* cif_mm.dic */,
-				BF557F871FDF017F00D1F251 /* 1bna.cif */,
 				BF557F891FDF09F200D1F251 /* 1wns.cif */,
-				BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */,
 				BFF875C81FE3133100A561A3 /* 3j3y.cif */,
 			);
 			path = "CIF Files";
@@ -460,7 +448,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF5111F320D033A200E87696 /* CIFParser.framework in Resources */,
 				BF5111F120D032BA00E87696 /* 3j3y.cif in Resources */,
 				BF5111F220D032BF00E87696 /* 1wns.cif in Resources */,
 				BF5111E320D0324B00E87696 /* Assets.xcassets in Resources */,
@@ -488,7 +475,6 @@
 			files = (
 				BF51120820D05F6000E87696 /* TagString.c in Sources */,
 				BF5111D520D0279400E87696 /* lex.cif.c in Sources */,
-				BF5111F820D0425800E87696 /* ParserImpl.c in Sources */,
 				BF5111D020D0267500E87696 /* Parser.c in Sources */,
 				BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */,
 			);

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 #import <CIFParser/CIFParser.h>
-#import <CIFParser/CIFHandler.h>
+#import "DummyHandler.h"
 
 @implementation ViewController
 

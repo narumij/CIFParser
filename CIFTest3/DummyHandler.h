@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "CIFHandler.h"
+#import <CIFParser/CIFHandler.h>
 
 @interface DummyHandler : NSObject<CIFHandler>
 
 @end
+
