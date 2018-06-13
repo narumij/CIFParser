@@ -40,7 +40,6 @@
 		BF51122720D0637C00E87696 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C61FE10B8800A561A3 /* StructSheetRange.swift */; };
 		BF51122820D0638000E87696 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875C41FE0DFF300A561A3 /* StructConf.swift */; };
 		BF51122920D0638400E87696 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F851FDED6EE00D1F251 /* AtomSite.swift */; };
-		BF51122B20D063B700E87696 /* CIFValue.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
 		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
@@ -133,8 +132,8 @@
 		BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFItem.m; sourceTree = "<group>"; };
 		BF7A2D9B1FDD77B90031EBA7 /* CIFSaveFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFSaveFrame.h; sourceTree = "<group>"; };
 		BF7A2D9C1FDD77B90031EBA7 /* CIFSaveFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFSaveFrame.m; sourceTree = "<group>"; };
-		BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFValue.h; sourceTree = "<group>"; };
-		BF7A2DA01FDD78430031EBA7 /* CIFValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFValue.m; sourceTree = "<group>"; };
+		BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CIFValue.h; path = ../Parser/CIF/CIFValue.h; sourceTree = "<group>"; };
+		BF7A2DA01FDD78430031EBA7 /* CIFValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CIFValue.m; path = ../Parser/CIF/CIFValue.m; sourceTree = "<group>"; };
 		BF7A2DA31FDD7E3F0031EBA7 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
 		BF7A2DA41FDD7E3F0031EBA7 /* CIFParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFParser.m; sourceTree = "<group>"; };
 		BF7A2DAA1FDD83B00031EBA7 /* CIFParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParserImpl.h; sourceTree = "<group>"; };
@@ -253,6 +252,8 @@
 		BF51120E20D062BE00E87696 /* CIFTest4 */ = {
 			isa = PBXGroup;
 			children = (
+				BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */,
+				BF7A2DA01FDD78430031EBA7 /* CIFValue.m */,
 				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
 				BF51121320D062BF00E87696 /* Assets.xcassets */,
 				BF51121820D062BF00E87696 /* Info.plist */,
@@ -346,8 +347,6 @@
 				BF7A2D981FDD77AA0031EBA7 /* CIFItem.m */,
 				BF7A2DB01FDD85200031EBA7 /* CIFTag.h */,
 				BF7A2DB11FDD85200031EBA7 /* CIFTag.m */,
-				BF7A2D9F1FDD78430031EBA7 /* CIFValue.h */,
-				BF7A2DA01FDD78430031EBA7 /* CIFValue.m */,
 			);
 			path = CIF;
 			sourceTree = "<group>";
@@ -451,7 +450,6 @@
 				BF5111C820D0266900E87696 /* CIFParser.h in Headers */,
 				BF5111F720D0425800E87696 /* ParserImpl.h in Headers */,
 				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
-				BF51122B20D063B700E87696 /* CIFValue.h in Headers */,
 				BF51120620D05F6000E87696 /* TagString.h in Headers */,
 				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
 				BF51123320D0A2F100E87696 /* DummyHandler.h in Headers */,
