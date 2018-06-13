@@ -11,18 +11,18 @@
 
 #include <stdio.h>
 
-void *DebugMalloc(size_t size);
-void DebugFree(void *ptr);
-size_t DebugStats(void);
+void *DebugMalloc(size_t size,int idx);
+void DebugFree(void *ptr,int idx);
+size_t DebugStats(int idx);
 void ShowStats(void);
 
-#if 1
-#define MALLOC DebugMalloc
-#define FREE DebugFree
+#if 0
+#define MALLOC(a,b) DebugMalloc(a,b)
+#define FREE(a,b) DebugFree(a,b)
 #define SHOW_STATS() ShowStats()
 #else
-#define MALLOC malloc
-#define FREE free
+#define MALLOC(a,b) malloc(a)
+#define FREE(a,b) free(a)
 #define SHOW_STATS()
 #endif
 

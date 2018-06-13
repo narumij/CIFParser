@@ -81,7 +81,7 @@ int Parse( FILE * fp, Handlers *h )
 void ctxCleanUp( Ctx *ctx ) {
     DeleteTags(&ctx->tags);
     if ( ctx->itemTag.text ) {
-        FREE(ctx->itemTag.text);
+        FREE(ctx->itemTag.text, 2);
         ctx->itemTag.len = 0;
         ctx->itemTag.tag = 0;
     }
@@ -190,10 +190,10 @@ int isValueTag(Lex *lex ) {
 
 void prepareItem( Ctx *ctx, Lex *lex ) {
     if (ctx->itemTag.text != NULL) {
-        FREE(ctx->itemTag.text);
+        FREE(ctx->itemTag.text, 2);
         ctx->itemTag.text = 0;
     }
-    ctx->itemTag.text = MALLOC( lex->len + 1 );
+    ctx->itemTag.text = MALLOC( lex->len + 1, 2 );
     strcpy(ctx->itemTag.text, lex->text);
     ctx->itemTag.tag = lex->tag;
     ctx->itemTag.len = lex->len;

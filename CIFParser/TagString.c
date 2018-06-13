@@ -14,16 +14,16 @@
 
 void CopyString( TagText* str, const char *text, size_t len ) {
     if ( str->text != NULL ) {
-        FREE(str->text);
+        FREE(str->text,0);
     }
-    str->text = MALLOC(len + 1);
+    str->text = MALLOC(len + 1,0);
     str->len = len;
     strcpy(str->text,text);
 }
 
 void ClearString( TagText *str ) {
     if ( str->text ) {
-        FREE(str->text);
+        FREE(str->text,0);
         str->text = 0;
     }
     str->len = 0;
@@ -31,15 +31,19 @@ void ClearString( TagText *str ) {
 
 void IncreaseCapacity( TagList *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;
-    TagText *newList = MALLOC(newCapacity * sizeof(TagText));
+    TagText *newList = MALLOC(newCapacity * sizeof(TagText),1);
     for (int i = 0; i < newCapacity; ++i ) {
         newList[i].text = 0;
     }
     for (int i = 0; i < xs->count; ++i) {
         CopyString( &newList[i], xs->list[i].text, xs->list[i].len );
     }
-    if ( xs->list )
-        FREE(xs->list);
+    if ( xs->list ) {
+        for ( int i = 0; i < xs->capacity; ++i ) {
+            ClearString(&xs->list[i]);
+        }
+        FREE(xs->list,1);
+    }
     xs->list = newList;
     xs->capacity = newCapacity;
 }
@@ -75,7 +79,7 @@ void DeleteTags( TagList *stack )
     for ( int i = 0; i < stack->capacity; ++i ) {
         ClearString(&stack->list[i]);
     }
-    FREE(stack->list);
+    FREE(stack->list,1);
     stack->capacity = 0;
     stack->count = 0;
 }
