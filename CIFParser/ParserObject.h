@@ -22,17 +22,22 @@ typedef enum ParseState {
     PSShouldBack,
 } ParseState;
 
-struct Ctx;
-typedef struct Ctx Ctx;
+typedef enum LoopParseState {
+    LPSTags,
+    LPSValues,
+} LoopParseState;
 
-struct Ctx {
+struct ParserObject;
+typedef struct ParserObject ParserObject;
+
+struct ParserObject {
     Handlers *handlers;
-    ParseState (*rootCurrent)( Ctx *ctx, Lex *lex );
-    ParseState (*dataCurrent)( Ctx *ctx, Lex *lex );
-    int loopStateValueNow;
+    ParseState (*parseFuncInRoot)( ParserObject *ctx, Lex *lex );
+    ParseState (*parseFuncInData)( ParserObject *ctx, Lex *lex );
+    LoopParseState loopParseState;
     CIFTag itemTag;
     CIFLoopTag loopTag;
-    int tagIndex;
+    int loopTagIndex;
 };
 
 #endif /* ParserImpl_h */

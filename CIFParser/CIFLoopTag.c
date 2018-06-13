@@ -22,7 +22,7 @@ void IncreaseCapacity( CIFLoopTag *xs ) {
         newList[i].capa = 0;
     }
     for (int i = 0; i < xs->count; ++i) {
-        CopyString( &newList[i], xs->list[i].text, xs->list[i].len );
+        CIFTagAssignString( &newList[i], xs->list[i].text, xs->list[i].len );
     }
     if ( xs->list ) {
         for ( int i = 0; i < xs->capacity; ++i ) {
@@ -37,7 +37,7 @@ void IncreaseCapacity( CIFLoopTag *xs ) {
 void AppendTag( CIFLoopTag *stack, Lex *lex ) {
     if ( stack->capacity <= (stack->count + 1) )
         IncreaseCapacity(stack);
-    CopyString( &stack->list[stack->count], lex->text, lex->len );
+    CIFTagAssignString( &stack->list[stack->count], lex->text, lex->len );
     stack->count += 1;
 }
 

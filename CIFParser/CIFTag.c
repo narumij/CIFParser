@@ -13,7 +13,7 @@
 #include "CIFTag.h"
 #include "Debug.h"
 
-void CopyString( CIFTag* str, const char *text, size_t len ) {
+void CIFTagAssignString( CIFTag* str, const char *text, size_t len ) {
     assert(len != 0);
     if ( str->capa == 0 || str->capa < len ) {
         if ( str->text != NULL ) {

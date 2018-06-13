@@ -6,18 +6,16 @@
 //  Copyright © 2018年 Jun Narumi. All rights reserved.
 //
 
-#include "Parser.h"
-#include "lex.cif.h"
-#include <assert.h>
-#import "ParserImpl.h"
-
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+
+#include "lex.cif.h"
+
+#include "Parser.h"
+#include "ParserObject.h"
 #include "Lexer.h"
 #include "Handlers.h"
-//#include "TagString.h"
-
 #include "CIFTag.h"
 
 #include "Debug.h"
@@ -31,12 +29,12 @@
 //static void prepareItem( Ctx *ctx, Lex *lex );
 //static void nextLexeme( void *ctx, Lex* lex );
 
-static ParseState rootParse( Ctx *ctx, Lex *lex );
-static ParseState dataParse( Ctx *ctx, Lex *lex );
-static ParseState itemParse( Ctx *ctx, Lex *lex );
-static ParseState loopParse( Ctx *ctx, Lex *lex );
+static ParseState rootParse( ParserObject *ctx, Lex *lex );
+static ParseState dataParse( ParserObject *ctx, Lex *lex );
+static ParseState itemParse( ParserObject *ctx, Lex *lex );
+static ParseState loopParse( ParserObject *ctx, Lex *lex );
 
-void ctxCleanUp( Ctx *ctx );
+void ctxCleanUp( ParserObject *ctx );
 
 /*
 
@@ -70,7 +68,7 @@ void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
 int Parse( FILE * fp, Handlers *h )
 {
     yyscan_t scanner;
-    Ctx ctx = {};
+    ParserObject ctx = {};
     ctx.handlers = h;
     ciflex_init_extra( &ctx, &scanner );
     cifset_in(fp,scanner);
@@ -84,7 +82,7 @@ int Parse( FILE * fp, Handlers *h )
     return result;
 }
 
-void ctxCleanUp( Ctx *ctx ) {
+void ctxCleanUp( ParserObject *ctx ) {
     DeleteTags(&ctx->loopTag);
     DeepClearString(&ctx->itemTag);
 }
@@ -99,14 +97,14 @@ void ctxCleanUp( Ctx *ctx ) {
 //    rootParse( ctx, lex );
 //}
 
-ParseState rootParse( Ctx *ctx, Lex *lex ) {
-    if ( ctx->rootCurrent != NULL ) {
-        ParseState code = ctx->rootCurrent(ctx,lex);
+ParseState rootParse( ParserObject *ctx, Lex *lex ) {
+    if ( ctx->parseFuncInRoot != NULL ) {
+        ParseState code = ctx->parseFuncInRoot(ctx,lex);
         if ( code == PSUnexpectedToken ) {
             return code;
         }
         if ( code == PSComplete ) {
-            ctx->rootCurrent = NULL;
+            ctx->parseFuncInRoot = NULL;
             return PSCarryOn;
         } else if (code == PSCarryOn) {
             return code;
@@ -119,14 +117,14 @@ ParseState rootParse( Ctx *ctx, Lex *lex ) {
     }
 
     if ( lex->tag == LData_ ) {
-        ctx->rootCurrent = dataParse;
+        ctx->parseFuncInRoot = dataParse;
         ctx->handlers->beginData( ctx->handlers->ctx, lex->text, lex->len );
         return PSCarryOn;
     }
 
     if ( lex->tag == LEOF) {
         ctx->handlers->endData( ctx->handlers->ctx );
-        ctx->rootCurrent = NULL;
+        ctx->parseFuncInRoot = NULL;
         return PSComplete;
     }
 
@@ -135,16 +133,16 @@ ParseState rootParse( Ctx *ctx, Lex *lex ) {
     return PSUnexpectedToken;
 }
 
-ParseState dataParse( Ctx *ctx, Lex *lex ) {
-    if ( ctx->dataCurrent != NULL ) {
-        ParseState code = ctx->dataCurrent( ctx, lex );
+ParseState dataParse( ParserObject *ctx, Lex *lex ) {
+    if ( ctx->parseFuncInData != NULL ) {
+        ParseState code = ctx->parseFuncInData( ctx, lex );
         if ( code == PSUnexpectedToken ) {
             assert(0);
             return code;
         }
         if ( code == PSComplete || code == PSShouldBack ) {
-            ctx->dataCurrent = NULL;
-            ctx->loopStateValueNow = 0;
+            ctx->parseFuncInData = NULL;
+            ctx->loopParseState = 0;
         } else if ( code == PSCarryOn ) {
             return PSCarryOn;
         }
@@ -161,11 +159,11 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
         case LEOF:
             return PSComplete;
         case LTag:
-            ctx->dataCurrent = itemParse;
-            CopyString( &ctx->itemTag, lex->text, lex->len );
+            ctx->parseFuncInData = itemParse;
+            CIFTagAssignString( &ctx->itemTag, lex->text, lex->len );
             return PSCarryOn;
         case LLoop_:
-            ctx->dataCurrent = loopParse;
+            ctx->parseFuncInData = loopParse;
             return PSCarryOn;
         default:
             break;
@@ -193,7 +191,7 @@ int isValueTag(Lex *lex ) {
     return 0;
 }
 
-ParseState itemParse( Ctx *ctx, Lex *lex ) {
+ParseState itemParse( ParserObject *ctx, Lex *lex ) {
     if ( !isValueTag(lex) ) {
         assert(0);
         return PSUnexpectedToken;
@@ -203,32 +201,32 @@ ParseState itemParse( Ctx *ctx, Lex *lex ) {
     return PSComplete;
 }
 
-ParseState loopParse( Ctx *ctx, Lex *lex ) {
+ParseState loopParse( ParserObject *ctx, Lex *lex ) {
     if ( lex->tag == LEOF ) {
         return PSShouldBack;
     }
-    if (!ctx->loopStateValueNow)
+    if ( ctx->loopParseState == LPSTags )
     {
         if (lex->tag == LTag) {
             AppendTag( &ctx->loopTag, lex );
         } else {
-            ctx->loopStateValueNow = 1;
+            ctx->loopParseState = 1;
             ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->loopTag );
         }
     }
     // else にしてはいけない。Loop最初のValueは上のブロック実行後下のブロックで処理をする必要があるため。
-    if (ctx->loopStateValueNow)
+    if ( ctx->loopParseState == LPSValues )
     {
         if (isValueTag(lex)) {
-            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->tagIndex, lex );
-            ctx->tagIndex += 1;
-            if ( ctx->tagIndex == CountTag( &ctx->loopTag ) ) {
+            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, lex );
+            ctx->loopTagIndex += 1;
+            if ( ctx->loopTagIndex == CountTag( &ctx->loopTag ) ) {
                 ctx->handlers->loopItemTerm(ctx->handlers->ctx);
-                ctx->tagIndex = 0;
+                ctx->loopTagIndex = 0;
             }
         } else {
             ctx->handlers->endLoop( ctx->handlers->ctx );
-            ctx->tagIndex = 0;
+            ctx->loopTagIndex = 0;
             ClearTag(&ctx->loopTag);
             return PSShouldBack;
         }

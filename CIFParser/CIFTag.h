@@ -17,7 +17,7 @@ typedef struct CIFTag {
     size_t capa;
 } CIFTag;
 
-void CopyString( CIFTag* str, const char *text, size_t len );
+void CIFTagAssignString( CIFTag* str, const char *text, size_t len );
 void ClearString( CIFTag *str );
 void DeepClearString( CIFTag *str );
 
