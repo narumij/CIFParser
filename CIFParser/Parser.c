@@ -31,8 +31,6 @@ static ParseState dataParse( ParserObject *ctx, Lex *lex );
 static ParseState itemParse( ParserObject *ctx, Lex *lex );
 static ParseState loopParse( ParserObject *ctx, Lex *lex );
 
-void ctxCleanUp( ParserObject *ctx );
-
 /*
 
  implementation part 1
@@ -41,6 +39,7 @@ void ctxCleanUp( ParserObject *ctx );
 
 static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_t len )
 {
+    // lexerで判別するように出来なかったので、代替でここで判別している
     if ( textBytes[0] == '.' && len == 1 )
         return LDot;
     if ( textBytes[0] == '?' && len == 1 )
@@ -74,15 +73,11 @@ int Parse( FILE * fp, Handlers *h )
 #endif
     int result = ciflex( scanner );
     ciflex_destroy ( scanner );
-    ctxCleanUp(&ctx);
+    ParseObjectFinalize(&ctx);
     SHOW_STATS();
     return result;
 }
 
-void ctxCleanUp( ParserObject *ctx ) {
-    DeleteTags(&ctx->loopTag);
-    CIFTagDeepClearString(&ctx->itemTag);
-}
 
 /*
 
@@ -122,7 +117,6 @@ ParseState rootParse( ParserObject *ctx, Lex *lex ) {
     }
 
     if ( lex->tag == LEOF) {
-//        ctx->handlers->endData( ctx->handlers->ctx );
         CallBacEndData(ctx);
         ctx->parseFuncInRoot = NULL;
         return PSComplete;

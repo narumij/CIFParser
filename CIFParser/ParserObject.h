@@ -67,5 +67,9 @@ static inline void ResetLoopTag( ParserObject *ctx ) {
     ctx->loopTagIndex = 0;
     CIFLoopTagClear(&ctx->loopTag);
 }
+static inline void ParseObjectFinalize( ParserObject *ctx ) {
+    DeleteTags(&ctx->loopTag);
+    CIFTagDeepClearString(&ctx->itemTag);
+}
 
 #endif /* ParserImpl_h */
