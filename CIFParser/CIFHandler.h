@@ -13,7 +13,7 @@
 
 @protocol CIFHandler
 -(void)beginData:(const char *)valueText :(size_t)valueTextLen;
--(void)item:(const TagText *)tag :(const Lex *)lex;
+-(void)item:(const CIFTag *)tag :(const Lex *)lex;
 -(void)beginLoop:(const TagList *)tags;
 -(void)loopItem:(const TagList *)tags :(size_t)tagIndex :(const Lex *)lex;
 -(void)loopItemTerm;

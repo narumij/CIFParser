@@ -13,17 +13,17 @@
 
 struct Lex;
 
-typedef struct TagText {
+typedef struct CIFTag {
     char *text;
     size_t len;
     size_t capa;
-} TagText;
+} CIFTag;
 
-void CopyString( TagText* str, const char *text, size_t len );
-void ClearString( TagText *str );
+void CopyString( CIFTag* str, const char *text, size_t len );
+void ClearString( CIFTag *str );
 
 typedef struct TagList {
-    TagText *list;
+    CIFTag *list;
     int capacity;
     int count;
 } TagList;

@@ -14,7 +14,7 @@
 
 #include <assert.h>
 
-void CopyString( TagText* str, const char *text, size_t len ) {
+void CopyString( CIFTag* str, const char *text, size_t len ) {
     assert(len != 0);
     if ( str->capa == 0 || str->capa < len ) {
         if ( str->text != NULL ) {
@@ -27,11 +27,11 @@ void CopyString( TagText* str, const char *text, size_t len ) {
     strcpy(str->text,text);
 }
 
-void ClearString( TagText *str ) {
+void ClearString( CIFTag *str ) {
     str->len = 0;
 }
 
-void DeepClearString( TagText *str ) {
+void DeepClearString( CIFTag *str ) {
     if ( str->text ) {
         FREE(str->text,0);
         str->text = 0;
@@ -42,7 +42,7 @@ void DeepClearString( TagText *str ) {
 
 void IncreaseCapacity( TagList *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;
-    TagText *newList = MALLOC(newCapacity * sizeof(TagText),1);
+    CIFTag *newList = MALLOC(newCapacity * sizeof(CIFTag),1);
     for (int i = 0; i < newCapacity; ++i ) {
         newList[i].text = 0;
         newList[i].len = 0;

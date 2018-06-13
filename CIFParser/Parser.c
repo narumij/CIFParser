@@ -211,7 +211,7 @@ ParseState itemParse( Ctx *ctx, Lex *lex ) {
         assert(0);
         return PSUnexpectedToken;
     }
-    TagText tag = { ctx->itemTag.text, ctx->itemTag.len };
+    CIFTag tag = { ctx->itemTag.text, ctx->itemTag.len };
     ctx->handlers->item( ctx->handlers->ctx, &tag, lex );
     return PSComplete;
 }

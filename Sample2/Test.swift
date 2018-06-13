@@ -59,7 +59,7 @@ class Simple: CIFHandler {
     func beginData(_ valueText: UnsafePointer<Int8>!, _ valueTextLen: Int) {
     }
 
-    func item(_ tag: UnsafePointer<TagText>!, _ lex: UnsafePointer<Lex>!) {
+    func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<Lex>!) {
     }
 
     enum LoopMode {

@@ -15,7 +15,7 @@
     NSLog(@"begin data ** %s",valueText);
 }
 
--(void)item:(const TagText *)tag :(const Lex *)lex
+-(void)item:(const CIFTag *)tag :(const Lex *)lex
 {
     NSLog( @"item ( %s : %s )", tag->text, lex->text );
 }
