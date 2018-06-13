@@ -51,14 +51,18 @@ static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_
     return tag;
 }
 
-void IssueLexeme(void *scanner,CIFLexemeTag tag,const char *text,size_t len)
+void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
 {
+    assert(len != 0);
     Lex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
     assert( lex.tag == lexTypeCheck(tag,text,len));
     assert( lex.text == text );
     assert( lex.len == len );
     ParseState result = rootParse( cifget_extra(scanner), &lex );
     assert( result != PSUnexpectedToken );
+    if ( result == PSUnexpectedToken ) {
+        // lexerを止めたい、がまだ方法が分からない
+    }
 }
 
 int Parse( FILE * fp, Handlers *h )

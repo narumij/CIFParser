@@ -115,7 +115,7 @@ loop_     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]{whiteSpace}
 
 ({eol}|{sp}|{ht})                             ;
 
-<<EOF>> {TOKEN(LEOF);yyterminate();}
+<<EOF>> { TOKEN(LEOF); yyterminate(); }
 
 . { printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",cifget_lineno(yyscanner),cifget_column(yyscanner),yytext,yy_flex_debug);TOKEN(LexerError);yyterminate(); }
 

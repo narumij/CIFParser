@@ -2441,7 +2441,7 @@ case YY_STATE_EOF(cd_loopvalue):
 case YY_STATE_EOF(cd_tag):
 case YY_STATE_EOF(cd_tageol):
 #line 118 "CIFLexer.l"
-{TOKEN(LEOF);yyterminate();}
+{ TOKEN(LEOF); yyterminate(); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
