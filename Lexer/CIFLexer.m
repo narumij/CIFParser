@@ -1,5 +1,9 @@
+//  Copyright © 2017年 Jun Narumi. All rights reserved.
+
 #import "CIFLexer.h"
 #include "lex.cif.h"
+
+// 使ってない、がmake testに使えるので残してある
 
 struct CIFLexerExtra {
     void *ctx;
