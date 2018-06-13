@@ -1,3 +1,5 @@
+//  Copyright © 2017年 Jun Narumi. All rights reserved.
+
 #import "CIFLexer.h"
 #include "lex.cif.h"
 
