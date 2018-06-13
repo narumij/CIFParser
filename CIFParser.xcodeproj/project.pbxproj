@@ -258,19 +258,12 @@
 				BFE2D66720D16C5200DF07FE /* CIFTag.c */,
 				BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */,
 				BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */,
-<<<<<<< HEAD
-=======
 				BF51122F20D09F1C00E87696 /* Handlers.h */,
->>>>>>> work
 				BF5111A920D0256F00E87696 /* Parser.h */,
 				BF5111F520D0425800E87696 /* ParserObject.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
 				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
 				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
-<<<<<<< HEAD
-				BF51122F20D09F1C00E87696 /* Handlers.h */,
-=======
->>>>>>> work
 				BFE2D65C20D1434300DF07FE /* Debug.h */,
 				BFE2D65D20D1434300DF07FE /* Debug.c */,
 				BF5111C720D0266900E87696 /* Info.plist */,
