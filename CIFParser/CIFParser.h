@@ -18,7 +18,7 @@ FOUNDATION_EXPORT const unsigned char CIFParserVersionString[];
 
 #import "Parser.h"
 #import "CIFHandler.h"
-#import "CIFValue.h"
+//#import "CIFValue.h"
 #import "TagString.h"
 
 #import "DummyHandler.h"
