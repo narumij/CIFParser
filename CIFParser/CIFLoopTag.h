@@ -1,15 +1,15 @@
 //
-//  TagString.h
+//  CIFLoopTag.h
 //  CIFParser
 //
-//  Created by Jun Narumi on 2018/06/13.
+//  Created by Jun Narumi on 2018/06/14.
 //  Copyright © 2018年 Jun Narumi. All rights reserved.
 //
 
-#ifndef TagString_h
-#define TagString_h
+#ifndef CIFLoopTag_h
+#define CIFLoopTag_h
 
-#include <stdlib.h>
+#include <stdio.h>
 
 struct Lex;
 
@@ -31,9 +31,4 @@ size_t GetLen( CIFLoopTag *stack, int idx );
 
 void DeleteTags( CIFLoopTag *stack );
 
-// TODO: エラー処理
-
-#endif /* TagString_h */
-
-
-
+#endif /* CIFLoopTag_h */

@@ -1,19 +1,17 @@
 //
-//  TagString.c
+//  CIFLoopTag.c
 //  CIFParser
 //
-//  Created by Jun Narumi on 2018/06/13.
+//  Created by Jun Narumi on 2018/06/14.
 //  Copyright © 2018年 Jun Narumi. All rights reserved.
 //
 
-#include "TagString.h"
-#include "ParserImpl.h"
+#include <stdlib.h>
 
-#include "Debug.h"
-
-#include <assert.h>
-
+#include "CIFLoopTag.h"
 #include "CIFTag.h"
+#include "Debug.h"
+#include "Parser.h"
 
 void IncreaseCapacity( CIFLoopTag *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;
@@ -71,6 +69,3 @@ void DeleteTags( CIFLoopTag *stack )
     stack->capacity = 0;
     stack->count = 0;
 }
-
-
-

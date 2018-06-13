@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "Lexer.h"
-#include "TagString.h"
+#include "CIFLoopTag.h"
 
 typedef struct Lex {
     CIFLexemeTag tag;

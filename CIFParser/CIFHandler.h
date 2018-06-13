@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "Parser.h"
-#import "TagString.h"
+#import "CIFTag.h"
+#import "CIFLoopTag.h"
 
 @protocol CIFHandler
 -(void)beginData:(const char *)valueText :(size_t)valueTextLen;

@@ -16,7 +16,7 @@
 #include <assert.h>
 #include "Lexer.h"
 #include "Handlers.h"
-#include "TagString.h"
+//#include "TagString.h"
 
 #include "CIFTag.h"
 
@@ -28,7 +28,7 @@
 
  */
 
-static void prepareItem( Ctx *ctx, Lex *lex );
+//static void prepareItem( Ctx *ctx, Lex *lex );
 //static void nextLexeme( void *ctx, Lex* lex );
 
 static ParseState rootParse( Ctx *ctx, Lex *lex );
@@ -88,8 +88,9 @@ void ctxCleanUp( Ctx *ctx ) {
     DeleteTags(&ctx->tags);
     if ( ctx->itemTag.text ) {
         FREE(ctx->itemTag.text, 2);
-        ctx->itemTag.len = 0;
-        ctx->itemTag.tag = 0;
+//        ctx->itemTag.len = 0;
+//        ctx->itemTag.tag = 0;
+        DeepClearString(&ctx->itemTag);
     }
 }
 
@@ -166,7 +167,8 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
             return PSComplete;
         case LTag:
             ctx->dataCurrent = itemParse;
-            prepareItem( ctx, lex );
+//            prepareItem( ctx, lex );
+            CopyString( &ctx->itemTag, lex->text, lex->len );
             return PSCarryOn;
         case LLoop_:
             ctx->dataCurrent = loopParse;
@@ -197,16 +199,9 @@ int isValueTag(Lex *lex ) {
     return 0;
 }
 
-void prepareItem( Ctx *ctx, Lex *lex ) {
-    if (ctx->itemTag.text != NULL) {
-        FREE(ctx->itemTag.text, 2);
-        ctx->itemTag.text = 0;
-    }
-    ctx->itemTag.text = MALLOC( lex->len + 1, 2 );
-    strcpy(ctx->itemTag.text, lex->text);
-    ctx->itemTag.tag = lex->tag;
-    ctx->itemTag.len = lex->len;
-}
+//void prepareItem( Ctx *ctx, Lex *lex ) {
+//    CopyString(&ctx->itemTag, lex->text, lex->len);
+//}
 
 ParseState itemParse( Ctx *ctx, Lex *lex ) {
     if ( !isValueTag(lex) ) {

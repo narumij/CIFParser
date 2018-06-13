@@ -11,7 +11,8 @@
 
 #include "Lexer.h"
 #include "Parser.h"
-#include "TagString.h"
+#include "CIFTag.h"
+#include "CIFLoopTag.h"
 
 // 読んでいて辛いので、もう少しわかりやすくしたい
 typedef enum ParseState {
@@ -26,7 +27,7 @@ typedef struct Ctx Ctx;
 
 struct Ctx {
     int loopStateValueNow;
-    Lex itemTag;
+    CIFTag itemTag;
     int tagIndex;
     ParseState (*rootCurrent)( Ctx *ctx, Lex *lex );
     ParseState (*dataCurrent)( Ctx *ctx, Lex *lex );
