@@ -13,6 +13,7 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -26,13 +27,15 @@
     NSLog(@"start");
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [bundle pathForResource:@"1wns" ofType:@"cif"];
-    FILE *fp = fopen( path.UTF8String, "r" );
+//    FILE *fp = fopen( path.UTF8String, "r" );
     DummyHandler *h = [[DummyHandler alloc] init];
-    Handlers hh = prepareHandlers(h);
-    Parse(fp, &hh);
-    fclose(fp);
+//    Handlers hh = prepareHandlers(h);
+//    Parse(fp, &hh);
+    [NewParser parse:path :h];
+//    fclose(fp);
     NSLog(@"done");
 }
+
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
@@ -42,3 +45,5 @@
 
 
 @end
+
+

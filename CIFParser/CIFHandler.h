@@ -20,13 +20,14 @@
 -(void)endLoop;
 @end
 
-@interface DummyHandler : NSObject<CIFHandler>
-@end
+//@interface DummyHandler : NSObject<CIFHandler>
+//@end
 
 Handlers prepareHandlers( id<CIFHandler> handler );
 
 @interface NewParser : NSObject
 +(void)parse:(NSString*)path :(id<CIFHandler>)handler;
++(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler;
 @end
 
 NSArray<NSString*>* StringsFromTagList( TagList *tags );

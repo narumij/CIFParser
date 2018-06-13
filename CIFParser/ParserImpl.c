@@ -12,7 +12,7 @@
 #include <string.h>
 #include <assert.h>
 #include "Lexer.h"
-
+#include "Handlers.h"
 #include "TagString.h"
 
 void nextLexeme( void *ctx, Lex *lex ) {

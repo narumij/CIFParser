@@ -48,6 +48,10 @@
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
 		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BF51123220D0A2F100E87696 /* DummyHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51123020D0A2F100E87696 /* DummyHandler.h */; };
+		BF51123320D0A2F100E87696 /* DummyHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51123020D0A2F100E87696 /* DummyHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF51123420D0A2F100E87696 /* DummyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF51123120D0A2F100E87696 /* DummyHandler.m */; };
+		BF51123520D0A2F100E87696 /* DummyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF51123120D0A2F100E87696 /* DummyHandler.m */; };
 		BF557F821FDED68E00D1F251 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F811FDED68E00D1F251 /* Molecule.swift */; };
 		BF557F861FDED6EE00D1F251 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF557F851FDED6EE00D1F251 /* AtomSite.swift */; };
 		BF557F8E1FDF0A2A00D1F251 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
@@ -207,6 +211,9 @@
 		BF51121320D062BF00E87696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF51121820D062BF00E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF51121920D062BF00E87696 /* CIFTest4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest4.entitlements; sourceTree = "<group>"; };
+		BF51122F20D09F1C00E87696 /* Handlers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handlers.h; sourceTree = "<group>"; };
+		BF51123020D0A2F100E87696 /* DummyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyHandler.h; sourceTree = "<group>"; };
+		BF51123120D0A2F100E87696 /* DummyHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyHandler.m; sourceTree = "<group>"; };
 		BF557F811FDED68E00D1F251 /* Molecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
 		BF557F851FDED6EE00D1F251 /* AtomSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomSite.swift; sourceTree = "<group>"; };
 		BF557F871FDF017F00D1F251 /* 1bna.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1bna.cif; sourceTree = "<group>"; };
@@ -350,6 +357,9 @@
 				BF5111FA20D0456F00E87696 /* CIFHandler.m */,
 				BF51120320D05F6000E87696 /* TagString.h */,
 				BF51120420D05F6000E87696 /* TagString.c */,
+				BF51122F20D09F1C00E87696 /* Handlers.h */,
+				BF51123020D0A2F100E87696 /* DummyHandler.h */,
+				BF51123120D0A2F100E87696 /* DummyHandler.m */,
 			);
 			path = CIFParser;
 			sourceTree = "<group>";
@@ -576,6 +586,7 @@
 				BF51122B20D063B700E87696 /* CIFValue.h in Headers */,
 				BF51120620D05F6000E87696 /* TagString.h in Headers */,
 				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
+				BF51123320D0A2F100E87696 /* DummyHandler.h in Headers */,
 				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +613,7 @@
 				BF7A2DF21FDDD3060031EBA7 /* CIFSaveRule.h in Headers */,
 				BF7A2DC31FDD8A7E0031EBA7 /* CIFItemRule.h in Headers */,
 				BF7A2DB91FDD89890031EBA7 /* CIFRule.h in Headers */,
+				BF51123220D0A2F100E87696 /* DummyHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +906,7 @@
 				BF51120820D05F6000E87696 /* TagString.c in Sources */,
 				BF5111D520D0279400E87696 /* lex.cif.c in Sources */,
 				BF5111F820D0425800E87696 /* ParserImpl.c in Sources */,
+				BF51123520D0A2F100E87696 /* DummyHandler.m in Sources */,
 				BF5111D020D0267500E87696 /* Parser.c in Sources */,
 				BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */,
 			);
@@ -930,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF51123420D0A2F100E87696 /* DummyHandler.m in Sources */,
 				BF7A2DC41FDD8A7E0031EBA7 /* CIFItemRule.m in Sources */,
 				BF7A2DF31FDDD3060031EBA7 /* CIFSaveRule.m in Sources */,
 				BF7A2D961FDD779F0031EBA7 /* CIFLoop.m in Sources */,
