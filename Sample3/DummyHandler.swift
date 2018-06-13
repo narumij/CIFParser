@@ -20,7 +20,7 @@ class DummyHandler : NSObject, CIFHandler {
     }
 
     func beginLoop(_ tags: UnsafePointer<CIFLoopTag>!) {
-        print("begin loop \(StringsFromTagList)")
+        print("begin loop \(NSStringsFromLoopTag)")
     }
 
     func loopItem(_ tags: UnsafePointer<CIFLoopTag>!, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>!) {

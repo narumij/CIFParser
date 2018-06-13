@@ -72,7 +72,7 @@ class Simple: CIFHandler {
     var mode: LoopMode = .ignore
 
     func beginLoop(_ tags: UnsafePointer<CIFLoopTag>!) {
-        if let tags = StringsFromTagList(tags) {
+        if let tags = NSStringsFromLoopTag(tags) {
             if tags.contains("_atom_site.Cartn_x") {
                 
                 mode = .atom

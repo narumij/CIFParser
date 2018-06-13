@@ -21,7 +21,7 @@
 }
 
 -(void)beginLoop:(const CIFLoopTag *)tags {
-    NSLog(@"begin loop %@",StringsFromTagList(tags));
+    NSLog(@"begin loop %@",NSStringsFromLoopTag(tags));
 }
 
 -(void)loopItem:(const CIFLoopTag *)tags

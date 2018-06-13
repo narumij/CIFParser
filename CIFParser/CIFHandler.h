@@ -26,5 +26,5 @@
 +(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler;
 @end
 
-NSArray<NSString*>* StringsFromTagList( const CIFLoopTag *tags );
+NSArray<NSString*>* NSStringsFromLoopTag( const CIFLoopTag *tags );
 
