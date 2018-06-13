@@ -18,6 +18,8 @@
 #include "Handlers.h"
 #include "TagString.h"
 
+#include "CIFTag.h"
+
 #include "Debug.h"
 
 /*

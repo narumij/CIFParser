@@ -13,29 +13,23 @@
 
 struct Lex;
 
-typedef struct CIFTag {
-    char *text;
-    size_t len;
-    size_t capa;
-} CIFTag;
+struct CIFTag;
+typedef struct CIFTag CIFTag;
 
-void CopyString( CIFTag* str, const char *text, size_t len );
-void ClearString( CIFTag *str );
-
-typedef struct TagList {
+typedef struct CIFLoopTag {
     CIFTag *list;
     int capacity;
     int count;
-} TagList;
+} CIFLoopTag;
 
-void IncreaseCapacity( TagList *xs );
-void AppendTag( TagList *stack, struct Lex *lex );
-int CountTag( TagList *stack );
-void ClearTag( TagList *stack );
-const char *GetText( TagList *stack, int idx );
-size_t GetLen( TagList *stack, int idx );
+void IncreaseCapacity( CIFLoopTag *xs );
+void AppendTag( CIFLoopTag *stack, struct Lex *lex );
+int CountTag( CIFLoopTag *stack );
+void ClearTag( CIFLoopTag *stack );
+const char *GetText( CIFLoopTag *stack, int idx );
+size_t GetLen( CIFLoopTag *stack, int idx );
 
-void DeleteTags( TagList *stack );
+void DeleteTags( CIFLoopTag *stack );
 
 // TODO: エラー処理
 

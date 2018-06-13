@@ -31,7 +31,7 @@ struct Ctx {
     ParseState (*rootCurrent)( Ctx *ctx, Lex *lex );
     ParseState (*dataCurrent)( Ctx *ctx, Lex *lex );
     Handlers *handlers;
-    TagList tags;
+    CIFLoopTag tags;
 };
 
 #endif /* ParserImpl_h */

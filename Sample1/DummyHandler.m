@@ -20,11 +20,11 @@
     NSLog( @"item ( %s : %s )", tag->text, lex->text );
 }
 
--(void)beginLoop:(const TagList *)tags {
+-(void)beginLoop:(const CIFLoopTag *)tags {
     NSLog(@"begin loop %@",StringsFromTagList(tags));
 }
 
--(void)loopItem:(const TagList *)tags
+-(void)loopItem:(const CIFLoopTag *)tags
                :(size_t)tagIndex
                :(const Lex *)lex
 {

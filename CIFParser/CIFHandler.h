@@ -14,8 +14,8 @@
 @protocol CIFHandler
 -(void)beginData:(const char *)valueText :(size_t)valueTextLen;
 -(void)item:(const CIFTag *)tag :(const Lex *)lex;
--(void)beginLoop:(const TagList *)tags;
--(void)loopItem:(const TagList *)tags :(size_t)tagIndex :(const Lex *)lex;
+-(void)beginLoop:(const CIFLoopTag *)tags;
+-(void)loopItem:(const CIFLoopTag *)tags :(size_t)tagIndex :(const Lex *)lex;
 -(void)loopItemTerm;
 -(void)endLoop;
 @end
@@ -25,5 +25,5 @@
 +(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler;
 @end
 
-NSArray<NSString*>* StringsFromTagList( const TagList *tags );
+NSArray<NSString*>* StringsFromTagList( const CIFLoopTag *tags );
 

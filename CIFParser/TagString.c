@@ -7,40 +7,15 @@
 //
 
 #include "TagString.h"
-#include <string.h>
 #include "ParserImpl.h"
 
 #include "Debug.h"
 
 #include <assert.h>
 
-void CopyString( CIFTag* str, const char *text, size_t len ) {
-    assert(len != 0);
-    if ( str->capa == 0 || str->capa < len ) {
-        if ( str->text != NULL ) {
-            FREE(str->text,0);
-        }
-        str->text = MALLOC( len + 1 , 0 );
-    }
-    str->len = len;
-    str->capa = len;
-    strcpy(str->text,text);
-}
+#include "CIFTag.h"
 
-void ClearString( CIFTag *str ) {
-    str->len = 0;
-}
-
-void DeepClearString( CIFTag *str ) {
-    if ( str->text ) {
-        FREE(str->text,0);
-        str->text = 0;
-    }
-    str->len = 0;
-    str->capa = 0;
-}
-
-void IncreaseCapacity( TagList *xs ) {
+void IncreaseCapacity( CIFLoopTag *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;
     CIFTag *newList = MALLOC(newCapacity * sizeof(CIFTag),1);
     for (int i = 0; i < newCapacity; ++i ) {
@@ -61,33 +36,33 @@ void IncreaseCapacity( TagList *xs ) {
     xs->capacity = newCapacity;
 }
 
-void AppendTag( TagList *stack, Lex *lex ) {
+void AppendTag( CIFLoopTag *stack, Lex *lex ) {
     if ( stack->capacity <= (stack->count + 1) )
         IncreaseCapacity(stack);
     CopyString( &stack->list[stack->count], lex->text, lex->len );
     stack->count += 1;
 }
 
-int CountTag( TagList *stack ) {
+int CountTag( CIFLoopTag *stack ) {
     return stack->count;
 }
 
-void ClearTag( TagList *stack ) {
+void ClearTag( CIFLoopTag *stack ) {
     for (int i = 0; i < stack->capacity; ++i ) {
         ClearString(&stack->list[i]);
     }
     stack->count = 0;
 }
 
-const char *GetText( TagList *stack, int idx ) {
+const char *GetText( CIFLoopTag *stack, int idx ) {
     return stack->list[idx].text;
 }
 
-size_t GetLen( TagList *stack, int idx ) {
+size_t GetLen( CIFLoopTag *stack, int idx ) {
     return stack->list[idx].len;
 }
 
-void DeleteTags( TagList *stack )
+void DeleteTags( CIFLoopTag *stack )
 {
     for ( int i = 0; i < stack->capacity; ++i ) {
         DeepClearString(&stack->list[i]);

@@ -45,6 +45,8 @@
 		BFE2D65F20D1434300DF07FE /* Debug.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D65D20D1434300DF07FE /* Debug.c */; };
 		BFE2D66320D163B700DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BFE2D66520D163CA00DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFE2D66820D16C5200DF07FE /* CIFTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66620D16C5200DF07FE /* CIFTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE2D66920D16C5200DF07FE /* CIFTag.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D66720D16C5200DF07FE /* CIFTag.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,8 @@
 		BFE2D65D20D1434300DF07FE /* Debug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Debug.c; sourceTree = "<group>"; };
 		BFE2D66020D1631C00DF07FE /* Sample2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample2.entitlements; sourceTree = "<group>"; };
 		BFE2D66120D1634600DF07FE /* Sample1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample1.entitlements; sourceTree = "<group>"; };
+		BFE2D66620D16C5200DF07FE /* CIFTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFTag.h; sourceTree = "<group>"; };
+		BFE2D66720D16C5200DF07FE /* CIFTag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CIFTag.c; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +211,8 @@
 				BF5111C620D0266900E87696 /* CIFParser.h */,
 				BF5111F920D0456F00E87696 /* CIFHandler.h */,
 				BF5111FA20D0456F00E87696 /* CIFHandler.m */,
+				BFE2D66620D16C5200DF07FE /* CIFTag.h */,
+				BFE2D66720D16C5200DF07FE /* CIFTag.c */,
 				BF5111A920D0256F00E87696 /* Parser.h */,
 				BF5111F520D0425800E87696 /* ParserImpl.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
@@ -330,11 +336,12 @@
 			files = (
 				BF5111C820D0266900E87696 /* CIFParser.h in Headers */,
 				BF5111F720D0425800E87696 /* ParserImpl.h in Headers */,
+				BFE2D66820D16C5200DF07FE /* CIFTag.h in Headers */,
 				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
+				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
+				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
 				BF51120620D05F6000E87696 /* TagString.h in Headers */,
 				BFE2D65E20D1434300DF07FE /* Debug.h in Headers */,
-				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
-				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +523,7 @@
 				BF51120820D05F6000E87696 /* TagString.c in Sources */,
 				BF5111D520D0279400E87696 /* lex.cif.c in Sources */,
 				BF5111D020D0267500E87696 /* Parser.c in Sources */,
+				BFE2D66920D16C5200DF07FE /* CIFTag.c in Sources */,
 				BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */,
 				BFE2D65F20D1434300DF07FE /* Debug.c in Sources */,
 			);

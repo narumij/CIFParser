@@ -15,8 +15,8 @@ typedef struct Handlers {
     void *ctx;
     void (*beginData)( void* ctx, const char* text, size_t len );
     void (*item)( void *ctx, const CIFTag *tag, Lex *value );
-    void (*beginLoop)( void *ctx, TagList *tags );
-    void (*loopItem)( void *ctx, TagList *tags, size_t itemIndex, Lex *value );
+    void (*beginLoop)( void *ctx, CIFLoopTag *tags );
+    void (*loopItem)( void *ctx, CIFLoopTag *tags, size_t itemIndex, Lex *value );
     void (*loopItemTerm)( void *ctx );
     void (*endLoop)( void *ctx );
     void (*endData)( void *ctx );
