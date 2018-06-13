@@ -1,4 +1,4 @@
-# CIFParse
+# CIFParser
 
 Objective-C CIF parser framework.
 
