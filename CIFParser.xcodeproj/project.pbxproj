@@ -16,6 +16,7 @@
 		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
 		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
 		BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20120D0AB4800A55A32 /* Utilities.swift */; };
+		BF4CC20720D0AC1800A55A32 /* DummyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF51123120D0A2F100E87696 /* DummyHandler.m */; };
 		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
 		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,8 +44,6 @@
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
 		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
-		BF51123320D0A2F100E87696 /* DummyHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF51123020D0A2F100E87696 /* DummyHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF51123520D0A2F100E87696 /* DummyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF51123120D0A2F100E87696 /* DummyHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,8 +179,6 @@
 				BF51120320D05F6000E87696 /* TagString.h */,
 				BF51120420D05F6000E87696 /* TagString.c */,
 				BF51122F20D09F1C00E87696 /* Handlers.h */,
-				BF51123020D0A2F100E87696 /* DummyHandler.h */,
-				BF51123120D0A2F100E87696 /* DummyHandler.m */,
 			);
 			path = CIFParser;
 			sourceTree = "<group>";
@@ -189,6 +186,8 @@
 		BF5111DB20D0324A00E87696 /* CIFTest3 */ = {
 			isa = PBXGroup;
 			children = (
+				BF51123020D0A2F100E87696 /* DummyHandler.h */,
+				BF51123120D0A2F100E87696 /* DummyHandler.m */,
 				BF5111DC20D0324A00E87696 /* AppDelegate.h */,
 				BF5111DD20D0324A00E87696 /* AppDelegate.m */,
 				BF5111DF20D0324A00E87696 /* ViewController.h */,
@@ -327,7 +326,6 @@
 				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
 				BF51120620D05F6000E87696 /* TagString.h in Headers */,
 				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
-				BF51123320D0A2F100E87696 /* DummyHandler.h in Headers */,
 				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,7 +497,6 @@
 				BF51120820D05F6000E87696 /* TagString.c in Sources */,
 				BF5111D520D0279400E87696 /* lex.cif.c in Sources */,
 				BF5111F820D0425800E87696 /* ParserImpl.c in Sources */,
-				BF51123520D0A2F100E87696 /* DummyHandler.m in Sources */,
 				BF5111D020D0267500E87696 /* Parser.c in Sources */,
 				BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */,
 			);
@@ -512,6 +509,7 @@
 				BF5111E120D0324A00E87696 /* ViewController.m in Sources */,
 				BF5111E920D0324C00E87696 /* main.m in Sources */,
 				BF5111DE20D0324A00E87696 /* AppDelegate.m in Sources */,
+				BF4CC20720D0AC1800A55A32 /* DummyHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
