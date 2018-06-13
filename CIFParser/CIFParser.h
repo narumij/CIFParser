@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Jun Narumi. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for CIFParser.
 FOUNDATION_EXPORT double CIFParserVersionNumber;
