@@ -38,7 +38,15 @@
 		BF51122320D0633100E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
-		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BFE22EBF20D189BE00B832F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */; };
+		BFE22EC120D189BE00B832F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EC020D189BE00B832F4 /* ViewController.swift */; };
+		BFE22EC420D189BE00B832F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC220D189BE00B832F4 /* Main.storyboard */; };
+		BFE22EC620D189BE00B832F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC520D189BE00B832F4 /* Assets.xcassets */; };
+		BFE22EC920D189BE00B832F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC720D189BE00B832F4 /* LaunchScreen.storyboard */; };
+		BFE22ED220D18BCD00B832F4 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BFE22ED620D18C1A00B832F4 /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFE22ED720D18F6100B832F4 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BFE22ED920D18F8500B832F4 /* DummyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22ED820D18F8500B832F4 /* DummyHandler.swift */; };
 		BFE2D65E20D1434300DF07FE /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D65C20D1434300DF07FE /* Debug.h */; };
 		BFE2D65F20D1434300DF07FE /* Debug.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D65D20D1434300DF07FE /* Debug.c */; };
 		BFE2D66320D163B700DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -217,12 +225,12 @@
 				BFE2D66720D16C5200DF07FE /* CIFTag.c */,
 				BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */,
 				BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */,
+				BF51122F20D09F1C00E87696 /* Handlers.h */,
 				BF5111A920D0256F00E87696 /* Parser.h */,
 				BF5111F520D0425800E87696 /* ParserObject.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
 				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
 				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
-				BF51122F20D09F1C00E87696 /* Handlers.h */,
 				BFE2D65C20D1434300DF07FE /* Debug.h */,
 				BFE2D65D20D1434300DF07FE /* Debug.c */,
 				BF5111C720D0266900E87696 /* Info.plist */,
