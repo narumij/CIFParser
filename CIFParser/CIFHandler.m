@@ -59,9 +59,6 @@ static Handlers prepareHandlers( id<CIFHandler> handler ) {
     return h;
 }
 
-void releaseHandlers( Handlers *handlers ) {
-}
-
 @implementation NewParser
 
 +(void)parse:(NSString*)path :(id<CIFHandler>)handler
@@ -76,7 +73,6 @@ void releaseHandlers( Handlers *handlers ) {
 {
     Handlers hh = prepareHandlers(handler);
     Parse(fp, &hh);
-    releaseHandlers( &hh );
 }
 
 @end

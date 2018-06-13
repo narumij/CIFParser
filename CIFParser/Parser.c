@@ -18,6 +18,8 @@
 #include "Handlers.h"
 #include "TagString.h"
 
+#include "Debug.h"
+
 /*
  
  internal headers
@@ -25,12 +27,14 @@
  */
 
 static void prepareItem( Ctx *ctx, Lex *lex );
-static void nextLexeme( void *ctx, Lex* lex );
+//static void nextLexeme( void *ctx, Lex* lex );
 
 static ParseState rootParse( Ctx *ctx, Lex *lex );
 static ParseState dataParse( Ctx *ctx, Lex *lex );
 static ParseState itemParse( Ctx *ctx, Lex *lex );
 static ParseState loopParse( Ctx *ctx, Lex *lex );
+
+void ctxCleanUp( Ctx *ctx );
 
 /*
 
@@ -53,7 +57,8 @@ void IssueLexeme(void *scanner,CIFLexemeTag tag,const char *text,size_t len)
     assert( lex.tag == lexTypeCheck(tag,text,len));
     assert( lex.text == text );
     assert( lex.len == len );
-    nextLexeme( cifget_extra(scanner), &lex );
+    ParseState result = rootParse( cifget_extra(scanner), &lex );
+    assert( result != PSUnexpectedToken );
 }
 
 int Parse( FILE * fp, Handlers *h )
@@ -68,9 +73,19 @@ int Parse( FILE * fp, Handlers *h )
 #endif
     int result = ciflex( scanner );
     ciflex_destroy ( scanner );
+    ctxCleanUp(&ctx);
+    SHOW_STATS();
     return result;
 }
 
+void ctxCleanUp( Ctx *ctx ) {
+    DeleteTags(&ctx->tags);
+    if ( ctx->itemTag.text ) {
+        FREE(ctx->itemTag.text, 2);
+        ctx->itemTag.len = 0;
+        ctx->itemTag.tag = 0;
+    }
+}
 
 /*
 
@@ -78,9 +93,9 @@ int Parse( FILE * fp, Handlers *h )
 
  */
 
-static void nextLexeme( void *ctx, Lex *lex ) {
-    rootParse( ctx, lex );
-}
+//static void nextLexeme( void *ctx, Lex *lex ) {
+//    rootParse( ctx, lex );
+//}
 
 ParseState rootParse( Ctx *ctx, Lex *lex ) {
     if ( ctx->rootCurrent != NULL ) {
@@ -131,6 +146,9 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
         } else if ( code == PSCarryOn ) {
             return PSCarryOn;
         }
+        if ( code == PSComplete ) {
+            return PSCarryOn;
+        }
     }
     switch (lex->tag) {
         case LexerError:
@@ -175,10 +193,10 @@ int isValueTag(Lex *lex ) {
 
 void prepareItem( Ctx *ctx, Lex *lex ) {
     if (ctx->itemTag.text != NULL) {
-        free(ctx->itemTag.text);
+        FREE(ctx->itemTag.text, 2);
         ctx->itemTag.text = 0;
     }
-    ctx->itemTag.text = malloc(lex->len + 1);
+    ctx->itemTag.text = MALLOC( lex->len + 1, 2 );
     strcpy(ctx->itemTag.text, lex->text);
     ctx->itemTag.tag = lex->tag;
     ctx->itemTag.len = lex->len;
@@ -189,7 +207,7 @@ ParseState itemParse( Ctx *ctx, Lex *lex ) {
         assert(0);
         return PSUnexpectedToken;
     }
-    TagText tag = { lex->text, lex->len };
+    TagText tag = { ctx->itemTag.text, ctx->itemTag.len };
     ctx->handlers->item( ctx->handlers->ctx, &tag, lex );
     return PSComplete;
 }

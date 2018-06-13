@@ -34,7 +34,8 @@ void ClearTag( TagList *stack );
 const char *GetText( TagList *stack, int idx );
 size_t GetLen( TagList *stack, int idx );
 
-// TODO: メモリ解放
+void DeleteTags( TagList *stack );
+
 // TODO: エラー処理
 
 #endif /* TagString_h */
