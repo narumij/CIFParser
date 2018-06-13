@@ -28,7 +28,7 @@ typedef struct TagList {
     int count;
 } TagList;
 
-void IncreaseCapacity( TagList *xs );
+//void IncreaseCapacity( TagList *xs );
 void AppendTag( TagList *stack, struct Lex *lex );
 int CountTag( TagList *stack );
 void ClearTag( TagList *stack );
