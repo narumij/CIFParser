@@ -1,6 +1,8 @@
 #import "CIFLexer.h"
 #include "lex.cif.h"
 
+// 使ってない、がmake testに使えるので残してある
+
 struct CIFLexerExtra {
     void *ctx;
 };

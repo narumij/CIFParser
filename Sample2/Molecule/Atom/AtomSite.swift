@@ -51,6 +51,7 @@ extension CIFValue {
 
 }
 
+
 enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
     case unknown
     case inapplicable
@@ -92,6 +93,7 @@ enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
     }
 }
 
+
 extension CIFValue {
     var cifString: CIFVal<String> {
         switch type {
@@ -107,10 +109,12 @@ extension CIFValue {
     }
 }
 
+
 enum GroupPDB {
     case atom
     case hetatm
 }
+
 
 enum SecondaryStructure {
     case none
@@ -118,12 +122,14 @@ enum SecondaryStructure {
     case sheet
 }
 
+
 class AtomType: NSObject {
     init( symbol s: String ) {
         symbol = s
     }
     var symbol: String
 }
+
 
 struct LabelID {
     var atom: CIFValue = .unknown
@@ -134,12 +140,14 @@ struct LabelID {
     var seq: CIFValue = .unknown
 }
 
+
 struct AuthID {
     var seq: CIFValue = .unknown
     var comp: CIFValue = .unknown
     var asym: CIFValue = .unknown
     var atom: CIFValue = .unknown
 }
+
 
 class AtomSite {
 
@@ -166,6 +174,7 @@ class AtomSite {
     
 }
 
+
 fileprivate func groupPDB(_ d:[String:CIFValue] ) ->GroupPDB? {
     let a = d["_atom_site.group_PDB"]
     func b(_ a: CIFValue ) -> GroupPDB? {
@@ -180,9 +189,11 @@ fileprivate func groupPDB(_ d:[String:CIFValue] ) ->GroupPDB? {
     return a.flatMap{ b( $0 ) }
 }
 
+
 func Cartn(_ x: CIFValue,_ y: CIFValue,_ z: CIFValue ) -> SCNVector3? {
     return bind3( SCNVector3.init, x.doubleValue, y.doubleValue, z.doubleValue )
 }
+
 
 fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
     func cifString(_ key: String ) -> CIFValue {
@@ -197,6 +208,7 @@ fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
                    d[tags[5]]! )
 }
 
+
 fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
     func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
@@ -208,6 +220,7 @@ fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
                    cifString(tags[3]))
 }
 
+
 fileprivate func atomSiteLabel(_ d: [String:CIFValue] ) -> LabelID {
     return makeLabel( d, ["_atom_site.label_atom_id",
                           "_atom_site.label_alt_id",
@@ -217,6 +230,7 @@ fileprivate func atomSiteLabel(_ d: [String:CIFValue] ) -> LabelID {
                           "_atom_site.label_seq_id"] )
 }
 
+
 fileprivate func atomSiteAuthID(_ d: [String:CIFValue] ) -> AuthID {
     return makeAuth( d, ["_atom_site.auth_seq_id",
                          "_atom_site.auth_comp_id",
@@ -224,16 +238,13 @@ fileprivate func atomSiteAuthID(_ d: [String:CIFValue] ) -> AuthID {
                          "_atom_site.auth_atom_id"] )
 }
 
+
 func makeAtomSite(_ d: [String:CIFValue] ) -> AtomSite? {
-    var site = lift4( AtomSite.init, d["_atom_site.id"], d["_atom_site.type_symbol"], atomSiteLabel( d ), atomSiteAuthID( d ) )
+    let site = lift4( AtomSite.init, d["_atom_site.id"], d["_atom_site.type_symbol"], atomSiteLabel( d ), atomSiteAuthID( d ) )
     site?.groupPDB = groupPDB( d )
     bind3( Cartn, d["_atom_site.Cartn_x"], d["_atom_site.Cartn_y"], d["_atom_site.Cartn_z"] ).map{ site?.cartn = $0 }
     return site
 }
-
-
-
-
 
 
 func makeBackbone(_ a: [AtomSite] ) -> [[AtomSite]] {

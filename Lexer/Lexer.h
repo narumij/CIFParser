@@ -32,6 +32,6 @@ enum CIFLexemeTag {
 };
 typedef enum CIFLexemeTag CIFLexemeTag;
 
-void IssueLexeme(void *scanner,CIFLexemeTag tag,const char *text,size_t len);
+void IssueLexeme( void *scanner, CIFLexemeTag tag, const char *text, size_t len );
 
 #endif /* Lexer_h */

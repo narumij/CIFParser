@@ -16,9 +16,6 @@ FOUNDATION_EXPORT const unsigned char CIFParserVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <CIFParser/PublicHeader.h>
 
-#import "Parser.h"
 #import "CIFHandler.h"
-//#import "CIFValue.h"
 #import "TagString.h"
 
-//#import "DummyHandler.h"

@@ -9,6 +9,7 @@
 import Cocoa
 import CIFParser
 
+
 class StructConf: NSObject {
     var confTypeID: CIFValue
     var id: CIFValue
@@ -26,6 +27,7 @@ class StructConf: NSObject {
     }
 }
 
+
 fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
     func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
@@ -39,6 +41,7 @@ fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
                    d[tags[2]]! )
 }
 
+
 fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
     func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
@@ -49,6 +52,7 @@ fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
                    cifString(tags[2]),
                    .inapplicable )
 }
+
 
 func makeStructConf(_ d: [String:CIFValue] ) -> StructConf? {
     let bl = makeLabel( d, ["_struct_conf.beg_label_comp_id","_struct_conf.beg_label_asym_id","_struct_conf.beg_label_seq_id"] )

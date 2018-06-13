@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F320D0AA2000A55A32 /* CIFValue.m */; };
-		BF4CC1F620D0AB2C00A55A32 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */; };
-		BF4CC1FA20D0AB3B00A55A32 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */; };
-		BF4CC1FB20D0AB3B00A55A32 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */; };
-		BF4CC1FC20D0AB3B00A55A32 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */; };
 		BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */; };
 		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
 		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
 		BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20120D0AB4800A55A32 /* Utilities.swift */; };
 		BF4CC20720D0AC1800A55A32 /* DummyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF51123120D0A2F100E87696 /* DummyHandler.m */; };
+		BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20A20D0DBE400A55A32 /* StructSheetRange.swift */; };
+		BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20B20D0DBE400A55A32 /* AtomSite.swift */; };
+		BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20C20D0DBE400A55A32 /* StructConf.swift */; };
+		BF4CC21120D0DBE500A55A32 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20D20D0DBE400A55A32 /* Molecule.swift */; };
 		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
 		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,24 +76,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF4CC1EA20D0A85C00A55A32 /* CIFTest4-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CIFTest4-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample2-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF4CC1F220D0AA2000A55A32 /* CIFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFValue.h; sourceTree = "<group>"; };
 		BF4CC1F320D0AA2000A55A32 /* CIFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFValue.m; sourceTree = "<group>"; };
-		BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Molecule.swift; path = CIFTest4/Molecule/Molecule.swift; sourceTree = SOURCE_ROOT; };
-		BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomSite.swift; path = CIFTest4/Molecule/Atom/AtomSite.swift; sourceTree = SOURCE_ROOT; };
-		BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructSheetRange.swift; path = CIFTest4/Molecule/Atom/StructSheetRange.swift; sourceTree = SOURCE_ROOT; };
-		BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructConf.swift; path = CIFTest4/Molecule/Atom/StructConf.swift; sourceTree = SOURCE_ROOT; };
 		BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF4CC1FF20D0AB4800A55A32 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Lattices.swift"; sourceTree = "<group>"; };
 		BF4CC20120D0AB4800A55A32 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		BF4CC20A20D0DBE400A55A32 /* StructSheetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructSheetRange.swift; sourceTree = "<group>"; };
+		BF4CC20B20D0DBE400A55A32 /* AtomSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomSite.swift; sourceTree = "<group>"; };
+		BF4CC20C20D0DBE400A55A32 /* StructConf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructConf.swift; sourceTree = "<group>"; };
+		BF4CC20D20D0DBE400A55A32 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
 		BF5111A920D0256F00E87696 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		BF5111AA20D0256F00E87696 /* Parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Parser.c; sourceTree = "<group>"; };
 		BF5111C420D0266800E87696 /* CIFParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5111C620D0266900E87696 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
 		BF5111C720D0266900E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5111D220D026DA00E87696 /* Lexer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
-		BF5111DA20D0324A00E87696 /* CIFTest3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF5111DA20D0324A00E87696 /* Sample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5111DC20D0324A00E87696 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF5111DD20D0324A00E87696 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BF5111DF20D0324A00E87696 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -102,17 +102,15 @@
 		BF5111E520D0324B00E87696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF5111E720D0324C00E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5111E820D0324C00E87696 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BF5111EA20D0324C00E87696 /* CIFTest3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest3.entitlements; sourceTree = "<group>"; };
 		BF5111F520D0425800E87696 /* ParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParserImpl.h; sourceTree = "<group>"; };
 		BF5111F920D0456F00E87696 /* CIFHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFHandler.h; sourceTree = "<group>"; };
 		BF5111FA20D0456F00E87696 /* CIFHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIFHandler.m; sourceTree = "<group>"; };
 		BF51120320D05F6000E87696 /* TagString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagString.h; sourceTree = "<group>"; };
 		BF51120420D05F6000E87696 /* TagString.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TagString.c; sourceTree = "<group>"; };
-		BF51120D20D062BE00E87696 /* CIFTest4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CIFTest4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF51120D20D062BE00E87696 /* Sample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF51120F20D062BE00E87696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF51121320D062BF00E87696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF51121820D062BF00E87696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF51121920D062BF00E87696 /* CIFTest4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CIFTest4.entitlements; sourceTree = "<group>"; };
 		BF51122F20D09F1C00E87696 /* Handlers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Handlers.h; sourceTree = "<group>"; };
 		BF51123020D0A2F100E87696 /* DummyHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyHandler.h; sourceTree = "<group>"; };
 		BF51123120D0A2F100E87696 /* DummyHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyHandler.m; sourceTree = "<group>"; };
@@ -156,6 +154,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF4CC20820D0DBE400A55A32 /* Molecule */ = {
+			isa = PBXGroup;
+			children = (
+				BF4CC20920D0DBE400A55A32 /* Atom */,
+				BF4CC20D20D0DBE400A55A32 /* Molecule.swift */,
+			);
+			path = Molecule;
+			sourceTree = "<group>";
+		};
+		BF4CC20920D0DBE400A55A32 /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				BF4CC20A20D0DBE400A55A32 /* StructSheetRange.swift */,
+				BF4CC20B20D0DBE400A55A32 /* AtomSite.swift */,
+				BF4CC20C20D0DBE400A55A32 /* StructConf.swift */,
+			);
+			path = Atom;
+			sourceTree = "<group>";
+		};
 		BF5111C520D0266800E87696 /* CIFParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +192,7 @@
 			path = CIFParser;
 			sourceTree = "<group>";
 		};
-		BF5111DB20D0324A00E87696 /* CIFTest3 */ = {
+		BF5111DB20D0324A00E87696 /* Sample1 */ = {
 			isa = PBXGroup;
 			children = (
 				BF51123020D0A2F100E87696 /* DummyHandler.h */,
@@ -188,16 +205,15 @@
 				BF5111E420D0324B00E87696 /* Main.storyboard */,
 				BF5111E720D0324C00E87696 /* Info.plist */,
 				BF5111E820D0324C00E87696 /* main.m */,
-				BF5111EA20D0324C00E87696 /* CIFTest3.entitlements */,
 			);
-			path = CIFTest3;
+			path = Sample1;
 			sourceTree = "<group>";
 		};
-		BF51120E20D062BE00E87696 /* CIFTest4 */ = {
+		BF51120E20D062BE00E87696 /* Sample2 */ = {
 			isa = PBXGroup;
 			children = (
 				BFF875D01FE4B1BD00A561A3 /* Parser */,
-				BF557F831FDED69F00D1F251 /* Molecule */,
+				BF4CC20820D0DBE400A55A32 /* Molecule */,
 				BF4CC20120D0AB4800A55A32 /* Utilities.swift */,
 				BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */,
 				BF4CC1FF20D0AB4800A55A32 /* Test.swift */,
@@ -208,30 +224,9 @@
 				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
 				BF51121320D062BF00E87696 /* Assets.xcassets */,
 				BF51121820D062BF00E87696 /* Info.plist */,
-				BF51121920D062BF00E87696 /* CIFTest4.entitlements */,
-				BF4CC1EA20D0A85C00A55A32 /* CIFTest4-Bridging-Header.h */,
+				BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */,
 			);
-			path = CIFTest4;
-			sourceTree = "<group>";
-		};
-		BF557F831FDED69F00D1F251 /* Molecule */ = {
-			isa = PBXGroup;
-			children = (
-				BF557F841FDED6B300D1F251 /* Atom */,
-				BF4CC1F520D0AB2C00A55A32 /* Molecule.swift */,
-			);
-			name = Molecule;
-			path = CIFTest2/Molecule;
-			sourceTree = "<group>";
-		};
-		BF557F841FDED6B300D1F251 /* Atom */ = {
-			isa = PBXGroup;
-			children = (
-				BF4CC1F720D0AB3B00A55A32 /* AtomSite.swift */,
-				BF4CC1F920D0AB3B00A55A32 /* StructConf.swift */,
-				BF4CC1F820D0AB3B00A55A32 /* StructSheetRange.swift */,
-			);
-			path = Atom;
+			path = Sample2;
 			sourceTree = "<group>";
 		};
 		BF7A2D5A1FDD673D0031EBA7 = {
@@ -240,8 +235,8 @@
 				BF7A2D701FDD67770031EBA7 /* Lexer */,
 				BF5111C520D0266800E87696 /* CIFParser */,
 				BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */,
-				BF5111DB20D0324A00E87696 /* CIFTest3 */,
-				BF51120E20D062BE00E87696 /* CIFTest4 */,
+				BF5111DB20D0324A00E87696 /* Sample1 */,
+				BF51120E20D062BE00E87696 /* Sample2 */,
 				BF7A2D651FDD673D0031EBA7 /* Products */,
 				BF7A2DE11FDD8E4C0031EBA7 /* Frameworks */,
 			);
@@ -251,8 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				BF5111C420D0266800E87696 /* CIFParser.framework */,
-				BF5111DA20D0324A00E87696 /* CIFTest3.app */,
-				BF51120D20D062BE00E87696 /* CIFTest4.app */,
+				BF5111DA20D0324A00E87696 /* Sample1.app */,
+				BF51120D20D062BE00E87696 /* Sample2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -349,9 +344,9 @@
 			productReference = BF5111C420D0266800E87696 /* CIFParser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BF5111D920D0324A00E87696 /* CIFTest3 */ = {
+		BF5111D920D0324A00E87696 /* Sample1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "CIFTest3" */;
+			buildConfigurationList = BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "Sample1" */;
 			buildPhases = (
 				BF5111D620D0324A00E87696 /* Sources */,
 				BF5111D720D0324A00E87696 /* Frameworks */,
@@ -362,14 +357,14 @@
 			dependencies = (
 				BF5111F020D0326200E87696 /* PBXTargetDependency */,
 			);
-			name = CIFTest3;
+			name = Sample1;
 			productName = CIFTest3;
-			productReference = BF5111DA20D0324A00E87696 /* CIFTest3.app */;
+			productReference = BF5111DA20D0324A00E87696 /* Sample1.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BF51120C20D062BE00E87696 /* CIFTest4 */ = {
+		BF51120C20D062BE00E87696 /* Sample2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "CIFTest4" */;
+			buildConfigurationList = BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "Sample2" */;
 			buildPhases = (
 				BF51120920D062BE00E87696 /* Sources */,
 				BF51120A20D062BE00E87696 /* Frameworks */,
@@ -381,9 +376,9 @@
 				BF4CC1E920D0A71E00A55A32 /* PBXTargetDependency */,
 				BF51122520D0634000E87696 /* PBXTargetDependency */,
 			);
-			name = CIFTest4;
+			name = Sample2;
 			productName = CIFTest4;
-			productReference = BF51120D20D062BE00E87696 /* CIFTest4.app */;
+			productReference = BF51120D20D062BE00E87696 /* Sample2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -430,8 +425,8 @@
 			targets = (
 				BF5111A520D0243800E87696 /* Lexer */,
 				BF5111C320D0266800E87696 /* CIFParser */,
-				BF5111D920D0324A00E87696 /* CIFTest3 */,
-				BF51120C20D062BE00E87696 /* CIFTest4 */,
+				BF5111D920D0324A00E87696 /* Sample1 */,
+				BF51120C20D062BE00E87696 /* Sample2 */,
 			);
 		};
 /* End PBXProject section */
@@ -495,17 +490,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4CC21120D0DBE500A55A32 /* Molecule.swift in Sources */,
 				BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */,
-				BF4CC1F620D0AB2C00A55A32 /* Molecule.swift in Sources */,
 				BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */,
-				BF4CC1FB20D0AB3B00A55A32 /* StructSheetRange.swift in Sources */,
 				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
 				BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */,
-				BF4CC1FC20D0AB3B00A55A32 /* StructConf.swift in Sources */,
+				BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */,
+				BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */,
 				BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */,
 				BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */,
+				BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */,
 				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
-				BF4CC1FA20D0AB3B00A55A32 /* AtomSite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,15 +629,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = CIFTest3/CIFTest3.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 89EZ44Z4V3;
-				INFOPLIST_FILE = CIFTest3/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sample1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest3;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -651,15 +647,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = CIFTest3/CIFTest3.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 89EZ44Z4V3;
-				INFOPLIST_FILE = CIFTest3/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sample1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest3;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -669,17 +666,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = CIFTest4/CIFTest4.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 89EZ44Z4V3;
-				INFOPLIST_FILE = CIFTest4/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sample2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest4;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "CIFTest4/CIFTest4-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sample2/Sample2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
@@ -691,16 +689,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = CIFTest4/CIFTest4.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 89EZ44Z4V3;
-				INFOPLIST_FILE = CIFTest4/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sample2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFTest4;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CIFTest4/CIFTest4-Bridging-Header.h";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sample2/Sample2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 			};
@@ -847,7 +846,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "CIFTest3" */ = {
+		BF5111EB20D0324C00E87696 /* Build configuration list for PBXNativeTarget "Sample1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF5111EC20D0324C00E87696 /* Debug */,
@@ -856,7 +855,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "CIFTest4" */ = {
+		BF51121A20D062BF00E87696 /* Build configuration list for PBXNativeTarget "Sample2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF51121B20D062BF00E87696 /* Debug */,
