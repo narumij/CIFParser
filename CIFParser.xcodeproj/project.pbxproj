@@ -38,7 +38,15 @@
 		BF51122320D0633100E87696 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
 		BF51122C20D0640F00E87696 /* TestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF875CD1FE4A4E700A561A3 /* TestParser.swift */; };
 		BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */ = {isa = PBXBuildFile; fileRef = BFF875C81FE3133100A561A3 /* 3j3y.cif */; };
-		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BFE22EBF20D189BE00B832F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */; };
+		BFE22EC120D189BE00B832F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EC020D189BE00B832F4 /* ViewController.swift */; };
+		BFE22EC420D189BE00B832F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC220D189BE00B832F4 /* Main.storyboard */; };
+		BFE22EC620D189BE00B832F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC520D189BE00B832F4 /* Assets.xcassets */; };
+		BFE22EC920D189BE00B832F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC720D189BE00B832F4 /* LaunchScreen.storyboard */; };
+		BFE22ED220D18BCD00B832F4 /* CIFParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; };
+		BFE22ED620D18C1A00B832F4 /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFE22ED720D18F6100B832F4 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BFE22ED920D18F8500B832F4 /* DummyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22ED820D18F8500B832F4 /* DummyHandler.swift */; };
 		BFE2D65E20D1434300DF07FE /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D65C20D1434300DF07FE /* Debug.h */; };
 		BFE2D65F20D1434300DF07FE /* Debug.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D65D20D1434300DF07FE /* Debug.c */; };
 		BFE2D66320D163B700DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -79,9 +87,26 @@
 			remoteGlobalIDString = BF5111C320D0266800E87696;
 			remoteInfo = CIFParser;
 		};
+		BFE22ED320D18BFA00B832F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7A2D5B1FDD673D0031EBA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF5111C320D0266800E87696;
+			remoteInfo = CIFParser;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		BFE22ED520D18C0D00B832F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFE22ED620D18C1A00B832F4 /* CIFParser.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BFE2D66220D163AB00DF07FE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +174,14 @@
 		BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lex.cif.h; path = Lexer/lex.cif.h; sourceTree = SOURCE_ROOT; };
 		BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lex.cif.c; path = Lexer/lex.cif.c; sourceTree = SOURCE_ROOT; };
 		BF7A2E031FDDE7110031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFE22EBC20D189BE00B832F4 /* Sample3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFE22EC020D189BE00B832F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFE22EC320D189BE00B832F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFE22EC520D189BE00B832F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFE22EC820D189BE00B832F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFE22ECA20D189BE00B832F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFE22ED820D18F8500B832F4 /* DummyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyHandler.swift; sourceTree = "<group>"; };
 		BFE2D65C20D1434300DF07FE /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		BFE2D65D20D1434300DF07FE /* Debug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Debug.c; sourceTree = "<group>"; };
 		BFE2D66020D1631C00DF07FE /* Sample2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample2.entitlements; sourceTree = "<group>"; };
@@ -186,6 +219,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFE22EB920D189BE00B832F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE22ED220D18BCD00B832F4 /* CIFParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -217,12 +258,19 @@
 				BFE2D66720D16C5200DF07FE /* CIFTag.c */,
 				BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */,
 				BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */,
+<<<<<<< HEAD
+=======
+				BF51122F20D09F1C00E87696 /* Handlers.h */,
+>>>>>>> work
 				BF5111A920D0256F00E87696 /* Parser.h */,
 				BF5111F520D0425800E87696 /* ParserObject.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
 				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
 				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
+<<<<<<< HEAD
 				BF51122F20D09F1C00E87696 /* Handlers.h */,
+=======
+>>>>>>> work
 				BFE2D65C20D1434300DF07FE /* Debug.h */,
 				BFE2D65D20D1434300DF07FE /* Debug.c */,
 				BF5111C720D0266900E87696 /* Info.plist */,
@@ -277,6 +325,7 @@
 				BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */,
 				BF5111DB20D0324A00E87696 /* Sample1 */,
 				BF51120E20D062BE00E87696 /* Sample2 */,
+				BFE22EBD20D189BE00B832F4 /* Sample3 */,
 				BF7A2D651FDD673D0031EBA7 /* Products */,
 				BF7A2DE11FDD8E4C0031EBA7 /* Frameworks */,
 			);
@@ -288,6 +337,7 @@
 				BF5111C420D0266800E87696 /* CIFParser.framework */,
 				BF5111DA20D0324A00E87696 /* Sample1.app */,
 				BF51120D20D062BE00E87696 /* Sample2.app */,
+				BFE22EBC20D189BE00B832F4 /* Sample3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +370,20 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFE22EBD20D189BE00B832F4 /* Sample3 */ = {
+			isa = PBXGroup;
+			children = (
+				BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */,
+				BFE22EC020D189BE00B832F4 /* ViewController.swift */,
+				BFE22EC220D189BE00B832F4 /* Main.storyboard */,
+				BFE22EC520D189BE00B832F4 /* Assets.xcassets */,
+				BFE22EC720D189BE00B832F4 /* LaunchScreen.storyboard */,
+				BFE22ECA20D189BE00B832F4 /* Info.plist */,
+				BFE22ED820D18F8500B832F4 /* DummyHandler.swift */,
+			);
+			path = Sample3;
 			sourceTree = "<group>";
 		};
 		BFF875D01FE4B1BD00A561A3 /* Parser */ = {
@@ -427,6 +491,25 @@
 			productReference = BF51120D20D062BE00E87696 /* Sample2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BFE22EBB20D189BE00B832F4 /* Sample3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFE22ECB20D189BE00B832F4 /* Build configuration list for PBXNativeTarget "Sample3" */;
+			buildPhases = (
+				BFE22EB820D189BE00B832F4 /* Sources */,
+				BFE22EB920D189BE00B832F4 /* Frameworks */,
+				BFE22EBA20D189BE00B832F4 /* Resources */,
+				BFE22ED520D18C0D00B832F4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFE22ED420D18BFA00B832F4 /* PBXTargetDependency */,
+			);
+			name = Sample3;
+			productName = Sample3;
+			productReference = BFE22EBC20D189BE00B832F4 /* Sample3.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -464,6 +547,10 @@
 							};
 						};
 					};
+					BFE22EBB20D189BE00B832F4 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = BF7A2D5E1FDD673D0031EBA7 /* Build configuration list for PBXProject "CIFParser" */;
@@ -483,6 +570,7 @@
 				BF5111C320D0266800E87696 /* CIFParser */,
 				BF5111D920D0324A00E87696 /* Sample1 */,
 				BF51120C20D062BE00E87696 /* Sample2 */,
+				BFE22EBB20D189BE00B832F4 /* Sample3 */,
 			);
 		};
 /* End PBXProject section */
@@ -511,9 +599,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */,
-				BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */,
 				BF51122220D0630700E87696 /* Main.storyboard in Resources */,
 				BF51121420D062BF00E87696 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFE22EBA20D189BE00B832F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE22EC920D189BE00B832F4 /* LaunchScreen.storyboard in Resources */,
+				BFE22ED720D18F6100B832F4 /* 1wns.cif in Resources */,
+				BFE22EC620D189BE00B832F4 /* Assets.xcassets in Resources */,
+				BFE22EC420D189BE00B832F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +659,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFE22EB820D189BE00B832F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE22EC120D189BE00B832F4 /* ViewController.swift in Sources */,
+				BFE22EBF20D189BE00B832F4 /* AppDelegate.swift in Sources */,
+				BFE22ED920D18F8500B832F4 /* DummyHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -584,6 +692,11 @@
 			target = BF5111C320D0266800E87696 /* CIFParser */;
 			targetProxy = BF51122420D0634000E87696 /* PBXContainerItemProxy */;
 		};
+		BFE22ED420D18BFA00B832F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF5111C320D0266800E87696 /* CIFParser */;
+			targetProxy = BFE22ED320D18BFA00B832F4 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -601,6 +714,22 @@
 				BF7A2E031FDDE7110031EBA7 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFE22EC220D189BE00B832F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFE22EC320D189BE00B832F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFE22EC720D189BE00B832F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFE22EC820D189BE00B832F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -650,6 +779,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = CIFParser/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFParser;
@@ -673,6 +803,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = CIFParser/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.CIFParser;
@@ -888,6 +1019,48 @@
 			};
 			name = Release;
 		};
+		BFE22ECC20D189BE00B832F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = Sample3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFE22ECD20D189BE00B832F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89EZ44Z4V3;
+				INFOPLIST_FILE = Sample3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.narumijun.Sample3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -932,6 +1105,15 @@
 			buildConfigurations = (
 				BF7A2D6A1FDD673D0031EBA7 /* Debug */,
 				BF7A2D6B1FDD673D0031EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFE22ECB20D189BE00B832F4 /* Build configuration list for PBXNativeTarget "Sample3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFE22ECC20D189BE00B832F4 /* Debug */,
+				BFE22ECD20D189BE00B832F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
