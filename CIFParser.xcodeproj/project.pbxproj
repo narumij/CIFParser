@@ -16,7 +16,6 @@
 		BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20A20D0DBE400A55A32 /* StructSheetRange.swift */; };
 		BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20B20D0DBE400A55A32 /* AtomSite.swift */; };
 		BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20C20D0DBE400A55A32 /* StructConf.swift */; };
-		BF4CC21120D0DBE500A55A32 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20D20D0DBE400A55A32 /* Molecule.swift */; };
 		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
 		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -86,7 +85,6 @@
 		BF4CC20A20D0DBE400A55A32 /* StructSheetRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructSheetRange.swift; sourceTree = "<group>"; };
 		BF4CC20B20D0DBE400A55A32 /* AtomSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomSite.swift; sourceTree = "<group>"; };
 		BF4CC20C20D0DBE400A55A32 /* StructConf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructConf.swift; sourceTree = "<group>"; };
-		BF4CC20D20D0DBE400A55A32 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
 		BF5111A920D0256F00E87696 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		BF5111AA20D0256F00E87696 /* Parser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Parser.c; sourceTree = "<group>"; };
 		BF5111C420D0266800E87696 /* CIFParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				BF4CC20920D0DBE400A55A32 /* Atom */,
-				BF4CC20D20D0DBE400A55A32 /* Molecule.swift */,
 			);
 			path = Molecule;
 			sourceTree = "<group>";
@@ -490,7 +487,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4CC21120D0DBE500A55A32 /* Molecule.swift in Sources */,
 				BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */,
 				BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */,
 				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
