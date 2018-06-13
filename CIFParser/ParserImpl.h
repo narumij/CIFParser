@@ -26,13 +26,13 @@ struct Ctx;
 typedef struct Ctx Ctx;
 
 struct Ctx {
-    int loopStateValueNow;
-    CIFTag itemTag;
-    int tagIndex;
+    Handlers *handlers;
     ParseState (*rootCurrent)( Ctx *ctx, Lex *lex );
     ParseState (*dataCurrent)( Ctx *ctx, Lex *lex );
-    Handlers *handlers;
-    CIFLoopTag tags;
+    int loopStateValueNow;
+    CIFTag itemTag;
+    CIFLoopTag loopTag;
+    int tagIndex;
 };
 
 #endif /* ParserImpl_h */

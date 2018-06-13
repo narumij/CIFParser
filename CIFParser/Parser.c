@@ -85,7 +85,7 @@ int Parse( FILE * fp, Handlers *h )
 }
 
 void ctxCleanUp( Ctx *ctx ) {
-    DeleteTags(&ctx->tags);
+    DeleteTags(&ctx->loopTag);
     DeepClearString(&ctx->itemTag);
 }
 
@@ -210,26 +210,26 @@ ParseState loopParse( Ctx *ctx, Lex *lex ) {
     if (!ctx->loopStateValueNow)
     {
         if (lex->tag == LTag) {
-            AppendTag( &ctx->tags, lex );
+            AppendTag( &ctx->loopTag, lex );
         } else {
             ctx->loopStateValueNow = 1;
-            ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->tags );
+            ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->loopTag );
         }
     }
     // else にしてはいけない。Loop最初のValueは上のブロック実行後下のブロックで処理をする必要があるため。
     if (ctx->loopStateValueNow)
     {
         if (isValueTag(lex)) {
-            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->tags, ctx->tagIndex, lex );
+            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->loopTag, ctx->tagIndex, lex );
             ctx->tagIndex += 1;
-            if ( ctx->tagIndex == CountTag( &ctx->tags ) ) {
+            if ( ctx->tagIndex == CountTag( &ctx->loopTag ) ) {
                 ctx->handlers->loopItemTerm(ctx->handlers->ctx);
                 ctx->tagIndex = 0;
             }
         } else {
             ctx->handlers->endLoop( ctx->handlers->ctx );
             ctx->tagIndex = 0;
-            ClearTag(&ctx->tags);
+            ClearTag(&ctx->loopTag);
             return PSShouldBack;
         }
     }
