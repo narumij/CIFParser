@@ -47,7 +47,7 @@
 		BFE2D66920D16C5200DF07FE /* CIFTag.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D66720D16C5200DF07FE /* CIFTag.c */; };
 		BFE2D66C20D16E1800DF07FE /* CIFLoopTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE2D66D20D16E1800DF07FE /* CIFLoopTag.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */; };
-		BFE2D66F20D1813200DF07FE /* CIFLexer.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66E20D180B300DF07FE /* CIFLexer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE2D66F20D1813200DF07FE /* CIFLex.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66E20D180B300DF07FE /* CIFLex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +157,7 @@
 		BFE2D66720D16C5200DF07FE /* CIFTag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CIFTag.c; sourceTree = "<group>"; };
 		BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoopTag.h; sourceTree = "<group>"; };
 		BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CIFLoopTag.c; sourceTree = "<group>"; };
-		BFE2D66E20D180B300DF07FE /* CIFLexer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLexer.h; sourceTree = "<group>"; };
+		BFE2D66E20D180B300DF07FE /* CIFLex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLex.h; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,7 +295,7 @@
 		BF7A2D701FDD67770031EBA7 /* Lexer */ = {
 			isa = PBXGroup;
 			children = (
-				BFE2D66E20D180B300DF07FE /* CIFLexer.h */,
+				BFE2D66E20D180B300DF07FE /* CIFLex.h */,
 				BF5111D220D026DA00E87696 /* Lexer.h */,
 				BF7A2D741FDD67AC0031EBA7 /* CIFLexer_.h */,
 				BF7A2D721FDD67AC0031EBA7 /* CIFLexer_.m */,
@@ -341,7 +341,7 @@
 				BF5111F720D0425800E87696 /* ParserObject.h in Headers */,
 				BFE2D66C20D16E1800DF07FE /* CIFLoopTag.h in Headers */,
 				BFE2D66820D16C5200DF07FE /* CIFTag.h in Headers */,
-				BFE2D66F20D1813200DF07FE /* CIFLexer.h in Headers */,
+				BFE2D66F20D1813200DF07FE /* CIFLex.h in Headers */,
 				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
 				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
 				BF5111D120D026AA00E87696 /* Parser.h in Headers */,
@@ -877,6 +877,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-DNDEBUG";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;

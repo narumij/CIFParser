@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "CIFLexer.h"
+#import "CIFLex.h"
 #import "CIFTag.h"
 #import "CIFLoopTag.h"
 

@@ -9,7 +9,7 @@
 #ifndef CIFTag_h
 #define CIFTag_h
 
-#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct CIFTag {
     char *text;

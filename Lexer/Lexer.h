@@ -12,7 +12,7 @@
 #define CIF_LEXER_LOG 0
 #include <stdlib.h>
 
-#include "CIFLexer.h"
+#include "CIFLex.h"
 
 void IssueLexeme( void *scanner, CIFLexemeTag tag, const char *text, size_t len );
 

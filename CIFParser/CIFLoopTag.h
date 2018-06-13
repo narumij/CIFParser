@@ -9,13 +9,8 @@
 #ifndef CIFLoopTag_h
 #define CIFLoopTag_h
 
-#include <stdio.h>
-
-struct CIFLex;
-typedef struct CIFLex CIFLex;
-
-struct CIFTag;
-typedef struct CIFTag CIFTag;
+#include "CIFLex.h"
+#include "CIFTag.h"
 
 typedef struct CIFLoopTag {
     CIFTag *list;
