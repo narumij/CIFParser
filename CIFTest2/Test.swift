@@ -9,7 +9,6 @@
 import SceneKit
 import CIFParser
 
-
 fileprivate let xKey = "_atom_site.Cartn_x"
 fileprivate let yKey = "_atom_site.Cartn_y"
 fileprivate let zKey = "_atom_site.Cartn_z"
@@ -28,25 +27,28 @@ fileprivate func groupPDB_(_ textBytes: UnsafePointer<Int8>!,_ textLength: Int) 
 }
 
 extension AtomSite {
-    func loopItem_( itemTag: String, tag: CIFLexemeTag, textBytes: UnsafePointer<Int8>!, textLength: Int )
+    enum CIFKey {
+        case atomID
+        case seqID
+        case cartX
+        case cartY
+        case cartZ
+        case groupPDB
+    }
+    func loopItem( key: CIFKey, tag: CIFLexemeTag, textBytes: UnsafePointer<Int8>!, textLength: Int )
     {
-        if itemTag == "_atom_site.label_atom_id" {
-//            print( NSString(bytes: textBytes, length: textLength, encoding: String.Encoding.utf8.rawValue)! );
+        switch key {
+        case .atomID:
             label.atom = CIFValue( tag: tag, bytes: textBytes, length: textLength )
-        }
-        if itemTag == "_atom_site.label_seq_id" {
+        case .seqID:
             label.seq = CIFValue( tag: tag, bytes: textBytes, length: textLength )
-        }
-        if itemTag == xKey {
+        case .cartX:
             cartn.x = CGFloat( atof(textBytes) )
-        }
-        if itemTag == yKey {
+        case .cartY:
             cartn.y = CGFloat( atof(textBytes) )
-        }
-        if itemTag == zKey {
+        case .cartZ:
             cartn.z = CGFloat( atof(textBytes) )
-        }
-        if itemTag == "_atom_site.group_PDB" {
+        case .groupPDB:
             groupPDB = groupPDB_( textBytes, textLength )
         }
     }
@@ -56,7 +58,8 @@ class Simple: CIFHandler {
 
     func beginData(_ valueText: UnsafePointer<Int8>!, _ valueTextLen: Int) {
     }
-    func itemTag(_ tagText: UnsafePointer<Int8>!, _ tagLen: Int, _ valueType: CIFLexemeTag, _ valueText: UnsafePointer<Int8>!, _ valueTextLen: Int) {
+
+    func item(_ tag: UnsafePointer<TagText>!, _ lex: UnsafePointer<Lex>!) {
     }
 
     enum LoopMode {
@@ -71,7 +74,23 @@ class Simple: CIFHandler {
     func beginLoop(_ tags: UnsafeMutablePointer<TagList>!) {
         if let tags = StringsFromTagList(tags) {
             if tags.contains("_atom_site.Cartn_x") {
+                
                 mode = .atom
+                atomKeyTable = [:]
+
+                for (str,key) in [
+                    ("_atom_site.label_atom_id",AtomSite.CIFKey.atomID),
+                    ("_atom_site.label_seq_id",AtomSite.CIFKey.seqID),
+                    (xKey,AtomSite.CIFKey.cartX),
+                    (yKey,AtomSite.CIFKey.cartY),
+                    (zKey,AtomSite.CIFKey.cartZ),
+                    ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
+                    ] {
+                    if let idx = tags.index(of: str) {
+                        atomKeyTable[idx] = key
+                    }
+                }
+
             } else if tags.contains("_struct_conf.id") {
                 mode = .helix
             } else if tags.contains("_struct_sheet_range.id") {
@@ -79,8 +98,8 @@ class Simple: CIFHandler {
             } else {
                 mode = .ignore
             }
+            loopTags = tags
         }
-//        return mode != .ignore
     }
 
     var atomCount = 0
@@ -91,46 +110,16 @@ class Simple: CIFHandler {
     }
     func item( itemTag: String, tag: CIFLexemeTag, textBytes: UnsafePointer<Int8>!, textLength: Int ) {
     }
-    func beginLoop( tags: [String] ) -> Bool {
-        if tags.contains("_atom_site.Cartn_x") {
-            mode = .atom
-        } else if tags.contains("_struct_conf.id") {
-            mode = .helix
-        } else if tags.contains("_struct_sheet_range.id") {
-            mode = .sheet
-        } else {
-            mode = .ignore
-        }
-        return mode != .ignore
-    }
-//    func loopItem( tags: [String], values: [TestValue] ) {
-//        switch mode {
-//        case .atom:
-//            atomCount += 1
-//            appendAtomSite(tags, values)
-//        case .helix:
-//            helixCount += 1
-//            appendHelix(tags, values)
-//        case .sheet:
-//            sheetCount += 1
-//            appendSheet(tags, values)
-//        default:
-//            assert(false)
-//            break
-//        }
-//    }
+    var atomKeyTable : [Int:AtomSite.CIFKey] = [:]
 
     var loopTags: [String] = []
     var loopValues: [TestValue] = []
     var atomSite: AtomSite = AtomSite()
+
     func appendLoopItem() {
-//        if loopTags.count == 0 {
-//            return
-//        }
         switch mode {
         case .atom:
             atomCount += 1
-//            appendAtomSite(loopTags, loopValues)
             if atomSite.label.atom.stringValue == "CA" {
                 atomSites.append(atomSite)
             }
@@ -145,29 +134,37 @@ class Simple: CIFHandler {
             assert(false)
             break
         }
-        loopTags = []
         loopValues = []
     }
-    func loopItem(_ isTerm: Bool, _ tagText: UnsafePointer<Int8>!, _ tagLen: Int, _ valueType: CIFLexemeTag, _ valueText: UnsafePointer<Int8>!, _ valueTextLen: Int) {
-        let itemTag = NSString(bytes: tagText, length: tagLen, encoding: String.Encoding.utf8.rawValue )! as String
+
+    func loopItem( _ tags: UnsafeMutablePointer<TagList>!, _ tagIndex: Int, _ lex: UnsafePointer<Lex>! ) {
         switch mode {
         case .helix:
             fallthrough
         case .sheet:
-            loopTags.append( itemTag )
-            loopValues.append( TestValue( tag: valueType, textBytes: valueText, textLength: valueTextLen ) )
-            if isTerm {
-                appendLoopItem()
-            }
+            loopValues.append( TestValue( tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: lex.pointee.len ) )
         case .atom:
-            atomSite.loopItem_(itemTag: itemTag, tag: valueType, textBytes: valueText, textLength: valueTextLen)
-            if isTerm {
-                appendLoopItem()
+            atomKeyTable[tagIndex].map{
+                atomSite.loopItem(key: $0, tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: lex.pointee.len)
             }
         default:
             break
         }
     }
+
+    func loopItemTerm() {
+        switch mode {
+        case .helix:
+            fallthrough
+        case .sheet:
+            fallthrough
+        case .atom:
+            appendLoopItem()
+        default:
+            break
+        }
+    }
+
     func endLoop() {
         switch mode {
         case .atom:
@@ -181,34 +178,11 @@ class Simple: CIFHandler {
         }
         mode = .ignore
     }
+
     func endData() {
     }
 
     var atomSites: [AtomSite] = []
-    func appendAtomSite(_ tags: [String],_ values: [TestValue] ) {
-        let dict: [String:TestValue] = Dictionary(uniqueKeysWithValues: zip(tags, values) )
-        let labelAtom = dict["_atom_site.label_atom_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
-        if labelAtom?.stringValue != "CA" {
-            return
-        }
-        let seq = dict["_atom_site.label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
-        let label = seq.flatMap{ seq in
-            labelAtom.flatMap{ labelAtom in
-                LabelID(atom: labelAtom, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
-            } }
-        let auth = AuthID(seq: .unknown, comp: .unknown, asym: .unknown, atom: .unknown)
-        var atomSite = label.flatMap{ label in AtomSite(id: .unknown, symbol: .unknown, label: label, auth: auth) }
-        let x = lift( atof, dict[xKey]?.textBytes )
-        let y = lift( atof, dict[yKey]?.textBytes )
-        let z = dict[zKey].map{ atof($0.textBytes) }
-        let group = dict["_atom_site.group_PDB"].flatMap{ groupPDB_($0.textBytes, $0.textLength) }
-        let cartn = lift3( SCNVector3.init, x, y, z )
-        atomSite?.groupPDB = group
-        cartn.map{ atomSite?.cartn = $0 }
-//        if let a = atomSite {
-        atomSites.append( atomSite! )
-//        }
-    }
 
     var structConfs: [StructConf] = []
     func appendHelix(_ tags: [String],_ values: [TestValue] ) {
@@ -308,7 +282,7 @@ class Test: NSObject {
         }
 
         var foundConf: StructConf?
-        for var atomSite in atomSites {
+        for atomSite in atomSites {
             if foundConf == nil {
 //                foundConf = structConfs.filter({ $0.begLabelID.seq.integerValue == atomSite.label.seq.integerValue }).first
                 foundConf = atomSite.label.seq.integerValue.flatMap{ bDic[$0] }
@@ -328,7 +302,7 @@ class Test: NSObject {
         }
         
         var foundSheet: StructSheetRange?
-        for var atomSite in atomSites {
+        for atomSite in atomSites {
             if foundSheet == nil {
 //                foundSheet = structSheetRanges.filter({ $0.begLabelID.seq.integerValue == atomSite.label.seq.integerValue }).first
                 foundSheet = atomSite.label.seq.integerValue.flatMap{ cDic[$0] }

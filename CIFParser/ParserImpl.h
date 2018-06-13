@@ -13,11 +13,7 @@
 #include "Parser.h"
 #include "TagString.h"
 
-typedef struct Lex {
-    CIFLexemeTag tag;
-    char *text;
-    size_t len;
-} Lex;
+
 
 typedef enum ParseState {
     PSUnexpectedToken,

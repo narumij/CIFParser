@@ -13,9 +13,10 @@
 
 @protocol CIFHandler
 -(void)beginData:(const char *)valueText :(size_t)valueTextLen;
--(void)itemTag:(const char *)tagText :(size_t)tagLen :(CIFLexemeTag)valueType :(const char *)valueText :(size_t)valueTextLen;
+-(void)item:(const TagText *)tag :(const Lex *)lex;
 -(void)beginLoop:(TagList *)tags;
--(void)loopItem:(BOOL)isTerm :(const char *)tagText :(size_t)tagLen :(CIFLexemeTag)valueType :(const char *)valueText :(size_t)valueTextLen;
+-(void)loopItem:(TagList *)tags :(size_t)tagIndex :(const Lex *)lex;
+-(void)loopItemTerm;
 -(void)endLoop;
 @end
 
@@ -29,3 +30,4 @@ Handlers prepareHandlers( id<CIFHandler> handler );
 @end
 
 NSArray<NSString*>* StringsFromTagList( TagList *tags );
+

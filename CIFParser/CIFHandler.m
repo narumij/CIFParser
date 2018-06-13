@@ -13,15 +13,10 @@
 {
     NSLog(@"begin data ** %s",valueText);
 }
--(void)itemTag:(const char *)tagText
-              :(size_t)tagLen
-              :(CIFLexemeTag)valueType
-              :(const char *)valueText
-              :(size_t)valueTextLen
+-(void)item:(const TagText *)tag :(const Lex *)lex
 {
-    NSLog(@"item ( %s : %s )",tagText,valueText);
+    NSLog( @"item ( %s : %s )", tag->text, lex->text );
 }
-
 NSArray<NSString*>* StringsFromTagList( TagList *tags ) {
     NSMutableArray *mArray = @[].mutableCopy;
     for ( int i = 0; i < tags->count; ++i) {
@@ -30,57 +25,59 @@ NSArray<NSString*>* StringsFromTagList( TagList *tags ) {
     }
     return mArray;
 }
-
 -(void)beginLoop:(TagList *)tags {
     NSLog(@"begin loop %@",StringsFromTagList(tags));
 }
-
--(void)loopItem:(BOOL)isTerm
-               :(const char *)tagText
-               :(size_t)tagLen
-               :(CIFLexemeTag)valueType
-               :(const char *)valueText
-               :(size_t)valueTextLen
+-(void)loopItem:(TagList *)tags
+               :(size_t)tagIndex
+               :(const Lex *)lex
 {
-    NSLog(@"loop item [ %s : %s ]",tagText,valueText);
+    NSLog(@"loop item [ %zd : %s ]",tagIndex,lex->text);
+}
+-(void)loopItemTerm
+{
 }
 -(void)endLoop
 {
 }
 @end
 
-void HandleBeginData( void *ctx, const char* text, size_t len )
+static void HandleBeginData( void *ctx, const char* text, size_t len )
 {
     [(__bridge id<CIFHandler>)ctx beginData:text :len];
 }
 
-void HandleItem( void *ctx, const char* itemTag, size_t itemLen, CIFLexemeTag tag, const char* text, size_t len )
+static void HandleItem( void *ctx, const TagText *tag, Lex *lex )
 {
-//    [(__bridge id<CIFHandler>)ctx itemTag:itemTag :itemLen :tag :text :len];
+    [(__bridge id<CIFHandler>)ctx item:tag :lex];
 }
 
-void HandleBeginLoop( void *ctx, TagList *tags )
+static void HandleBeginLoop( void *ctx, TagList *tags )
 {
     [(__bridge id<CIFHandler>)ctx beginLoop:tags];
 }
 
-void HandleLoopItem( void *ctx, int isTerm, const char* itemTag, size_t itemLen, CIFLexemeTag tag, const char* text, size_t len )
+static void HandleLoopItem( void *ctx, TagList *tags, size_t tagIndex, Lex *lex )
 {
-    [(__bridge id<CIFHandler>)ctx loopItem:isTerm :itemTag :itemLen :tag :text :len];
+    [(__bridge id<CIFHandler>)ctx loopItem:tags :tagIndex :lex];
 }
 
-void HandleEndLoop( void *ctx )
+static void HandleLoopItemTerm( void *ctx )
+{
+    [(__bridge id<CIFHandler>)ctx loopItemTerm];
+}
+
+static void HandleEndLoop( void *ctx )
 {
     // 必ず呼ぶことを保証できてない
     [(__bridge id<CIFHandler>)ctx endLoop];
 }
 
-void HandleEndData( void *ctx )
+static void HandleEndData( void *ctx )
 {
     // 必ず呼ぶことを保証できてない
     NSLog(@"end data");
 }
-
 
 Handlers prepareHandlers( id<CIFHandler> handler ) {
     Handlers h;
@@ -89,6 +86,7 @@ Handlers prepareHandlers( id<CIFHandler> handler ) {
     h.beginData = HandleBeginData;
     h.beginLoop = HandleBeginLoop;
     h.loopItem = HandleLoopItem;
+    h.loopItemTerm = HandleLoopItemTerm;
     h.endLoop = HandleEndLoop;
     h.endData = HandleEndData;
     return h;

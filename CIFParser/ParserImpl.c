@@ -126,7 +126,8 @@ ParseState itemParse( Ctx *ctx, Lex *lex ) {
         assert(0);
         return PSUnexpectedToken;
     }
-    ctx->handlers->item( ctx->handlers->ctx, ctx->itemTag.text, ctx->itemTag.len, lex->tag, lex->text, lex->len );
+    TagText tag = { lex->text, lex->len };
+    ctx->handlers->item( ctx->handlers->ctx, &tag, lex );
     return PSComplete;
 }
 
@@ -146,15 +147,10 @@ ParseState loopParse( Ctx *ctx, Lex *lex ) {
     if (ctx->loopStateValueNow)
     {
         if (isValueTag(lex)) {
-            ctx->handlers->loopItem(ctx->handlers->ctx,
-                                    ctx->tagIndex + 1 == CountTag( &ctx->tags ),
-                                    GetText( &ctx->tags, ctx->tagIndex ),
-                                    GetLen( &ctx->tags, ctx->tagIndex ),
-                                    lex->tag,
-                                    lex->text,
-                                    lex->len );
+            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->tags, ctx->tagIndex, lex );
             ctx->tagIndex += 1;
             if ( ctx->tagIndex == CountTag( &ctx->tags ) ) {
+                ctx->handlers->loopItemTerm(ctx->handlers->ctx);
                 ctx->tagIndex = 0;
             }
         } else {
