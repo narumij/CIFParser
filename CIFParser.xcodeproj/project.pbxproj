@@ -211,7 +211,6 @@
 				BF4CC1FF20D0AB4800A55A32 /* Test.swift */,
 				BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */,
 				BF7A2E021FDDE7110031EBA7 /* Main.storyboard */,
-				BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */,
 				BF4CC1F220D0AA2000A55A32 /* CIFValue.h */,
 				BF4CC1F320D0AA2000A55A32 /* CIFValue.m */,
 				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
@@ -297,13 +296,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BF7A2DFB1FDDE7110031EBA7 /* CIFTest2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CIFTest2;
 			sourceTree = "<group>";
 		};
 		BFF875D01FE4B1BD00A561A3 /* Parser */ = {
