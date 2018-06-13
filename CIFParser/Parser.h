@@ -11,16 +11,8 @@
 
 #include <stdio.h>
 #include "Lexer.h"
-#include "TagString.h"
-
-typedef struct Lex {
-    CIFLexemeTag tag;
-    char *text;
-    size_t len;
-} Lex;
-
-struct Handlers;
-typedef struct Handlers Handlers;
+#include "Handlers.h"
+#include "CIFLoopTag.h"
 
 int Parse( FILE * fp, Handlers *h );
 

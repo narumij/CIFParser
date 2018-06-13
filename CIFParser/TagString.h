@@ -16,6 +16,7 @@ struct Lex;
 typedef struct TagText {
     char *text;
     size_t len;
+    size_t capa;
 } TagText;
 
 void CopyString( TagText* str, const char *text, size_t len );
@@ -27,13 +28,10 @@ typedef struct TagList {
     int count;
 } TagList;
 
-void IncreaseCapacity( TagList *xs );
 void AppendTag( TagList *stack, struct Lex *lex );
 int CountTag( TagList *stack );
-void ClearTag( TagList *stack );
 const char *GetText( TagList *stack, int idx );
 size_t GetLen( TagList *stack, int idx );
-
 void DeleteTags( TagList *stack );
 
 // TODO: エラー処理
