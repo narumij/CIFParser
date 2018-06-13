@@ -60,7 +60,7 @@ size_t CIFLoopTagGetLen( CIFLoopTag *stack, int idx ) {
     return stack->list[idx].len;
 }
 
-void DeleteTags( CIFLoopTag *stack )
+void CIFLoopTagTearDown( CIFLoopTag *stack )
 {
     for ( int i = 0; i < stack->capacity; ++i ) {
         CIFTagDeepClearString(&stack->list[i]);

@@ -9,7 +9,8 @@
 #ifndef Handlers_h
 #define Handlers_h
 
-//#include "Parser.h"
+#include "CIFTag.h"
+#include "CIFLoopTag.h"
 
 typedef struct Handlers {
     void *ctx;

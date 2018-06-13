@@ -73,7 +73,7 @@ int Parse( FILE * fp, Handlers *h )
 #endif
     int result = ciflex( scanner );
     ciflex_destroy ( scanner );
-    ParseObjectFinalize(&ctx);
+    ParseObjectTearDown(&ctx);
     SHOW_STATS();
     return result;
 }

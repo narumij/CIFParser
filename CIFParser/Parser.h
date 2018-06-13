@@ -11,11 +11,8 @@
 
 #include <stdio.h>
 #include "Lexer.h"
+#include "Handlers.h"
 #include "CIFLoopTag.h"
-
-
-struct Handlers;
-typedef struct Handlers Handlers;
 
 int Parse( FILE * fp, Handlers *h );
 

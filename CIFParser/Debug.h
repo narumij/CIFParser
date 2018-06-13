@@ -16,7 +16,7 @@ void DebugFree(void *ptr,int idx);
 size_t DebugStats(int idx);
 void ShowStats(void);
 
-#if 1
+#if 0
 #define MALLOC(a,b) DebugMalloc(a,b)
 #define FREE(a,b) DebugFree(a,b)
 #define SHOW_STATS() ShowStats()

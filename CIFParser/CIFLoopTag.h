@@ -21,9 +21,9 @@ typedef struct CIFLoopTag {
 void CIFLoopTagAdd( CIFLoopTag *stack, CIFLex *lex );
 size_t CIFLoopTagCount( CIFLoopTag *stack );
 void CIFLoopTagClear( CIFLoopTag *stack );
-const char *CIFLoopTagGetText( CIFLoopTag *stack, int idx );
+//const char *CIFLoopTagGetText( CIFLoopTag *stack, int idx );
 //size_t CIFLoopTagGetLen( CIFLoopTag *stack, int idx );
 
-void DeleteTags( CIFLoopTag *stack );
+void CIFLoopTagTearDown( CIFLoopTag *stack );
 
 #endif /* CIFLoopTag_h */
