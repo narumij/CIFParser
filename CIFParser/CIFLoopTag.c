@@ -26,7 +26,7 @@ void IncreaseCapacity( CIFLoopTag *xs ) {
     }
     if ( xs->list ) {
         for ( int i = 0; i < xs->capacity; ++i ) {
-            DeepClearString(&xs->list[i]);
+            CIFTagDeepClearString(&xs->list[i]);
         }
         FREE(xs->list,1);
     }
@@ -47,7 +47,7 @@ int CountTag( CIFLoopTag *stack ) {
 
 void ClearTag( CIFLoopTag *stack ) {
     for (int i = 0; i < stack->capacity; ++i ) {
-        ClearString(&stack->list[i]);
+        CIFTagClearString(&stack->list[i]);
     }
     stack->count = 0;
 }
@@ -63,7 +63,7 @@ size_t GetLen( CIFLoopTag *stack, int idx ) {
 void DeleteTags( CIFLoopTag *stack )
 {
     for ( int i = 0; i < stack->capacity; ++i ) {
-        DeepClearString(&stack->list[i]);
+        CIFTagDeepClearString(&stack->list[i]);
     }
     FREE(stack->list,1);
     stack->capacity = 0;

@@ -26,11 +26,11 @@ void CIFTagAssignString( CIFTag* str, const char *text, size_t len ) {
     strcpy(str->text,text);
 }
 
-void ClearString( CIFTag *str ) {
+void CIFTagClearString( CIFTag *str ) {
     str->len = 0;
 }
 
-void DeepClearString( CIFTag *str ) {
+void CIFTagDeepClearString( CIFTag *str ) {
     if ( str->text ) {
         FREE(str->text,0);
         str->text = 0;

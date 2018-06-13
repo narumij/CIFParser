@@ -84,7 +84,7 @@ int Parse( FILE * fp, Handlers *h )
 
 void ctxCleanUp( ParserObject *ctx ) {
     DeleteTags(&ctx->loopTag);
-    DeepClearString(&ctx->itemTag);
+    CIFTagDeepClearString(&ctx->itemTag);
 }
 
 /*
