@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+// Objective-Cでパーサー書いてみた名残
+
 typedef enum CIFValueType CIFValueType;
 typedef enum CIFLexemeTag CIFLexemeTag;
 

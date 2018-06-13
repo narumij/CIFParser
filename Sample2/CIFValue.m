@@ -9,6 +9,8 @@
 #import "CIFValue.h"
 #import "CIFLexer.h"
 
+// Objective-Cでパーサー書いてみた名残
+
 NSString *hoge( CIFValueType type ) {
     switch (type) {
         case CIFValueFloat:

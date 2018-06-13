@@ -13,7 +13,6 @@
 
 @implementation ViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -22,27 +21,20 @@
     [self test];
 }
 
-
 - (void)test {
     NSLog(@"start");
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [bundle pathForResource:@"1wns" ofType:@"cif"];
-//    FILE *fp = fopen( path.UTF8String, "r" );
     DummyHandler *h = [[DummyHandler alloc] init];
-//    Handlers hh = prepareHandlers(h);
-//    Parse(fp, &hh);
     [NewParser parse:path :h];
-//    fclose(fp);
     NSLog(@"done");
 }
-
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
 }
-
 
 @end
 
