@@ -58,7 +58,7 @@ void IssueLexeme(void *scanner,CIFLexemeTag tag,const char *text,size_t len)
     assert( lex.text == text );
     assert( lex.len == len );
     ParseState result = rootParse( cifget_extra(scanner), &lex );
-//    assert( result != PSUnexpectedToken );
+    assert( result != PSUnexpectedToken );
 }
 
 int Parse( FILE * fp, Handlers *h )
@@ -144,6 +144,9 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
             ctx->dataCurrent = NULL;
             ctx->loopStateValueNow = 0;
         } else if ( code == PSCarryOn ) {
+            return PSCarryOn;
+        }
+        if ( code == PSComplete ) {
             return PSCarryOn;
         }
     }
