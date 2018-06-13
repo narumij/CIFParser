@@ -20,14 +20,6 @@
 {
     NSLog( @"item ( %s : %s )", tag->text, lex->text );
 }
-NSArray<NSString*>* StringsFromTagList( TagList *tags ) {
-    NSMutableArray *mArray = @[].mutableCopy;
-    for ( int i = 0; i < tags->count; ++i) {
-        NSString *str = [NSString stringWithUTF8String:tags->list[i].text];
-        [mArray addObject:str];
-    }
-    return mArray;
-}
 -(void)beginLoop:(TagList *)tags {
     NSLog(@"begin loop %@",StringsFromTagList(tags));
 }

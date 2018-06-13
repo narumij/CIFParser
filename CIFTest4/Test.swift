@@ -71,7 +71,7 @@ class Simple: CIFHandler {
 
     var mode: LoopMode = .ignore
 
-    func beginLoop(_ tags: UnsafeMutablePointer<TagList>!) {
+    func beginLoop(_ tags: UnsafePointer<TagList>!) {
         if let tags = StringsFromTagList(tags) {
             if tags.contains("_atom_site.Cartn_x") {
                 
@@ -137,7 +137,7 @@ class Simple: CIFHandler {
         loopValues = []
     }
 
-    func loopItem( _ tags: UnsafeMutablePointer<TagList>!, _ tagIndex: Int, _ lex: UnsafePointer<Lex>! ) {
+    func loopItem( _ tags: UnsafePointer<TagList>!, _ tagIndex: Int, _ lex: UnsafePointer<Lex>! ) {
         switch mode {
         case .helix:
             fallthrough

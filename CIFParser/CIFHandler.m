@@ -113,6 +113,14 @@ Handlers prepareHandlers( id<CIFHandler> handler ) {
 
 
 
+NSArray<NSString*>* StringsFromTagList( const TagList *tags ) {
+    NSMutableArray *mArray = @[].mutableCopy;
+    for ( int i = 0; i < tags->count; ++i) {
+        NSString *str = [NSString stringWithUTF8String:tags->list[i].text];
+        [mArray addObject:str];
+    }
+    return mArray;
+}
 
 
 

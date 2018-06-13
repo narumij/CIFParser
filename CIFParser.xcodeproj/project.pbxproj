@@ -167,18 +167,18 @@
 			isa = PBXGroup;
 			children = (
 				BF5111C620D0266900E87696 /* CIFParser.h */,
-				BF5111A920D0256F00E87696 /* Parser.h */,
-				BF5111AA20D0256F00E87696 /* Parser.c */,
-				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
-				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
-				BF5111C720D0266900E87696 /* Info.plist */,
-				BF5111F520D0425800E87696 /* ParserImpl.h */,
-				BF5111F620D0425800E87696 /* ParserImpl.c */,
 				BF5111F920D0456F00E87696 /* CIFHandler.h */,
 				BF5111FA20D0456F00E87696 /* CIFHandler.m */,
+				BF5111A920D0256F00E87696 /* Parser.h */,
+				BF5111AA20D0256F00E87696 /* Parser.c */,
 				BF51120320D05F6000E87696 /* TagString.h */,
 				BF51120420D05F6000E87696 /* TagString.c */,
+				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
+				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
 				BF51122F20D09F1C00E87696 /* Handlers.h */,
+				BF5111F520D0425800E87696 /* ParserImpl.h */,
+				BF5111F620D0425800E87696 /* ParserImpl.c */,
+				BF5111C720D0266900E87696 /* Info.plist */,
 			);
 			path = CIFParser;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			children = (
 				BF7A2D701FDD67770031EBA7 /* Lexer */,
 				BF5111C520D0266800E87696 /* CIFParser */,
-				BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */,
+				BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */,
 				BF5111DB20D0324A00E87696 /* CIFTest3 */,
 				BF51120E20D062BE00E87696 /* CIFTest4 */,
 				BF7A2D651FDD673D0031EBA7 /* Products */,
@@ -279,7 +279,7 @@
 			path = Lexer;
 			sourceTree = "<group>";
 		};
-		BF7A2DCE1FDD8E3E0031EBA7 /* CIFTest */ = {
+		BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */ = {
 			isa = PBXGroup;
 			children = (
 				BF7A2DEA1FDDB3680031EBA7 /* cif_core.dic */,
@@ -289,7 +289,7 @@
 				BF557F8B1FDF0A2000D1F251 /* 3ixn.cif */,
 				BFF875C81FE3133100A561A3 /* 3j3y.cif */,
 			);
-			path = CIFTest;
+			path = "CIF Files";
 			sourceTree = "<group>";
 		};
 		BF7A2DE11FDD8E4C0031EBA7 /* Frameworks */ = {
