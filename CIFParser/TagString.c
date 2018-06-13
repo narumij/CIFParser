@@ -12,21 +12,32 @@
 
 #include "Debug.h"
 
+#include <assert.h>
+
 void CopyString( TagText* str, const char *text, size_t len ) {
-    if ( str->text != NULL ) {
-        FREE(str->text,0);
+    assert(len != 0);
+    if ( str->capa == 0 || str->capa < len ) {
+        if ( str->text != NULL ) {
+            FREE(str->text,0);
+        }
+        str->text = MALLOC( len + 1 , 0 );
     }
-    str->text = MALLOC(len + 1,0);
     str->len = len;
+    str->capa = len;
     strcpy(str->text,text);
 }
 
 void ClearString( TagText *str ) {
+    str->len = 0;
+}
+
+void DeepClearString( TagText *str ) {
     if ( str->text ) {
         FREE(str->text,0);
         str->text = 0;
     }
     str->len = 0;
+    str->capa = 0;
 }
 
 void IncreaseCapacity( TagList *xs ) {
@@ -34,13 +45,15 @@ void IncreaseCapacity( TagList *xs ) {
     TagText *newList = MALLOC(newCapacity * sizeof(TagText),1);
     for (int i = 0; i < newCapacity; ++i ) {
         newList[i].text = 0;
+        newList[i].len = 0;
+        newList[i].capa = 0;
     }
     for (int i = 0; i < xs->count; ++i) {
         CopyString( &newList[i], xs->list[i].text, xs->list[i].len );
     }
     if ( xs->list ) {
         for ( int i = 0; i < xs->capacity; ++i ) {
-            ClearString(&xs->list[i]);
+            DeepClearString(&xs->list[i]);
         }
         FREE(xs->list,1);
     }
@@ -48,7 +61,7 @@ void IncreaseCapacity( TagList *xs ) {
     xs->capacity = newCapacity;
 }
 
-void AppendTag( TagList *stack, struct Lex *lex ) {
+void AppendTag( TagList *stack, Lex *lex ) {
     if ( stack->capacity <= (stack->count + 1) )
         IncreaseCapacity(stack);
     CopyString( &stack->list[stack->count], lex->text, lex->len );
@@ -77,7 +90,7 @@ size_t GetLen( TagList *stack, int idx ) {
 void DeleteTags( TagList *stack )
 {
     for ( int i = 0; i < stack->capacity; ++i ) {
-        ClearString(&stack->list[i]);
+        DeepClearString(&stack->list[i]);
     }
     FREE(stack->list,1);
     stack->capacity = 0;

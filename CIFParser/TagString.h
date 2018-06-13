@@ -16,6 +16,7 @@ struct Lex;
 typedef struct TagText {
     char *text;
     size_t len;
+    size_t capa;
 } TagText;
 
 void CopyString( TagText* str, const char *text, size_t len );
