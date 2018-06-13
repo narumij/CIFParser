@@ -1,6 +1,6 @@
 //  Copyright © 2017年 Jun Narumi. All rights reserved.
 
-#import "CIFLexer.h"
+#import "CIFLexer_.h"
 #include "lex.cif.h"
 
 // 使ってない、がmake testに使えるので残してある
@@ -204,6 +204,12 @@ NSString *CIFLexemeText( CIFLexemeTag tag, const char * textBytes, size_t length
           cifget_column(scanner),
           CIFLexemeTagName(tag),
           text);
+}
+-(void)nextLexeme:(CIFLexemeTag)tag
+        textBytes:(const char*)textBytes
+       textLength:(size_t)textLength
+{
+    abort(); // not implemented yet.
 }
 @end
 

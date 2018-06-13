@@ -10,23 +10,23 @@
 
 @implementation DummyHandler
 
--(void)beginData:(const char *)valueText :(size_t)valueTextLen
+-(void)beginData:(const CIFLex *)lex
 {
-    NSLog(@"begin data ** %s",valueText);
+    NSLog(@"begin data ** %s",lex->text);
 }
 
--(void)item:(const TagText *)tag :(const Lex *)lex
+-(void)item:(const CIFTag *)tag :(const CIFLex *)lex
 {
     NSLog( @"item ( %s : %s )", tag->text, lex->text );
 }
 
--(void)beginLoop:(const TagList *)tags {
+-(void)beginLoop:(const CIFLoopTag *)tags {
     NSLog(@"begin loop %@",StringsFromTagList(tags));
 }
 
--(void)loopItem:(const TagList *)tags
+-(void)loopItem:(const CIFLoopTag *)tags
                :(size_t)tagIndex
-               :(const Lex *)lex
+               :(const CIFLex *)lex
 {
     NSLog(@"loop item [ %s : %s ]",tags->list[tagIndex].text,lex->text);
 }

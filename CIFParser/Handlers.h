@@ -9,14 +9,15 @@
 #ifndef Handlers_h
 #define Handlers_h
 
-#include "Parser.h"
+#include "CIFTag.h"
+#include "CIFLoopTag.h"
 
 typedef struct Handlers {
     void *ctx;
-    void (*beginData)( void* ctx, const char* text, size_t len );
-    void (*item)( void *ctx, const TagText *tag, Lex *value );
-    void (*beginLoop)( void *ctx, TagList *tags );
-    void (*loopItem)( void *ctx, TagList *tags, size_t itemIndex, Lex *value );
+    void (*beginData)( void* ctx, const CIFLex* value );
+    void (*item)( void *ctx, const CIFTag *tag, CIFLex *value );
+    void (*beginLoop)( void *ctx, CIFLoopTag *tags );
+    void (*loopItem)( void *ctx, CIFLoopTag *tags, size_t itemIndex, CIFLex *value );
     void (*loopItemTerm)( void *ctx );
     void (*endLoop)( void *ctx );
     void (*endData)( void *ctx );

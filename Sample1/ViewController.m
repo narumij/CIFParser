@@ -26,7 +26,7 @@
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [bundle pathForResource:@"1wns" ofType:@"cif"];
     DummyHandler *h = [[DummyHandler alloc] init];
-    [NewParser parse:path :h];
+    [CIFParser parse:path :h];
     NSLog(@"done");
 }
 

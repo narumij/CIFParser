@@ -6,17 +6,17 @@
 //  Copyright © 2018年 Jun Narumi. All rights reserved.
 //
 
-#include "Parser.h"
-#include "lex.cif.h"
-#include <assert.h>
-#import "ParserImpl.h"
-
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+
+#include "lex.cif.h"
+
+#include "Parser.h"
+#include "ParserObject.h"
 #include "Lexer.h"
 #include "Handlers.h"
-#include "TagString.h"
+#include "CIFTag.h"
 
 #include "Debug.h"
 
@@ -26,15 +26,10 @@
 
  */
 
-static void prepareItem( Ctx *ctx, Lex *lex );
-//static void nextLexeme( void *ctx, Lex* lex );
-
-static ParseState rootParse( Ctx *ctx, Lex *lex );
-static ParseState dataParse( Ctx *ctx, Lex *lex );
-static ParseState itemParse( Ctx *ctx, Lex *lex );
-static ParseState loopParse( Ctx *ctx, Lex *lex );
-
-void ctxCleanUp( Ctx *ctx );
+static ParseState rootParse( ParserObject *ctx, CIFLex *lex );
+static ParseState dataParse( ParserObject *ctx, CIFLex *lex );
+static ParseState itemParse( ParserObject *ctx, CIFLex *lex );
+static ParseState loopParse( ParserObject *ctx, CIFLex *lex );
 
 /*
 
@@ -44,6 +39,7 @@ void ctxCleanUp( Ctx *ctx );
 
 static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_t len )
 {
+    // lexerで判別するように出来なかったので、代替でここで判別している
     if ( textBytes[0] == '.' && len == 1 )
         return LDot;
     if ( textBytes[0] == '?' && len == 1 )
@@ -54,7 +50,7 @@ static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_
 void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
 {
     assert(len != 0);
-    Lex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
+    CIFLex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
     assert( lex.tag == lexTypeCheck(tag,text,len));
     assert( lex.text == text );
     assert( lex.len == len );
@@ -68,7 +64,7 @@ void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
 int Parse( FILE * fp, Handlers *h )
 {
     yyscan_t scanner;
-    Ctx ctx = {};
+    ParserObject ctx = {};
     ctx.handlers = h;
     ciflex_init_extra( &ctx, &scanner );
     cifset_in(fp,scanner);
@@ -77,19 +73,11 @@ int Parse( FILE * fp, Handlers *h )
 #endif
     int result = ciflex( scanner );
     ciflex_destroy ( scanner );
-    ctxCleanUp(&ctx);
+    ParseObjectTearDown(&ctx);
     SHOW_STATS();
     return result;
 }
 
-void ctxCleanUp( Ctx *ctx ) {
-    DeleteTags(&ctx->tags);
-    if ( ctx->itemTag.text ) {
-        FREE(ctx->itemTag.text, 2);
-        ctx->itemTag.len = 0;
-        ctx->itemTag.tag = 0;
-    }
-}
 
 /*
 
@@ -101,14 +89,16 @@ void ctxCleanUp( Ctx *ctx ) {
 //    rootParse( ctx, lex );
 //}
 
-ParseState rootParse( Ctx *ctx, Lex *lex ) {
-    if ( ctx->rootCurrent != NULL ) {
-        ParseState code = ctx->rootCurrent(ctx,lex);
+ParseState rootParse( ParserObject *ctx, CIFLex *lex ) {
+    if ( ctx->parseFuncInRoot != NULL ) {
+
+        ParseState code = ctx->parseFuncInRoot(ctx,lex);
+
         if ( code == PSUnexpectedToken ) {
             return code;
         }
         if ( code == PSComplete ) {
-            ctx->rootCurrent = NULL;
+            ctx->parseFuncInRoot = NULL;
             return PSCarryOn;
         } else if (code == PSCarryOn) {
             return code;
@@ -121,14 +111,14 @@ ParseState rootParse( Ctx *ctx, Lex *lex ) {
     }
 
     if ( lex->tag == LData_ ) {
-        ctx->rootCurrent = dataParse;
-        ctx->handlers->beginData( ctx->handlers->ctx, lex->text, lex->len );
+        ctx->parseFuncInRoot = dataParse;
+        CallBacBeginData( ctx, lex );
         return PSCarryOn;
     }
 
     if ( lex->tag == LEOF) {
-        ctx->handlers->endData( ctx->handlers->ctx );
-        ctx->rootCurrent = NULL;
+        CallBacEndData(ctx);
+        ctx->parseFuncInRoot = NULL;
         return PSComplete;
     }
 
@@ -137,20 +127,20 @@ ParseState rootParse( Ctx *ctx, Lex *lex ) {
     return PSUnexpectedToken;
 }
 
-ParseState dataParse( Ctx *ctx, Lex *lex ) {
-    if ( ctx->dataCurrent != NULL ) {
-        ParseState code = ctx->dataCurrent( ctx, lex );
+ParseState dataParse( ParserObject *ctx, CIFLex *lex ) {
+    if ( ctx->parseFuncInData != NULL ) {
+        ParseState code = ctx->parseFuncInData( ctx, lex );
         if ( code == PSUnexpectedToken ) {
             assert(0);
             return code;
         }
         if ( code == PSComplete || code == PSShouldBack ) {
-            ctx->dataCurrent = NULL;
-            ctx->loopStateValueNow = 0;
+            ctx->parseFuncInData = NULL;
+            ctx->loopParseState = LPSTags;
         } else if ( code == PSCarryOn ) {
             return PSCarryOn;
         }
-        if ( code == PSComplete ) {
+        if ( code == PSComplete ) { // PSCompletはloopは返さない。itemが返す。
             return PSCarryOn;
         }
     }
@@ -163,11 +153,11 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
         case LEOF:
             return PSComplete;
         case LTag:
-            ctx->dataCurrent = itemParse;
-            prepareItem( ctx, lex );
+            ctx->parseFuncInData = itemParse;
+            CIFTagAssignString( &ctx->itemTag, lex->text, lex->len );
             return PSCarryOn;
         case LLoop_:
-            ctx->dataCurrent = loopParse;
+            ctx->parseFuncInData = loopParse;
             return PSCarryOn;
         default:
             break;
@@ -176,7 +166,7 @@ ParseState dataParse( Ctx *ctx, Lex *lex ) {
 }
 
 
-int isValueTag(Lex *lex ) {
+int isValueTag(CIFLex *lex ) {
     CIFLexemeTag tags[] = {
         LNumericFloat,
         LNumericInteger,
@@ -188,61 +178,47 @@ int isValueTag(Lex *lex ) {
         LQue};
     int tagsCount = sizeof(tags) / sizeof(CIFLexemeTag);
     for ( int i = 0; i < tagsCount; ++i ) {
-        if ( tags[i] == lex->tag ) {
+        if ( tags[i] == lex->tag )
             return 1;
-        }
     }
     return 0;
 }
 
-void prepareItem( Ctx *ctx, Lex *lex ) {
-    if (ctx->itemTag.text != NULL) {
-        FREE(ctx->itemTag.text, 2);
-        ctx->itemTag.text = 0;
-    }
-    ctx->itemTag.text = MALLOC( lex->len + 1, 2 );
-    strcpy(ctx->itemTag.text, lex->text);
-    ctx->itemTag.tag = lex->tag;
-    ctx->itemTag.len = lex->len;
-}
-
-ParseState itemParse( Ctx *ctx, Lex *lex ) {
+ParseState itemParse( ParserObject *ctx, CIFLex *lex ) {
     if ( !isValueTag(lex) ) {
         assert(0);
         return PSUnexpectedToken;
     }
-    TagText tag = { ctx->itemTag.text, ctx->itemTag.len };
-    ctx->handlers->item( ctx->handlers->ctx, &tag, lex );
+    CallBackItem(ctx, lex);
     return PSComplete;
 }
 
-ParseState loopParse( Ctx *ctx, Lex *lex ) {
+ParseState loopParse( ParserObject *ctx, CIFLex *lex ) {
     if ( lex->tag == LEOF ) {
         return PSShouldBack;
     }
-    if (!ctx->loopStateValueNow)
+    if ( ctx->loopParseState == LPSTags )
     {
         if (lex->tag == LTag) {
-            AppendTag( &ctx->tags, lex );
+            CIFLoopTagAdd( &ctx->loopTag, lex );
         } else {
-            ctx->loopStateValueNow = 1;
-            ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->tags );
+            ctx->loopParseState = LPSValues;
+            CallBackBeginLoop(ctx);
         }
     }
     // else にしてはいけない。Loop最初のValueは上のブロック実行後下のブロックで処理をする必要があるため。
-    if (ctx->loopStateValueNow)
+    if ( ctx->loopParseState == LPSValues )
     {
         if (isValueTag(lex)) {
-            ctx->handlers->loopItem(ctx->handlers->ctx, &ctx->tags, ctx->tagIndex, lex );
-            ctx->tagIndex += 1;
-            if ( ctx->tagIndex == CountTag( &ctx->tags ) ) {
-                ctx->handlers->loopItemTerm(ctx->handlers->ctx);
-                ctx->tagIndex = 0;
+            CallBackLoopItem( ctx, lex );
+            ctx->loopTagIndex += 1;
+            if ( ctx->loopTagIndex == CIFLoopTagCount( &ctx->loopTag ) ) {
+                CallBackLoopItemTerm(ctx);
+                ctx->loopTagIndex = 0;
             }
         } else {
-            ctx->handlers->endLoop( ctx->handlers->ctx );
-            ctx->tagIndex = 0;
-            ClearTag(&ctx->tags);
+            CallBacEndLoop(ctx);
+            ResetLoopTag(ctx);
             return PSShouldBack;
         }
     }

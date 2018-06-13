@@ -8,23 +8,25 @@
 
 #import "CIFHandler.h"
 #include "Handlers.h"
+#include "Parser.h"
+#import "CIFTag.h"
 
-static void HandleBeginData( void *ctx, const char* text, size_t len )
+static void HandleBeginData( void *ctx, const CIFLex *lex )
 {
-    [(__bridge id<CIFHandler>)ctx beginData:text :len];
+    [(__bridge id<CIFHandler>)ctx beginData:lex];
 }
 
-static void HandleItem( void *ctx, const TagText *tag, Lex *lex )
+static void HandleItem( void *ctx, const CIFTag *tag, CIFLex *lex )
 {
     [(__bridge id<CIFHandler>)ctx item:tag :lex];
 }
 
-static void HandleBeginLoop( void *ctx, TagList *tags )
+static void HandleBeginLoop( void *ctx, CIFLoopTag *tags )
 {
     [(__bridge id<CIFHandler>)ctx beginLoop:tags];
 }
 
-static void HandleLoopItem( void *ctx, TagList *tags, size_t tagIndex, Lex *lex )
+static void HandleLoopItem( void *ctx, CIFLoopTag *tags, size_t tagIndex, CIFLex *lex )
 {
     [(__bridge id<CIFHandler>)ctx loopItem:tags :tagIndex :lex];
 }
@@ -59,7 +61,7 @@ static Handlers prepareHandlers( id<CIFHandler> handler ) {
     return h;
 }
 
-@implementation NewParser
+@implementation CIFParser
 
 +(void)parse:(NSString*)path :(id<CIFHandler>)handler
 {
@@ -79,7 +81,7 @@ static Handlers prepareHandlers( id<CIFHandler> handler ) {
 
 
 
-NSArray<NSString*>* StringsFromTagList( const TagList *tags ) {
+NSArray<NSString*>* StringsFromTagList( const CIFLoopTag *tags ) {
     NSMutableArray *mArray = @[].mutableCopy;
     for ( int i = 0; i < tags->count; ++i) {
         NSString *str = [NSString stringWithUTF8String:tags->list[i].text];

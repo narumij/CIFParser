@@ -7,7 +7,7 @@
 //
 
 #import "CIFValue.h"
-#import "CIFLexer.h"
+#import <CIFParser/CIFLex.h>
 
 // Objective-Cでパーサー書いてみた名残
 
