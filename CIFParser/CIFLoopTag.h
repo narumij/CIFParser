@@ -22,7 +22,6 @@ typedef struct CIFLoopTag {
     int count;
 } CIFLoopTag;
 
-void IncreaseCapacity( CIFLoopTag *xs );
 void AppendTag( CIFLoopTag *stack, struct Lex *lex );
 int CountTag( CIFLoopTag *stack );
 void ClearTag( CIFLoopTag *stack );

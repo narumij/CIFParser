@@ -13,7 +13,7 @@
 #include "Debug.h"
 #include "Parser.h"
 
-void IncreaseCapacity( CIFLoopTag *xs ) {
+static void IncreaseCapacity( CIFLoopTag *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;
     CIFTag *newList = MALLOC(newCapacity * sizeof(CIFTag),1);
     for (int i = 0; i < newCapacity; ++i ) {
