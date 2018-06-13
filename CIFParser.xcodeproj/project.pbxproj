@@ -43,6 +43,8 @@
 		BF51122E20D06C3E00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
 		BFE2D65E20D1434300DF07FE /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D65C20D1434300DF07FE /* Debug.h */; };
 		BFE2D65F20D1434300DF07FE /* Debug.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D65D20D1434300DF07FE /* Debug.c */; };
+		BFE2D66320D163B700DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BFE2D66520D163CA00DF07FE /* CIFParser.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF5111C420D0266800E87696 /* CIFParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,29 @@
 			remoteInfo = CIFParser;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BFE2D66220D163AB00DF07FE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFE2D66320D163B700DF07FE /* CIFParser.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFE2D66420D163C100DF07FE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BFE2D66520D163CA00DF07FE /* CIFParser.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample2-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -125,6 +150,8 @@
 		BF7A2E031FDDE7110031EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFE2D65C20D1434300DF07FE /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		BFE2D65D20D1434300DF07FE /* Debug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Debug.c; sourceTree = "<group>"; };
+		BFE2D66020D1631C00DF07FE /* Sample2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample2.entitlements; sourceTree = "<group>"; };
+		BFE2D66120D1634600DF07FE /* Sample1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample1.entitlements; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +225,7 @@
 		BF5111DB20D0324A00E87696 /* Sample1 */ = {
 			isa = PBXGroup;
 			children = (
+				BFE2D66120D1634600DF07FE /* Sample1.entitlements */,
 				BF51123020D0A2F100E87696 /* DummyHandler.h */,
 				BF51123120D0A2F100E87696 /* DummyHandler.m */,
 				BF5111DC20D0324A00E87696 /* AppDelegate.h */,
@@ -215,6 +243,7 @@
 		BF51120E20D062BE00E87696 /* Sample2 */ = {
 			isa = PBXGroup;
 			children = (
+				BFE2D66020D1631C00DF07FE /* Sample2.entitlements */,
 				BFF875D01FE4B1BD00A561A3 /* Parser */,
 				BF4CC20820D0DBE400A55A32 /* Molecule */,
 				BF4CC20120D0AB4800A55A32 /* Utilities.swift */,
@@ -355,6 +384,7 @@
 				BF5111D620D0324A00E87696 /* Sources */,
 				BF5111D720D0324A00E87696 /* Frameworks */,
 				BF5111D820D0324A00E87696 /* Resources */,
+				BFE2D66420D163C100DF07FE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -373,6 +403,7 @@
 				BF51120920D062BE00E87696 /* Sources */,
 				BF51120A20D062BE00E87696 /* Frameworks */,
 				BF51120B20D062BE00E87696 /* Resources */,
+				BFE2D66220D163AB00DF07FE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -406,11 +437,21 @@
 					BF5111D920D0324A00E87696 = {
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					BF51120C20D062BE00E87696 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -633,6 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Sample1/Sample1.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -651,6 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Sample1/Sample1.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -670,6 +713,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Sample2/Sample2.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -693,6 +737,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Sample2/Sample2.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
