@@ -34,7 +34,7 @@ void ClearTag( TagList *stack );
 const char *GetText( TagList *stack, int idx );
 size_t GetLen( TagList *stack, int idx );
 
-// TODO: メモリ解放
+// TODO: メモリ解放 -> リークしてます。
 // TODO: エラー処理
 
 #endif /* TagString_h */
