@@ -9,7 +9,6 @@
 #ifndef TagString_h
 #define TagString_h
 
-//#include <stdio.h>
 #include <stdlib.h>
 
 struct Lex;
@@ -36,5 +35,9 @@ const char *GetText( TagList *stack, int idx );
 size_t GetLen( TagList *stack, int idx );
 
 // TODO: メモリ解放
+// TODO: エラー処理
 
 #endif /* TagString_h */
+
+
+

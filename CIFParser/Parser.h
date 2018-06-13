@@ -13,15 +13,14 @@
 #include "Lexer.h"
 #include "TagString.h"
 
-typedef struct Handlers {
-    void *ctx;
-    void (*beginData)( void* ctx, const char* text, size_t len );
-    void (*item)( void *ctx, const char* itemTag, size_t itemLen, CIFLexemeTag tag, const char* text, size_t len );
-    void (*beginLoop)( void *ctx, TagList *tags );
-    void (*loopItem)( void *ctx, int isTerm, const char* itemTag, size_t itemLen, CIFLexemeTag tag, const char* text, size_t len );
-    void (*endLoop)( void *ctx );
-    void (*endData)( void *ctx );
-} Handlers;
+typedef struct Lex {
+    CIFLexemeTag tag;
+    char *text;
+    size_t len;
+} Lex;
+
+struct Handlers;
+typedef struct Handlers Handlers;
 
 int Parse( FILE * fp, Handlers *h );
 
