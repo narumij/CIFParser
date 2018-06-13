@@ -19,7 +19,7 @@
 		BF5111C820D0266900E87696 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111C620D0266900E87696 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5111D020D0267500E87696 /* Parser.c in Sources */ = {isa = PBXBuildFile; fileRef = BF5111AA20D0256F00E87696 /* Parser.c */; };
 		BF5111D120D026AA00E87696 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111A920D0256F00E87696 /* Parser.h */; };
-		BF5111D520D0279400E87696 /* lex.cif.c in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */; };
+		BF5111D520D0279400E87696 /* lex.cif.c in Sources */ = {isa = PBXBuildFile; fileRef = BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF5111DE20D0324A00E87696 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111DD20D0324A00E87696 /* AppDelegate.m */; };
 		BF5111E120D0324A00E87696 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111E020D0324A00E87696 /* ViewController.m */; };
 		BF5111E320D0324B00E87696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5111E220D0324B00E87696 /* Assets.xcassets */; };

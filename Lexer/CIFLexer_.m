@@ -205,6 +205,12 @@ NSString *CIFLexemeText( CIFLexemeTag tag, const char * textBytes, size_t length
           CIFLexemeTagName(tag),
           text);
 }
+-(void)nextLexeme:(CIFLexemeTag)tag
+        textBytes:(const char*)textBytes
+       textLength:(size_t)textLength
+{
+    abort(); // not implemented yet.
+}
 @end
 
 int main ( int argc, char * argv[] )

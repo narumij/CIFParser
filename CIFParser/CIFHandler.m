@@ -8,7 +8,7 @@
 
 #import "CIFHandler.h"
 #include "Handlers.h"
-
+#include "Parser.h"
 #import "CIFTag.h"
 
 static void HandleBeginData( void *ctx, const CIFLex *lex )
