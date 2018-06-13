@@ -34,24 +34,24 @@ typedef struct ParserObject ParserObject;
 
 struct ParserObject {
     Handlers *handlers;
-    ParseState (*parseFuncInRoot)( ParserObject *ctx, Lex *lex );
-    ParseState (*parseFuncInData)( ParserObject *ctx, Lex *lex );
+    ParseState (*parseFuncInRoot)( ParserObject *ctx, CIFLex *lex );
+    ParseState (*parseFuncInData)( ParserObject *ctx, CIFLex *lex );
     LoopParseState loopParseState;
     CIFTag itemTag;
     CIFLoopTag loopTag;
     int loopTagIndex;
 };
 
-static inline void CallBacBeginData( ParserObject *ctx, Lex *value ) {
+static inline void CallBacBeginData( ParserObject *ctx, CIFLex *value ) {
     ctx->handlers->beginData( ctx->handlers->ctx, value );
 }
-static inline void CallBackItem( ParserObject *ctx, Lex *value ) {
+static inline void CallBackItem( ParserObject *ctx, CIFLex *value ) {
     ctx->handlers->item( ctx->handlers->ctx, &ctx->itemTag, value );
 }
 static inline void CallBackBeginLoop( ParserObject *ctx ) {
     ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->loopTag );
 }
-static inline void CallBackLoopItem( ParserObject *ctx, Lex *value ) {
+static inline void CallBackLoopItem( ParserObject *ctx, CIFLex *value ) {
     ctx->handlers->loopItem( ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, value );
 }
 static inline void CallBackLoopItemTerm( ParserObject *ctx ) {

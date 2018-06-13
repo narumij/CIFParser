@@ -12,25 +12,7 @@
 #define CIF_LEXER_LOG 0
 #include <stdlib.h>
 
-enum CIFLexemeTag {
-    LexerError,
-    LData_,
-    LLoop_,
-    LSaveBegin,
-    LSaveEnd,
-    LTag,
-    //    LNumeric,
-    LNumericFloat,
-    LNumericInteger,
-    LQuoteString,
-    LUnquoteString1,
-    LUnquoteString2,
-    LTextField,
-    LDot,
-    LQue,
-    LEOF
-};
-typedef enum CIFLexemeTag CIFLexemeTag;
+#include "CIFLexer.h"
 
 void IssueLexeme( void *scanner, CIFLexemeTag tag, const char *text, size_t len );
 

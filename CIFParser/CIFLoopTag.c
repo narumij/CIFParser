@@ -34,7 +34,7 @@ static void IncreaseCapacity( CIFLoopTag *xs ) {
     xs->capacity = newCapacity;
 }
 
-void CIFLoopTagAdd( CIFLoopTag *stack, Lex *lex ) {
+void CIFLoopTagAdd( CIFLoopTag *stack, CIFLex *lex ) {
     if ( stack->capacity <= (stack->count + 1) )
         IncreaseCapacity(stack);
     CIFTagAssignString( &stack->list[stack->count], lex->text, lex->len );

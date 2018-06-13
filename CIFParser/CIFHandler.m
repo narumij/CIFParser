@@ -11,12 +11,12 @@
 
 #import "CIFTag.h"
 
-static void HandleBeginData( void *ctx, const Lex *lex )
+static void HandleBeginData( void *ctx, const CIFLex *lex )
 {
     [(__bridge id<CIFHandler>)ctx beginData:lex];
 }
 
-static void HandleItem( void *ctx, const CIFTag *tag, Lex *lex )
+static void HandleItem( void *ctx, const CIFTag *tag, CIFLex *lex )
 {
     [(__bridge id<CIFHandler>)ctx item:tag :lex];
 }
@@ -26,7 +26,7 @@ static void HandleBeginLoop( void *ctx, CIFLoopTag *tags )
     [(__bridge id<CIFHandler>)ctx beginLoop:tags];
 }
 
-static void HandleLoopItem( void *ctx, CIFLoopTag *tags, size_t tagIndex, Lex *lex )
+static void HandleLoopItem( void *ctx, CIFLoopTag *tags, size_t tagIndex, CIFLex *lex )
 {
     [(__bridge id<CIFHandler>)ctx loopItem:tags :tagIndex :lex];
 }
@@ -61,7 +61,7 @@ static Handlers prepareHandlers( id<CIFHandler> handler ) {
     return h;
 }
 
-@implementation NewParser
+@implementation CIFParser
 
 +(void)parse:(NSString*)path :(id<CIFHandler>)handler
 {

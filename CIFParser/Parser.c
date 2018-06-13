@@ -26,10 +26,10 @@
 
  */
 
-static ParseState rootParse( ParserObject *ctx, Lex *lex );
-static ParseState dataParse( ParserObject *ctx, Lex *lex );
-static ParseState itemParse( ParserObject *ctx, Lex *lex );
-static ParseState loopParse( ParserObject *ctx, Lex *lex );
+static ParseState rootParse( ParserObject *ctx, CIFLex *lex );
+static ParseState dataParse( ParserObject *ctx, CIFLex *lex );
+static ParseState itemParse( ParserObject *ctx, CIFLex *lex );
+static ParseState loopParse( ParserObject *ctx, CIFLex *lex );
 
 /*
 
@@ -50,7 +50,7 @@ static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_
 void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
 {
     assert(len != 0);
-    Lex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
+    CIFLex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
     assert( lex.tag == lexTypeCheck(tag,text,len));
     assert( lex.text == text );
     assert( lex.len == len );
@@ -89,7 +89,7 @@ int Parse( FILE * fp, Handlers *h )
 //    rootParse( ctx, lex );
 //}
 
-ParseState rootParse( ParserObject *ctx, Lex *lex ) {
+ParseState rootParse( ParserObject *ctx, CIFLex *lex ) {
     if ( ctx->parseFuncInRoot != NULL ) {
 
         ParseState code = ctx->parseFuncInRoot(ctx,lex);
@@ -127,7 +127,7 @@ ParseState rootParse( ParserObject *ctx, Lex *lex ) {
     return PSUnexpectedToken;
 }
 
-ParseState dataParse( ParserObject *ctx, Lex *lex ) {
+ParseState dataParse( ParserObject *ctx, CIFLex *lex ) {
     if ( ctx->parseFuncInData != NULL ) {
         ParseState code = ctx->parseFuncInData( ctx, lex );
         if ( code == PSUnexpectedToken ) {
@@ -166,7 +166,7 @@ ParseState dataParse( ParserObject *ctx, Lex *lex ) {
 }
 
 
-int isValueTag(Lex *lex ) {
+int isValueTag(CIFLex *lex ) {
     CIFLexemeTag tags[] = {
         LNumericFloat,
         LNumericInteger,
@@ -184,7 +184,7 @@ int isValueTag(Lex *lex ) {
     return 0;
 }
 
-ParseState itemParse( ParserObject *ctx, Lex *lex ) {
+ParseState itemParse( ParserObject *ctx, CIFLex *lex ) {
     if ( !isValueTag(lex) ) {
         assert(0);
         return PSUnexpectedToken;
@@ -193,7 +193,7 @@ ParseState itemParse( ParserObject *ctx, Lex *lex ) {
     return PSComplete;
 }
 
-ParseState loopParse( ParserObject *ctx, Lex *lex ) {
+ParseState loopParse( ParserObject *ctx, CIFLex *lex ) {
     if ( lex->tag == LEOF ) {
         return PSShouldBack;
     }

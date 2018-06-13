@@ -8,20 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Parser.h"
+#import "CIFLexer.h"
 #import "CIFTag.h"
 #import "CIFLoopTag.h"
 
 @protocol CIFHandler
--(void)beginData:(const Lex *)lex;
--(void)item:(const CIFTag *)tag :(const Lex *)lex;
+-(void)beginData:(const CIFLex *)lex;
+-(void)item:(const CIFTag *)tag :(const CIFLex *)lex;
 -(void)beginLoop:(const CIFLoopTag *)tags;
--(void)loopItem:(const CIFLoopTag *)tags :(size_t)tagIndex :(const Lex *)lex;
+-(void)loopItem:(const CIFLoopTag *)tags :(size_t)tagIndex :(const CIFLex *)lex;
 -(void)loopItemTerm;
 -(void)endLoop;
 @end
 
-@interface NewParser : NSObject
+@interface CIFParser : NSObject
 +(void)parse:(NSString*)path :(id<CIFHandler>)handler;
 +(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler;
 @end

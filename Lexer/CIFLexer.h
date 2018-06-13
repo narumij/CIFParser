@@ -1,9 +1,13 @@
-// Copyright © 2016 zenithgear inc. All rights reserved.
+//
+//  CIFLexer.h
+//  CIFParser
+//
+//  Created by Jun Narumi on 2018/06/14.
+//  Copyright © 2018年 Jun Narumi. All rights reserved.
+//
 
-#ifndef CIFLEXER_H_GUARD
-#define CIFLEXER_H_GUARD
-#define CIF_LEXER_LOG 0
-#include <stdlib.h>
+#ifndef CIFLexer_h
+#define CIFLexer_h
 
 enum CIFLexemeTag {
     LexerError,
@@ -12,7 +16,7 @@ enum CIFLexemeTag {
     LSaveBegin,
     LSaveEnd,
     LTag,
-//    LNumeric,
+    //    LNumeric,
     LNumericFloat,
     LNumericInteger,
     LQuoteString,
@@ -25,26 +29,11 @@ enum CIFLexemeTag {
 };
 typedef enum CIFLexemeTag CIFLexemeTag;
 
-// lex向けのフック
-void IssueLexeme(void *scanner,CIFLexemeTag tag,const char *text,size_t len);
 
-#ifdef __OBJC__
-#import <Foundation/Foundation.h>
+typedef struct CIFLex {
+    CIFLexemeTag tag;
+    char *text;
+    size_t len;
+} CIFLex;
 
-@protocol CIFParserProtocol <NSObject>
--(void)nextLexeme:(CIFLexemeTag)tag
-        textBytes:(const char*)textBytes
-       textLength:(size_t)textLength;
-@end
-
-//int CIFLexer( const char *filepath, id<CIFParserProtocol> callbackObject );
-extern int CIFLexerWithFILE( FILE * fp, id<CIFParserProtocol> callbackObject );
-
-size_t CIFLine( void * scanner );
-size_t CIFColumn( void * scanner );
-NSString *CIFLexemeTagName( CIFLexemeTag tag );
-NSString *CIFLexemeText( CIFLexemeTag tag, const char * textBytes, size_t length );
-
-#endif
-
-#endif
+#endif /* CIFLexer_h */

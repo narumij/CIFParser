@@ -56,10 +56,10 @@ extension AtomSite {
 
 class Simple: CIFHandler {
 
-    func beginData(_ lex: UnsafePointer<Lex>!) {
+    func beginData(_ lex: UnsafePointer<CIFLex>!) {
     }
 
-    func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<Lex>!) {
+    func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<CIFLex>!) {
     }
 
     enum LoopMode {
@@ -137,7 +137,7 @@ class Simple: CIFHandler {
         loopValues = []
     }
 
-    func loopItem( _ tags: UnsafePointer<CIFLoopTag>!, _ tagIndex: Int, _ lex: UnsafePointer<Lex>! ) {
+    func loopItem( _ tags: UnsafePointer<CIFLoopTag>!, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>! ) {
         switch mode {
         case .helix:
             fallthrough
@@ -240,7 +240,7 @@ class Test: NSObject {
             let handler = Simple()
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
-            path.map{ NewParser.parse( $0, handler) }
+            path.map{ CIFParser.parse( $0, handler) }
 
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()

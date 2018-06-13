@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-struct Lex;
+struct CIFLex;
+typedef struct CIFLex CIFLex;
 
 struct CIFTag;
 typedef struct CIFTag CIFTag;
@@ -22,7 +23,7 @@ typedef struct CIFLoopTag {
     size_t count;
 } CIFLoopTag;
 
-void CIFLoopTagAdd( CIFLoopTag *stack, struct Lex *lex );
+void CIFLoopTagAdd( CIFLoopTag *stack, CIFLex *lex );
 size_t CIFLoopTagCount( CIFLoopTag *stack );
 void CIFLoopTagClear( CIFLoopTag *stack );
 const char *CIFLoopTagGetText( CIFLoopTag *stack, int idx );

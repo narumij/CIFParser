@@ -1,6 +1,6 @@
 //  Copyright © 2017年 Jun Narumi. All rights reserved.
 
-#import "CIFLexer.h"
+#import "CIFLexer_.h"
 #include "lex.cif.h"
 
 // 使ってない、がmake testに使えるので残してある

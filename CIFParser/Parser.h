@@ -13,11 +13,6 @@
 #include "Lexer.h"
 #include "CIFLoopTag.h"
 
-typedef struct Lex {
-    CIFLexemeTag tag;
-    char *text;
-    size_t len;
-} Lex;
 
 struct Handlers;
 typedef struct Handlers Handlers;
