@@ -12,11 +12,11 @@
 
 #include "lex.cif.h"
 
-#include "Parser.h"
+#include "CIFRawParser.h"
+//#include "RawC.h"
 #include "ParserObject.h"
 #include "Lexer.h"
-#include "Handlers.h"
-#include "CIFTag.h"
+//#include "CIFTag.h"
 
 #include "Debug.h"
 
@@ -61,7 +61,7 @@ void IssueLexeme( void *scanner,CIFLexType tag, const char *text, size_t len )
     }
 }
 
-int Parse( FILE * fp, Handlers *h )
+int CIFRawParse( FILE * fp, CIFRawHandlers *h )
 {
     yyscan_t scanner;
     ParserObject ctx = {};

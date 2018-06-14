@@ -8,10 +8,11 @@
 
 #include <stdlib.h>
 
-#include "CIFLoopTag.h"
-#include "CIFTag.h"
+#include "CIFRawParser.h"
+//#include "CIFLoopTag.h"
+//#include "CIFTag.h"
 #include "Debug.h"
-#include "Parser.h"
+//#include "RawC.h"
 
 static void IncreaseCapacity( CIFLoopTag *xs ) {
     int newCapacity = xs->capacity == 0 ? 8 : xs->capacity * 2;

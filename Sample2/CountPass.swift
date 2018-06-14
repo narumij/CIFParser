@@ -35,8 +35,8 @@ class CountPass : CIFHandler {
     func parse( name: String ) {
         CIFParser.parse( name, self)
     }
-    static func hh() -> Handlers {
-        var h = Handlers()
+    static func hh() -> CIFRawHandlers {
+        var h = CIFRawHandlers()
         h.beginData = { (a,b) in }
         h.beginLoop = { (a,b) in CountPass.shared.beginLoop(b) }
         h.item = { (a,b,c) in }
@@ -49,7 +49,7 @@ class CountPass : CIFHandler {
     static func parse( name: String ) {
         let fp = fopen(name, "r")
         var handlers = self.hh()
-        Parse( fp, &handlers )
+        CIFRawParse( fp, &handlers )
         fclose(fp)
     }
 }

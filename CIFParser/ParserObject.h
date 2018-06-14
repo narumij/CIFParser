@@ -10,11 +10,7 @@
 #define ParserImpl_h
 
 #include "Lexer.h"
-#include "Parser.h"
-#include "CIFTag.h"
-#include "CIFLoopTag.h"
-
-#include "Handlers.h"
+#include "CIFRawParser.h"
 
 typedef enum ParseState {
     PSUnexpectedToken,
@@ -32,7 +28,7 @@ struct ParserObject;
 typedef struct ParserObject ParserObject;
 
 struct ParserObject {
-    Handlers *handlers;
+    CIFRawHandlers *handlers;
     ParseState (*parseFuncInRoot)( ParserObject *ctx, CIFLex *lex );
     ParseState (*parseFuncInData)( ParserObject *ctx, CIFLex *lex );
     LoopParseState loopParseState;

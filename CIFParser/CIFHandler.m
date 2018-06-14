@@ -7,9 +7,9 @@
 //
 
 #import "CIFHandler.h"
-#include "Handlers.h"
-#include "Parser.h"
-#import "CIFTag.h"
+#include "CIFRawParser.h"
+//#include "RawC.h"
+//#import "CIFTag.h"
 
 static void HandleBeginData( void *ctx, const CIFLex *lex )
 {
@@ -48,8 +48,8 @@ static void HandleEndData( void *ctx )
     NSLog(@"end data");
 }
 
-static Handlers prepareHandlers( id<CIFHandler> handler ) {
-    Handlers h;
+static CIFRawHandlers prepareHandlers( id<CIFHandler> handler ) {
+    CIFRawHandlers h;
     h.ctx = (__bridge void *)handler;
     h.item = HandleItem;
     h.beginData = HandleBeginData;
@@ -73,8 +73,8 @@ static Handlers prepareHandlers( id<CIFHandler> handler ) {
 
 +(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler
 {
-    Handlers hh = prepareHandlers(handler);
-    Parse(fp, &hh);
+    CIFRawHandlers hh = prepareHandlers(handler);
+    CIFRawParse(fp, &hh);
 }
 
 @end
