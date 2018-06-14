@@ -10,9 +10,9 @@
 #define Parser_h
 
 #include <stdio.h>
-#include "Lexer.h"
+//#include "Lexer.h"
 #include "Handlers.h"
-#include "CIFLoopTag.h"
+//#include "CIFLoopTag.h"
 
 int Parse( FILE * fp, Handlers *h );
 

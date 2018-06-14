@@ -9,7 +9,7 @@
 #ifndef CIFLexer_h
 #define CIFLexer_h
 
-enum CIFLexemeTag {
+enum CIFLexType {
     LexerError,
     LData_,
     LLoop_,
@@ -27,11 +27,11 @@ enum CIFLexemeTag {
     LQue,
     LEOF
 };
-typedef enum CIFLexemeTag CIFLexemeTag;
+typedef enum CIFLexType CIFLexType;
 
 
 typedef struct CIFLex {
-    CIFLexemeTag tag;
+    CIFLexType tag;
     char *text;
     size_t len;
 } CIFLex;

@@ -54,13 +54,13 @@ NSString *hoge( CIFValueType type ) {
 
 @implementation CIFValue(acceptScanner)
 
-+(instancetype)valueWithTag:(CIFLexemeTag)tag bytes:(const char*)bytes length:(size_t)length
++(instancetype)valueWithTag:(CIFLexType)tag bytes:(const char*)bytes length:(size_t)length
 {
     NSString *str = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
     return [self valueWithText:str tag:tag];
 }
 
-+(instancetype)valueWithText:(NSString*)text tag:(CIFLexemeTag)tag
++(instancetype)valueWithText:(NSString*)text tag:(CIFLexType)tag
 {
     CIFValue *value = [[CIFValue alloc] init];
     switch (tag) {

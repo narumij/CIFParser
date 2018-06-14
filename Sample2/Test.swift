@@ -35,7 +35,7 @@ extension AtomSite {
         case cartZ
         case groupPDB
     }
-    func loopItem( key: CIFKey, tag: CIFLexemeTag, textBytes: UnsafePointer<Int8>!, textLength: Int )
+    func loopItem( key: CIFKey, tag: CIFLexType, textBytes: UnsafePointer<Int8>!, textLength: Int )
     {
         switch key {
         case .atomID:
@@ -72,34 +72,35 @@ class Simple: CIFHandler {
     var mode: LoopMode = .ignore
 
     func beginLoop(_ tags: UnsafePointer<CIFLoopTag>!) {
-        if let tags = NSStringsFromLoopTag(tags) {
-            if tags.contains("_atom_site.Cartn_x") {
-                
-                mode = .atom
-                atomKeyTable = [:]
+        let tags = NSStringsFromLoopTag(tags)
 
-                for (str,key) in [
-                    ("_atom_site.label_atom_id",AtomSite.CIFKey.atomID),
-                    ("_atom_site.label_seq_id",AtomSite.CIFKey.seqID),
-                    (xKey,AtomSite.CIFKey.cartX),
-                    (yKey,AtomSite.CIFKey.cartY),
-                    (zKey,AtomSite.CIFKey.cartZ),
-                    ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
-                    ] {
+        if tags.contains("_atom_site.Cartn_x") {
+
+            mode = .atom
+            atomKeyTable = [:]
+
+            for (str,key) in [
+                ("_atom_site.label_atom_id",AtomSite.CIFKey.atomID),
+                ("_atom_site.label_seq_id",AtomSite.CIFKey.seqID),
+                (xKey,AtomSite.CIFKey.cartX),
+                (yKey,AtomSite.CIFKey.cartY),
+                (zKey,AtomSite.CIFKey.cartZ),
+                ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
+                ] {
                     if let idx = tags.index(of: str) {
                         atomKeyTable[idx] = key
                     }
-                }
-
-            } else if tags.contains("_struct_conf.id") {
-                mode = .helix
-            } else if tags.contains("_struct_sheet_range.id") {
-                mode = .sheet
-            } else {
-                mode = .ignore
             }
-            loopTags = tags
+
+        } else if tags.contains("_struct_conf.id") {
+            mode = .helix
+        } else if tags.contains("_struct_sheet_range.id") {
+            mode = .sheet
+        } else {
+            mode = .ignore
         }
+        loopTags = tags
+
     }
 
     var atomCount = 0
@@ -108,7 +109,7 @@ class Simple: CIFHandler {
     func beginData( name: String) -> Bool {
         return true
     }
-    func item( itemTag: String, tag: CIFLexemeTag, textBytes: UnsafePointer<Int8>!, textLength: Int ) {
+    func item( itemTag: String, tag: CIFLexType, textBytes: UnsafePointer<Int8>!, textLength: Int ) {
     }
     var atomKeyTable : [Int:AtomSite.CIFKey] = [:]
 
@@ -236,11 +237,24 @@ class Test: NSObject {
         let time0 = CFAbsoluteTimeGetCurrent()
 
         #if true
+            var count = 0
+            path.map{
+                let fp = fopen($0,"r")
+                count = CACountParse(fp)
+                fclose(fp)
+                }
+            print("atom count = \(count)")
+
+        let time100 = CFAbsoluteTimeGetCurrent()
+        print("count parse = \(time100 - time0)")
+
+//            assert(false)
+//        abort()
 
             let handler = Simple()
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
-            path.map{ CIFParser.parse( $0, handler) }
+            path.map{ CIFParser.parse( $0, handler ) }
 
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()

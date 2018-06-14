@@ -11,7 +11,7 @@
 // Objective-Cでパーサー書いてみた名残
 
 typedef enum CIFValueType CIFValueType;
-typedef enum CIFLexemeTag CIFLexemeTag;
+typedef enum CIFLexType CIFLexType;
 
 typedef enum CIFValueType {
     CIFValueFloat,
@@ -30,7 +30,7 @@ typedef enum CIFValueType {
 @end
 
 @interface CIFValue(acceptScanner)
-+(instancetype)valueWithTag:(CIFLexemeTag)tag bytes:(const char*)bytes length:(size_t)length;
-+(instancetype)valueWithText:(NSString*)text tag:(CIFLexemeTag)tag;
++(instancetype)valueWithTag:(CIFLexType)tag bytes:(const char*)bytes length:(size_t)length;
++(instancetype)valueWithText:(NSString*)text tag:(CIFLexType)tag;
 @end
 

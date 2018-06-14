@@ -12,11 +12,11 @@ import CIFParser
 // Swiftでparser書いてみた名残
 
 struct TestValue {
-    init( tag t: CIFLexemeTag, textBytes: UnsafePointer<Int8>, textLength: Int ) {
+    init( tag t: CIFLexType, textBytes: UnsafePointer<Int8>, textLength: Int ) {
         tag = t
         bytes = (0..<textLength).map{ textBytes[$0] }
     }
-    var tag: CIFLexemeTag
+    var tag: CIFLexType
     var bytes: [Int8]
     var textBytes: UnsafePointer<Int8> {
         return UnsafePointer<Int8>(bytes)

@@ -14,6 +14,6 @@
 
 #include "CIFLex.h"
 
-void IssueLexeme( void *scanner, CIFLexemeTag tag, const char *text, size_t len );
+void IssueLexeme( void *scanner, CIFLexType tag, const char *text, size_t len );
 
 #endif /* Lexer_h */

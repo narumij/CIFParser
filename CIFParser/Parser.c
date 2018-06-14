@@ -37,7 +37,7 @@ static ParseState loopParse( ParserObject *ctx, CIFLex *lex );
 
  */
 
-static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_t len )
+static CIFLexType lexTypeCheck( CIFLexType tag, const char *textBytes, size_t len )
 {
     // lexerで判別するように出来なかったので、代替でここで判別している
     if ( textBytes[0] == '.' && len == 1 )
@@ -47,11 +47,11 @@ static CIFLexemeTag lexTypeCheck( CIFLexemeTag tag, const char *textBytes, size_
     return tag;
 }
 
-void IssueLexeme( void *scanner,CIFLexemeTag tag, const char *text, size_t len )
+void IssueLexeme( void *scanner,CIFLexType tag, const char *text, size_t len )
 {
     assert(len != 0);
     CIFLex lex = { lexTypeCheck(tag,text,len), (char *)text, len };
-    assert( lex.tag == lexTypeCheck(tag,text,len));
+//    assert( lex.tag == lexTypeCheck(tag,text,len));
     assert( lex.text == text );
     assert( lex.len == len );
     ParseState result = rootParse( cifget_extra(scanner), &lex );
@@ -167,7 +167,7 @@ ParseState dataParse( ParserObject *ctx, CIFLex *lex ) {
 
 
 int isValueTag(CIFLex *lex ) {
-    CIFLexemeTag tags[] = {
+    CIFLexType tags[] = {
         LNumericFloat,
         LNumericInteger,
         LQuoteString,
@@ -176,7 +176,7 @@ int isValueTag(CIFLex *lex ) {
         LTextField,
         LDot,
         LQue};
-    int tagsCount = sizeof(tags) / sizeof(CIFLexemeTag);
+    int tagsCount = sizeof(tags) / sizeof(CIFLexType);
     for ( int i = 0; i < tagsCount; ++i ) {
         if ( tags[i] == lex->tag )
             return 1;
