@@ -10,7 +10,6 @@
 #define Parser_h
 
 #include <stdio.h>
-
 #include "CIFTag.h"
 #include "CIFLoopTag.h"
 

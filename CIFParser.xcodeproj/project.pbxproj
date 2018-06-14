@@ -267,12 +267,12 @@
 				BF5111A920D0256F00E87696 /* CIFRawParser.h */,
 				BF5111F520D0425800E87696 /* ParserObject.h */,
 				BF5111AA20D0256F00E87696 /* Parser.c */,
+				BFFE0DB420D32D8300FF2AAB /* Handlers.c */,
 				BF7A2D841FDD6ACC0031EBA7 /* lex.cif.h */,
 				BF7A2D851FDD6ACC0031EBA7 /* lex.cif.c */,
 				BFE2D65C20D1434300DF07FE /* Debug.h */,
 				BFE2D65D20D1434300DF07FE /* Debug.c */,
 				BF5111C720D0266900E87696 /* Info.plist */,
-				BFFE0DB420D32D8300FF2AAB /* Handlers.c */,
 			);
 			path = CIFParser;
 			sourceTree = "<group>";

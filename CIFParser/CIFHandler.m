@@ -8,8 +8,6 @@
 
 #import "CIFHandler.h"
 #include "CIFRawParser.h"
-//#include "RawC.h"
-//#import "CIFTag.h"
 
 static void HandleBeginData( void *ctx, const CIFLex *lex )
 {

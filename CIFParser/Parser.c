@@ -9,15 +9,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-
 #include "lex.cif.h"
-
 #include "CIFRawParser.h"
-//#include "RawC.h"
 #include "ParserObject.h"
 #include "Lexer.h"
-//#include "CIFTag.h"
-
 #include "Debug.h"
 
 /*

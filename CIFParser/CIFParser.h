@@ -20,6 +20,5 @@ FOUNDATION_EXPORT const unsigned char CIFParserVersionString[];
 #import <CIFParser/CIFLex.h>
 #import <CIFParser/CIFTag.h>
 #import <CIFParser/CIFLoopTag.h>
-
 #import <CIFParser/CIFRawParser.h>
 

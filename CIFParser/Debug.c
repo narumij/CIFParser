@@ -7,7 +7,6 @@
 //
 
 #include "Debug.h"
-
 #include <stdlib.h>
 
 #define STATS_COUNT 3
