@@ -425,7 +425,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/jun/Xcode/Frameworks/CIFParser/Lexer;
+			buildWorkingDirectory = Lexer;
 			dependencies = (
 			);
 			name = Lexer;
