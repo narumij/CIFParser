@@ -15,7 +15,6 @@ class CIFValue_S {
     init() { }
     init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
     {
-        let text: String = String(cString:bytes)
         switch (tag) {
             case LNumericFloat:
                 type = CIFValueFloat
@@ -38,7 +37,8 @@ class CIFValue_S {
                 type = CIFValueUknown
                 break
         }
-        contents = text
+
+        contents = String(cString:bytes)
     }
 
 }
