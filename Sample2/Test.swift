@@ -56,12 +56,12 @@ extension AtomSite {
 
 class Simple_S {
 
-    static func prepareHandlers(_ handler: CIFHandler) -> CIFRawHandlers
+    static func prepareHandlers(_ handler: UnsafeMutablePointer<Simple>) -> CIFRawHandlers
     {
         let beginData: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFLex>?) -> Void =
         { (ctx,lex) in
             guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
                 let lex = lex
                 else { return }
 
@@ -71,7 +71,7 @@ class Simple_S {
         let item: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFTag>?, UnsafeMutablePointer<CIFLex>?) -> Void =
         { (ctx,tag,lex) in
             guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
                 let tag = tag,
                 let lex = lex
                 else { return }
@@ -82,7 +82,7 @@ class Simple_S {
         let beginLoop: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?) -> Void =
         { (ctx,looptag) in
             guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
                 let looptag = looptag
                 else { return }
             ctx.beginLoop(looptag)
@@ -91,7 +91,7 @@ class Simple_S {
         let loopItem: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?, Int, UnsafeMutablePointer<CIFLex>?) -> Void =
         { (ctx,looptag,itemIndex,lex) in
             guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
                 let looptag = looptag,
                 let lex = lex
                 else { return }
@@ -100,12 +100,12 @@ class Simple_S {
 
         let loopItemTerm: @convention(c) (UnsafeMutableRawPointer?) -> Void =
         { (ctx) in
-            ctx.map{ (ctx) in unsafeBitCast(ctx, to:CIFHandler.self).loopItemTerm() }
+            ctx.map{ (ctx) in unsafeBitCast(ctx, to:Simple.self).loopItemTerm() }
         }
 
         let endLoop: @convention(c) (UnsafeMutableRawPointer?) -> Void =
         { (ctx) in
-            ctx.map{ (ctx) in unsafeBitCast(ctx, to:CIFHandler.self).endLoop() }
+            ctx.map{ (ctx) in unsafeBitCast(ctx, to:Simple.self).endLoop() }
         }
 
         let endData: @convention(c) (UnsafeMutableRawPointer?) -> Void =
@@ -113,7 +113,8 @@ class Simple_S {
 
         var handlers: CIFRawHandlers = CIFRawHandlers()
 
-        handlers.ctx = unsafeBitCast(handler, to: UnsafeMutableRawPointer.self);
+//        handlers.ctx = unsafeBitCast(handler, to: UnsafeMutableRawPointer.self);
+        handlers.ctx = UnsafeMutableRawPointer(handler)
         handlers.beginData = beginData
         handlers.item = item
         handlers.beginLoop = beginLoop
@@ -125,7 +126,7 @@ class Simple_S {
         return handlers
     }
 
-    static func parse(_ path: String, _ handler: CIFHandler)
+    static func parse(_ path: String, _ handler: UnsafeMutablePointer<Simple>)
     {
         let fp = fopen(path, "r");
         var handlers: CIFRawHandlers = prepareHandlers(handler)
@@ -143,7 +144,7 @@ protocol CIFHandler_S {
     func endLoop()
 }
 
-class Simple: CIFHandler {
+class Simple: CIFHandler_S {
 
     func beginData(_ lex: UnsafePointer<CIFLex>) {
     }
@@ -344,7 +345,7 @@ class Test: NSObject {
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
 //            path.map{ CIFParser.parse( $0, handler ) }
-                path.map{ Simple_S.parse($0, handler ) }
+                path.map{ Simple_S.parse($0, unsafeBitCast(handler, to: UnsafeMutablePointer<Simple>.self) ) }
 
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()
