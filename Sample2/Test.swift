@@ -54,67 +54,81 @@ extension AtomSite {
     }
 }
 
-class Simple_S {
+extension CIFRawHandlers {
 
-    static func prepareHandlers(_ handler: UnsafeMutablePointer<Simple>) -> CIFRawHandlers
+    typealias BeginDataFunc
+        = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFLex>?) -> Void
+
+    typealias ItemFunc
+        = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFTag>?, UnsafeMutablePointer<CIFLex>?) -> Void
+
+    typealias BeginLoopFunc
+        = @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?) -> Void
+
+    typealias LoopItemFunc
+        = @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?, Int, UnsafeMutablePointer<CIFLex>?) -> Void
+
+    typealias LoopItemTermFunc
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+
+    typealias EndLoopFunc
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+
+    typealias EndDataFunc
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+}
+
+extension Simple {
+
+    static func From(_ ctx: UnsafeMutableRawPointer?) -> Simple? {
+        return ctx.map({ unsafeBitCast($0, to:Simple.self) })
+    }
+
+    func prepareHandlers() -> CIFRawHandlers
     {
-        let beginData: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFLex>?) -> Void =
-        { (ctx,lex) in
-            guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
+        let beginData: CIFRawHandlers.BeginDataFunc = { ctx, lex in
+            if
+                let ctx = Simple.From(ctx),
                 let lex = lex
-                else { return }
-
-            ctx.beginData(lex)
+            {
+                ctx.beginData(lex)
+            }
         }
 
-        let item: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFTag>?, UnsafeMutablePointer<CIFLex>?) -> Void =
-        { (ctx,tag,lex) in
-            guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
+        let item: CIFRawHandlers.ItemFunc = { ctx, tag, lex in
+            if
+                let ctx = Simple.From(ctx),
                 let tag = tag,
                 let lex = lex
-                else { return }
-
-            ctx.item(tag,lex)
+            {
+                ctx.item(tag,lex)
+            }
         }
 
-        let beginLoop: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?) -> Void =
-        { (ctx,looptag) in
-            guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
+        let beginLoop: CIFRawHandlers.BeginLoopFunc = { ctx, looptag in
+            if
+                let ctx = Simple.From(ctx),
                 let looptag = looptag
-                else { return }
-            ctx.beginLoop(looptag)
+            {
+                ctx.beginLoop(looptag)
+            }
         }
 
-        let loopItem: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?, Int, UnsafeMutablePointer<CIFLex>?) -> Void =
-        { (ctx,looptag,itemIndex,lex) in
-            guard
-                let ctx = ctx.map({ unsafeBitCast($0, to:Simple.self) }),
+        let loopItem: CIFRawHandlers.LoopItemFunc = { ctx, looptag, itemIndex, lex in
+            if
+                let ctx = Simple.From(ctx),
                 let looptag = looptag,
                 let lex = lex
-                else { return }
-            ctx.loopItem(looptag,itemIndex,lex)
+            {
+                ctx.loopItem(looptag,itemIndex,lex)
+            }
         }
-
-        let loopItemTerm: @convention(c) (UnsafeMutableRawPointer?) -> Void =
-        { (ctx) in
-            ctx.map{ (ctx) in unsafeBitCast(ctx, to:Simple.self).loopItemTerm() }
-        }
-
-        let endLoop: @convention(c) (UnsafeMutableRawPointer?) -> Void =
-        { (ctx) in
-            ctx.map{ (ctx) in unsafeBitCast(ctx, to:Simple.self).endLoop() }
-        }
-
-        let endData: @convention(c) (UnsafeMutableRawPointer?) -> Void =
-        { (ctx) in }
+        let loopItemTerm: CIFRawHandlers.LoopItemTermFunc = { Simple.From($0)?.loopItemTerm() }
+        let endLoop: CIFRawHandlers.EndLoopFunc = { Simple.From($0)?.endLoop() }
+        let endData: CIFRawHandlers.EndDataFunc = { _ in }
 
         var handlers: CIFRawHandlers = CIFRawHandlers()
-
-//        handlers.ctx = unsafeBitCast(handler, to: UnsafeMutableRawPointer.self);
-        handlers.ctx = UnsafeMutableRawPointer(handler)
+        handlers.ctx = UnsafeMutableRawPointer(unsafeBitCast(self, to: UnsafeMutablePointer<Simple>.self))
         handlers.beginData = beginData
         handlers.item = item
         handlers.beginLoop = beginLoop
@@ -126,10 +140,10 @@ class Simple_S {
         return handlers
     }
 
-    static func parse(_ path: String, _ handler: UnsafeMutablePointer<Simple>)
+    func parse(_ path: String)
     {
         let fp = fopen(path, "r");
-        var handlers: CIFRawHandlers = prepareHandlers(handler)
+        var handlers: CIFRawHandlers = prepareHandlers()
         let hpp = UnsafeMutablePointer<CIFRawHandlers>(&handlers)
         CIFRawParse( fp, hpp )
     }
@@ -345,7 +359,7 @@ class Test: NSObject {
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
 //            path.map{ CIFParser.parse( $0, handler ) }
-                path.map{ Simple_S.parse($0, unsafeBitCast(handler, to: UnsafeMutablePointer<Simple>.self) ) }
+                path.map{ handler.parse($0) }
 
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()
