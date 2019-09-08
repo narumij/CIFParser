@@ -11,6 +11,7 @@
 
 // Objective-Cでパーサー書いてみた名残
 
+/*
 NSString *hoge( CIFValueType type ) {
     switch (type) {
         case CIFValueFloat:
@@ -90,3 +91,4 @@ NSString *hoge( CIFValueType type ) {
 }
 
 @end
+*/

@@ -39,9 +39,9 @@ extension AtomSite {
     {
         switch key {
         case .atomID:
-            label.atom = CIFValue( tag: tag, bytes: textBytes, length: textLength )
+            label.atom = CIFValue_S( tag: tag, bytes: textBytes, length: textLength )
         case .seqID:
-            label.seq = CIFValue( tag: tag, bytes: textBytes, length: textLength )
+            label.seq = CIFValue_S( tag: tag, bytes: textBytes, length: textLength )
         case .cartX:
             cartn.x = CGFloat( atof(textBytes) )
         case .cartY:
@@ -292,8 +292,8 @@ class Simple: CIFHandler_S {
     var structConfs: [StructConf] = []
     func appendHelix(_ tags: [String],_ values: [TestValue] ) {
         let dict: [String:TestValue] = Dictionary(uniqueKeysWithValues: zip(tags, values) )
-        let beg = dict["_struct_conf.beg_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
-        let end = dict["_struct_conf.end_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
+        let beg = dict["_struct_conf.beg_label_seq_id"].flatMap{ CIFValue_S( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
+        let end = dict["_struct_conf.end_label_seq_id"].flatMap{ CIFValue_S( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let blabel = beg.flatMap{ seq in
                 LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
             }
@@ -312,8 +312,8 @@ class Simple: CIFHandler_S {
     var structSheet: [StructSheetRange] = []
     func appendSheet(_ tags: [String],_ values: [TestValue] ) {
         let dict: [String:TestValue] = Dictionary(uniqueKeysWithValues: zip(tags, values) )
-        let beg = dict["_struct_sheet_range.beg_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
-        let end = dict["_struct_sheet_range.end_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
+        let beg = dict["_struct_sheet_range.beg_label_seq_id"].flatMap{ CIFValue_S( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
+        let end = dict["_struct_sheet_range.end_label_seq_id"].flatMap{ CIFValue_S( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let blabel = beg.flatMap{ seq in
             LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
         }

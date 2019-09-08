@@ -23,6 +23,7 @@ typedef enum CIFValueType {
     CIFValueTypeCount
 } CIFValueType;
 
+/*
 @interface CIFValue : NSObject
 @property(assign) CIFValueType type;
 @property id contents;
@@ -33,4 +34,5 @@ typedef enum CIFValueType {
 +(instancetype)valueWithTag:(CIFLexType)tag bytes:(const char*)bytes length:(size_t)length;
 +(instancetype)valueWithText:(NSString*)text tag:(CIFLexType)tag;
 @end
+ */
 
