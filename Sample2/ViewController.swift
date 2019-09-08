@@ -66,12 +66,12 @@ func /( l: SCNVector3, r: SCNFloat ) -> SCNVector3 {
 }
 
 extension SCNVector3 {
-    var float3: simd.float3 {
-        return simd.float3(Float(x),Float(y),Float(z))
+    var float3: SIMD3<Float> {
+        return SIMD3<Float>(Float(x),Float(y),Float(z))
     }
 }
 
-extension float3 {
+extension SIMD3 where Scalar == Float {
     var SCNVector3: SceneKit.SCNVector3 {
         return SceneKit.SCNVector3( SCNFloat(x), SCNFloat(y), SCNFloat(z) )
     }
@@ -144,7 +144,7 @@ class ViewController: NSViewController {
                 let p0 = positions[i]
                 let p1 = positions[i+1]
                 let c = colors[i]
-                let q = simd_quaternion( float3(0,1,0), normalize( p0.float3 - p1.float3 ) )
+                let q = simd_quaternion( SIMD3<Float>(0,1,0), normalize( p0.float3 - p1.float3 ) )
                 let d = distance( p0.float3, p1.float3 )
                 let node = SCNNode()
                 node.geometry = SCNCylinder(radius: thickness, height: CGFloat( d ) )
@@ -171,10 +171,10 @@ class ViewController: NSViewController {
         func coloredLineStrip(_ backbone: [AtomSite] ) {
             let positions = mapOptional( backbone, { $0.cartn.float3 } )
 
-            let colors = mapOptional( backbone, { (atomSite: AtomSite) -> float4 in
+            let colors = mapOptional( backbone, { (atomSite: AtomSite) -> SIMD4<Float> in
                 let hue = atomSite.rainbow
                 let color3 = hsv2rgb(hsv: SCNVector3(240 - 240 * hue,1.0,0.75)).float3
-                let color4 = float4(color3.x,color3.y,color3.z,1)
+                let color4 = SIMD4<Float>(color3.x,color3.y,color3.z,1)
 //                if atomSite.secondaryStructure == .helix {
 //                    color4 = float4(1,0,1,1)
 //                } else if atomSite.secondaryStructure == .sheet {
@@ -204,10 +204,10 @@ class ViewController: NSViewController {
             }
             func s(_ i: Int, _ t: Float) -> Float {
                 assert( 0 <= t && t <= 1 )
-                let m0 = float3(1,-2,1)
-                let m1 = float3(-2,2,0)
-                let m2 = float3(1,1,0)
-                return 1/2 * dot( float3(t*t,t,1), matrix_float3x3(rows: [m0,m1,m2]) * float3(pp(i-1),pp(i),pp(i+1)) )
+                let m0 = SIMD3<Float>(1,-2,1)
+                let m1 = SIMD3<Float>(-2,2,0)
+                let m2 = SIMD3<Float>(1,1,0)
+                return 1/2 * dot( SIMD3<Float>(t*t,t,1), matrix_float3x3(rows: [m0,m1,m2]) * SIMD3<Float>(pp(i-1),pp(i),pp(i+1)) )
             }
             return s
         }
@@ -217,11 +217,11 @@ class ViewController: NSViewController {
             let sx = S( positions.map{ $0.x } )
             let sy = S( positions.map{ $0.y } )
             let sz = S( positions.map{ $0.z } )
-            var vert: [float3] = []
+            var vert: [SIMD3<Float>] = []
             for i in 1..<(positions.count-1) {
                 for tt in 0...4 {
                     let t = Float(tt)/4.0
-                    let p = float3( sx(i,t), sy(i,t), sz(i,t) )
+                    let p = SIMD3<Float>( sx(i,t), sy(i,t), sz(i,t) )
                     vert.append(p)
                 }
             }
@@ -246,11 +246,11 @@ class ViewController: NSViewController {
             let hx = H( positions.map{ $0.x }, tangents.map{ $0.x } )
             let hy = H( positions.map{ $0.y }, tangents.map{ $0.y } )
             let hz = H( positions.map{ $0.z }, tangents.map{ $0.z } )
-            var vert: [float3] = []
+            var vert: [SIMD3<Float>] = []
             for i in 0..<positions.count {
                 for tt in 0...4 {
                     let t = Float(tt)/4.0
-                    let p = float3( hx(i,t), hy(i,t), hz(i,t) )
+                    let p = SIMD3<Float>( hx(i,t), hy(i,t), hz(i,t) )
                     vert.append(p)
                 }
             }
@@ -262,7 +262,7 @@ class ViewController: NSViewController {
 
         func ribbon(_ backbone: [AtomSite] ) {
 
-            var vert: [float3] = []
+            var vert: [SIMD3<Float>] = []
             var hues: [Float] = []
             var second: [SecondaryStructure] = []
 
@@ -290,8 +290,8 @@ class ViewController: NSViewController {
                 }
             }
             #else
-                let tangents = (0..<positions.count).map{ ( i: Int) -> float3 in
-                    let t: float3 = (positions[posIdx(i+1)] - positions[posIdx(i-1)])
+                let tangents = (0..<positions.count).map{ ( i: Int) -> SIMD3<Float> in
+                    let t: SIMD3<Float> = (positions[posIdx(i+1)] - positions[posIdx(i-1)])
                     if backbone[i].secondaryStructure == .sheet {
                         return t * 0.5
                     }
@@ -310,7 +310,7 @@ class ViewController: NSViewController {
                     let s = isSheetLast(i) ? .sheet : backbone[i].secondaryStructure
                     for tt in 0..<res {
                         let t = Float(tt)/Float(res)
-                        let p = float3( hx(i,t), hy(i,t), hz(i,t) )
+                        let p = SIMD3<Float>( hx(i,t), hy(i,t), hz(i,t) )
                         vert.append(p)
                         hues.append(h)
                         second.append(s)
@@ -318,11 +318,11 @@ class ViewController: NSViewController {
                 }
             #endif
 
-            var vert2: [float3] = []
-            var vert3: [float3] = []
-            var vert4: [float3] = []
+            var vert2: [SIMD3<Float>] = []
+            var vert3: [SIMD3<Float>] = []
+            var vert4: [SIMD3<Float>] = []
 
-            func v(_ i: Int ) -> float3 {
+            func v(_ i: Int ) -> SIMD3<Float> {
                 var offset = 0
                 if i == 0 {
                     offset = 1
@@ -345,15 +345,15 @@ class ViewController: NSViewController {
                 return normalize( cross( v0 , v1 ) )
             }
 
-            var lastC = float3()
-            var cArray: [float3] = []
+            var lastC = SIMD3<Float>()
+            var cArray: [SIMD3<Float>] = []
             for i in 0..<vert.count {
                 var c = v(i)
                 if length_squared(c).isNaN {
-                    c = float3()
+                    c = SIMD3<Float>()
                 }
                 if length_squared(c).isInfinite {
-                    c = float3()
+                    c = SIMD3<Float>()
                 }
 
                 let d0 = distance_squared(lastC,c)
@@ -384,12 +384,12 @@ class ViewController: NSViewController {
             for i in 0..<cArray.count {
                 let b = 7
                 let m = [0] + (1...b) + (1...b).map{ -$0 }
-                let c = normalize( m.map({ cArray2[_idx($0+i)]}).reduce(float3()) { $0 + $1 } )
+                let c = normalize( m.map({ cArray2[_idx($0+i)]}).reduce(SIMD3<Float>()) { $0 + $1 } )
                 cArray[i] = c
             }
 
-            var normal: [float3] = []
-            var color: [float4] = []
+            var normal: [SIMD3<Float>] = []
+            var color: [SIMD4<Float>] = []
 
             for i in 0..<vert.count {
                 var c = cArray[i]
@@ -400,7 +400,7 @@ class ViewController: NSViewController {
                 let nor = normalize( cross( normalize( vert[_idx(i-1)] - vert[_idx(i+1)] ), c ) )
                 let hue = hues[i]
                 let color3 = hsv2rgb(hsv: SCNVector3(240 - 240 * hue,1.0,0.75)).float3
-                var color4 = float4(color3.x,color3.y,color3.z,1)
+                var color4 = SIMD4<Float>(color3.x,color3.y,color3.z,1)
 
                 func isSheetBegin(_ n: Int) -> Bool {
                     return  ( second[_idx(n-1)] != .sheet && second[_idx(n)] == .sheet )
