@@ -54,12 +54,101 @@ extension AtomSite {
     }
 }
 
-class Simple: CIFHandler {
+class Simple_S {
 
-    func beginData(_ lex: UnsafePointer<CIFLex>!) {
+    static func prepareHandlers(_ handler: CIFHandler) -> CIFRawHandlers
+    {
+        let beginData: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFLex>?) -> Void =
+        { (ctx,lex) in
+            guard
+                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let lex = lex
+                else { return }
+
+            ctx.beginData(lex)
+        }
+
+        let item: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFTag>?, UnsafeMutablePointer<CIFLex>?) -> Void =
+        { (ctx,tag,lex) in
+            guard
+                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let tag = tag,
+                let lex = lex
+                else { return }
+
+            ctx.item(tag,lex)
+        }
+
+        let beginLoop: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?) -> Void =
+        { (ctx,looptag) in
+            guard
+                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let looptag = looptag
+                else { return }
+            ctx.beginLoop(looptag)
+        }
+
+        let loopItem: @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?, Int, UnsafeMutablePointer<CIFLex>?) -> Void =
+        { (ctx,looptag,itemIndex,lex) in
+            guard
+                let ctx = ctx.map({ unsafeBitCast($0, to:CIFHandler.self) }),
+                let looptag = looptag,
+                let lex = lex
+                else { return }
+            ctx.loopItem(looptag,itemIndex,lex)
+        }
+
+        let loopItemTerm: @convention(c) (UnsafeMutableRawPointer?) -> Void =
+        { (ctx) in
+            ctx.map{ (ctx) in unsafeBitCast(ctx, to:CIFHandler.self).loopItemTerm() }
+        }
+
+        let endLoop: @convention(c) (UnsafeMutableRawPointer?) -> Void =
+        { (ctx) in
+            ctx.map{ (ctx) in unsafeBitCast(ctx, to:CIFHandler.self).endLoop() }
+        }
+
+        let endData: @convention(c) (UnsafeMutableRawPointer?) -> Void =
+        { (ctx) in }
+
+        var handlers: CIFRawHandlers = CIFRawHandlers()
+
+        handlers.ctx = unsafeBitCast(handler, to: UnsafeMutableRawPointer.self);
+        handlers.beginData = beginData
+        handlers.item = item
+        handlers.beginLoop = beginLoop
+        handlers.loopItem = loopItem
+        handlers.loopItemTerm = loopItemTerm
+        handlers.endLoop = endLoop
+        handlers.endData = endData
+
+        return handlers
     }
 
-    func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<CIFLex>!) {
+    static func parse(_ path: String, _ handler: CIFHandler)
+    {
+        let fp = fopen(path, "r");
+        var handlers: CIFRawHandlers = prepareHandlers(handler)
+        let hpp = UnsafeMutablePointer<CIFRawHandlers>(&handlers)
+        CIFRawParse( fp, hpp )
+    }
+}
+
+protocol CIFHandler_S {
+    func beginData(_ lex: UnsafePointer<CIFLex>)
+    func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>)
+    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>)
+    func loopItem( _ tags: UnsafePointer<CIFLoopTag>, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex> )
+    func loopItemTerm()
+    func endLoop()
+}
+
+class Simple: CIFHandler {
+
+    func beginData(_ lex: UnsafePointer<CIFLex>) {
+    }
+
+    func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>) {
     }
 
     enum LoopMode {
@@ -71,7 +160,7 @@ class Simple: CIFHandler {
 
     var mode: LoopMode = .ignore
 
-    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>!) {
+    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>) {
         let tags = NSStringsFromLoopTag(tags)
 
         if tags.contains("_atom_site.Cartn_x") {
@@ -87,7 +176,7 @@ class Simple: CIFHandler {
                 (zKey,AtomSite.CIFKey.cartZ),
                 ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
                 ] {
-                    if let idx = tags.index(of: str) {
+                    if let idx = tags.firstIndex(of: str) {
                         atomKeyTable[idx] = key
                     }
             }
@@ -138,7 +227,7 @@ class Simple: CIFHandler {
         loopValues = []
     }
 
-    func loopItem( _ tags: UnsafePointer<CIFLoopTag>!, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>! ) {
+    func loopItem( _ tags: UnsafePointer<CIFLoopTag>, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex> ) {
         switch mode {
         case .helix:
             fallthrough
@@ -254,7 +343,8 @@ class Test: NSObject {
             let handler = Simple()
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
-            path.map{ CIFParser.parse( $0, handler ) }
+//            path.map{ CIFParser.parse( $0, handler ) }
+                path.map{ Simple_S.parse($0, handler ) }
 
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()

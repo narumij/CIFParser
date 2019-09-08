@@ -13,15 +13,15 @@ class CountPass : CIFHandler {
     var count : Int = 0
     var atomCounting : Bool = false
     var idIndex: Int?
-    func beginData(_ lex: UnsafePointer<CIFLex>!) {
+    func beginData(_ lex: UnsafePointer<CIFLex>) {
     }
-    func item(_ tag: UnsafePointer<CIFTag>!, _ lex: UnsafePointer<CIFLex>!) {
+    func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>) {
     }
-    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>!) {
+    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>) {
         let tags = NSStringsFromLoopTag(tags)
-        idIndex = tags.index(of: "_atom_site.label_atom_id" )
+        idIndex = tags.firstIndex(of: "_atom_site.label_atom_id" )
     }
-    func loopItem(_ tags: UnsafePointer<CIFLoopTag>!, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>!) {
+    func loopItem(_ tags: UnsafePointer<CIFLoopTag>, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>) {
         idIndex.map {
             if tagIndex == $0 && String(cString: lex.pointee.text) == "CA" {
                 count += 1
@@ -38,9 +38,9 @@ class CountPass : CIFHandler {
     static func hh() -> CIFRawHandlers {
         var h = CIFRawHandlers()
         h.beginData = { (a,b) in }
-        h.beginLoop = { (a,b) in CountPass.shared.beginLoop(b) }
+        h.beginLoop = { (a,b) in CountPass.shared.beginLoop(b!) }
         h.item = { (a,b,c) in }
-        h.loopItem = { (a,b,c,d) in CountPass.shared.loopItem(b,c,d) }
+        h.loopItem = { (a,b,c,d) in CountPass.shared.loopItem(b!,c,d!) }
         h.loopItemTerm = { (a) in }
         h.endLoop = { (a) in }
         return h

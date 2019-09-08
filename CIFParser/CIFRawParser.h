@@ -26,6 +26,7 @@ typedef struct CIFRawHandlers {
 
 CIFRawHandlers CIFMakeRawHandlers(void);
 
+int CIFRawParse2( FILE * fp, CIFRawHandlers h );
 int CIFRawParse( FILE * fp, CIFRawHandlers *h );
 
 #endif /* Parser_h */

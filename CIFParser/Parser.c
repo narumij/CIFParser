@@ -56,6 +56,11 @@ void IssueLexeme( void *scanner,CIFLexType tag, const char *text, size_t len )
     }
 }
 
+int CIFRawParse2( FILE * fp, CIFRawHandlers h )
+{
+    return CIFRawParse(fp,&h);
+}
+
 int CIFRawParse( FILE * fp, CIFRawHandlers *h )
 {
     yyscan_t scanner;

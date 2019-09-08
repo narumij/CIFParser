@@ -13,18 +13,18 @@
 #import "CIFLoopTag.h"
 
 @protocol CIFHandler
--(void)beginData:(const CIFLex *)lex;
--(void)item:(const CIFTag *)tag :(const CIFLex *)lex;
--(void)beginLoop:(const CIFLoopTag *)tags;
--(void)loopItem:(const CIFLoopTag *)tags :(size_t)tagIndex :(const CIFLex *)lex;
+-(void)beginData:(const CIFLex *_Nonnull)lex;
+-(void)item:(const CIFTag *_Nonnull)tag :(const CIFLex *_Nonnull)lex;
+-(void)beginLoop:(const CIFLoopTag *_Nonnull)tags;
+-(void)loopItem:(const CIFLoopTag *_Nonnull)tags :(size_t)tagIndex :(const CIFLex *_Nonnull)lex;
 -(void)loopItemTerm;
 -(void)endLoop;
 @end
 
 @interface CIFParser : NSObject
-+(void)parse:(NSString*)path :(id<CIFHandler>)handler;
-+(void)parseWithFILE:(FILE*)fp :(id<CIFHandler>)handler;
++(void)parse:(NSString*_Nonnull)path :(id<CIFHandler>_Nonnull)handler;
++(void)parseWithFILE:(FILE*_Nonnull)fp :(id<CIFHandler>_Nonnull)handler;
 @end
 
-NSArray<NSString*>* __nonnull NSStringsFromLoopTag( const CIFLoopTag *tags );
+NSArray<NSString*>* __nonnull NSStringsFromLoopTag( const CIFLoopTag * _Nonnull tags );
 
