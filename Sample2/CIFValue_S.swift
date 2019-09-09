@@ -58,7 +58,7 @@ class CIFValue_S {
 
 }
 
-#if true
+#if false
 enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
     case unknown
     case inapplicable
@@ -121,7 +121,7 @@ extension CIFValue_S {
     #endif
     var integerValue: Int? {
         if _type == .integer {
-            return contents.flatMap({ Int($0) })
+            return (contents as NSString?)?.integerValue
         }
         return nil
     }
