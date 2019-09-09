@@ -10,6 +10,7 @@
 
 // Objective-Cでパーサー書いてみた名残
 
+#if 0
 typedef enum CIFValueType CIFValueType;
 typedef enum CIFLexType CIFLexType;
 
@@ -22,6 +23,7 @@ typedef enum CIFValueType {
     CIFValueUknown,
     CIFValueTypeCount
 } CIFValueType;
+#endif
 
 /*
 @interface CIFValue : NSObject

@@ -10,104 +10,9 @@ import SceneKit
 import CIFParser
 
 
-extension CIFValue_S {
-    var doubleValue: Double? {
-        if type == CIFValueFloat {
-            return (contents as? NSString)?.doubleValue
-        }
-        return nil
-    }
-    var doubleVal: CIFVal<Double> {
-        if type == CIFValueFloat {
-            if let d = (contents as? NSString)?.doubleValue {
-                return .some(d)
-            }
-            return nil
-        }
-        return nil
-    }
-    var integerValue: Int? {
-        if type == CIFValueInteger {
-            return (contents as? NSString)?.integerValue
-        }
-        return nil
-    }
-    var stringValue: String? {
-        if type == CIFValueString || type == CIFValueText {
-            return contents as? String
-        }
-        return nil
-    }
-    static var inapplicable: CIFValue_S {
-        let v = CIFValue_S()
-        v.type = CIFValueInapplicable
-        return v
-    }
-    static var unknown: CIFValue_S {
-        let v = CIFValue_S()
-        v.type = CIFValueUknown
-        return v
-    }
-
-}
 
 
-enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
-    case unknown
-    case inapplicable
-    case some(Wrapped)
-    init(_ some: Wrapped) {
-        self = .some(some)
-    }
-    init(nilLiteral: ()) {
-        self = .unknown
-    }
-    func map<U>(_ transform: (Wrapped) throws -> U) rethrows -> CIFVal<U> {
-        switch self {
-        case let .some(a):
-            return .some( try transform(a) )
-        case .inapplicable:
-            return .inapplicable
-        default:
-            return .unknown
-        }
-    }
-    public func flatMap<U>(_ transform: (Wrapped) throws -> CIFVal<U>) rethrows -> CIFVal<U> {
-        return .unknown
-    }
-    var unsafelyUnwrapped: Wrapped {
-        switch self {
-        case let .some(a):
-            return a
-        default:
-            abort()
-        }
-    }
-    var optional: Wrapped? {
-        switch self {
-        case let .some(a):
-            return a
-        default:
-            return nil
-        }
-    }
-}
 
-
-extension CIFValue_S {
-    var cifString: CIFVal<String> {
-        switch type {
-        case CIFValueInapplicable:
-            return .inapplicable
-        case CIFValueString:
-            fallthrough
-        case CIFValueInteger:
-            return .some(contents as! String)
-        default:
-            return .unknown
-        }
-    }
-}
 
 
 enum GroupPDB {
@@ -178,10 +83,10 @@ class AtomSite {
 fileprivate func groupPDB(_ d:[String:CIFValue_S] ) ->GroupPDB? {
     let a = d["_atom_site.group_PDB"]
     func b(_ a: CIFValue_S ) -> GroupPDB? {
-        if (a.contents as? String) == "ATOM" {
+        if (a.contents) == "ATOM" {
             return .atom
         }
-        if (a.contents as? String) == "HETATM" {
+        if (a.contents) == "HETATM" {
             return .hetatm
         }
         return nil
