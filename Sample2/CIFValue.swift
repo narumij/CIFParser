@@ -17,6 +17,7 @@ enum CIFValue {
     case text(String)
     case inapplicable
     case unknown
+    case unexpected(String)
 
     init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
     {
@@ -39,7 +40,7 @@ enum CIFValue {
                 self = .inapplicable
                 break
             default:
-                self = .unknown
+                self = .unexpected( String(cString:bytes) )
                 break
         }
     }
@@ -49,15 +50,15 @@ enum CIFValue {
 extension CIFValue {
 
     var doubleValue: Double? {
-        if case .float(let f) = self {
-            return Double(f)
+        if case .float(let s) = self {
+            return (s as NSString?)?.doubleValue
         }
         return nil
     }
 
     var integerValue: Int? {
-        if case .integer(let i) = self {
-            return (i as NSString?)?.integerValue
+        if case .integer(let s) = self {
+            return (s as NSString?)?.integerValue
         }
         return nil
     }
