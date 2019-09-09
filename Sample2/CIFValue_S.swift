@@ -23,9 +23,10 @@ class CIFValue_S {
     var _type: InternalType = .unknown
     var contents: String? = nil
     init() { }
-    init( type t: InternalType )
+    init( type t: InternalType, contents c: String?)
     {
         _type = t
+        contents = c
     }
 
     init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
@@ -131,10 +132,10 @@ extension CIFValue_S {
         return nil
     }
     static var inapplicable: CIFValue_S {
-        return CIFValue_S(type:.inapplicable)
+        return CIFValue_S(type:.inapplicable,contents:nil)
     }
     static var unknown: CIFValue_S {
-        return CIFValue_S(type:.unknown)
+        return CIFValue_S(type:.unknown,contents:nil)
     }
 
 }
