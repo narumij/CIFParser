@@ -83,10 +83,10 @@ class AtomSite {
 fileprivate func groupPDB(_ d:[String:CIFValue_S] ) ->GroupPDB? {
     let a = d["_atom_site.group_PDB"]
     func b(_ a: CIFValue_S ) -> GroupPDB? {
-        if (a.contents) == "ATOM" {
+        if (a.stringValue) == "ATOM" {
             return .atom
         }
-        if (a.contents) == "HETATM" {
+        if (a.stringValue) == "HETATM" {
             return .hetatm
         }
         return nil

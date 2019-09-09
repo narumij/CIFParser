@@ -12,39 +12,39 @@ import CIFParser
 class CIFValue_S {
 
     enum InternalType {
-        case float
-        case integer
-        case string
-        case text
+        case float(Double?)
+        case integer(Int?)
+        case string(String)
+        case text(String)
         case inapplicable
         case unknown
     }
 
     var _type: InternalType = .unknown
-    var contents: String? = nil
+
     init() { }
-    init( type t: InternalType, contents c: String?)
+
+    init( type t: InternalType)
     {
         _type = t
-        contents = c
     }
 
     init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
     {
         switch (tag) {
             case LNumericFloat:
-                _type = .float
+                _type = .float((String(cString:bytes) as NSString?)?.doubleValue)
                 break
             case LNumericInteger:
-                _type = .integer
+                _type = .integer((String(cString:bytes) as NSString?)?.integerValue)
                 break
             case LUnquoteString1: fallthrough
             case LUnquoteString2: fallthrough
             case LQuoteString:
-                _type = .string
+                _type = .string(String(cString:bytes))
                 break
             case LTextField:
-                _type = .text
+                _type = .text(String(cString:bytes))
                 break
             case LDot:
                 _type = .inapplicable
@@ -53,7 +53,6 @@ class CIFValue_S {
                 _type = .unknown
                 break
         }
-        contents = String(cString:bytes)
     }
 
 }
@@ -103,8 +102,8 @@ enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
 
 extension CIFValue_S {
     var doubleValue: Double? {
-        if _type == .float {
-            return (contents as NSString?)?.doubleValue
+        if case .float(let f) = _type {
+            return f
         }
         return nil
     }
@@ -120,22 +119,26 @@ extension CIFValue_S {
     }
     #endif
     var integerValue: Int? {
-        if _type == .integer {
-            return (contents as NSString?)?.integerValue
+        if case .integer(let num) = _type {
+            return num
         }
         return nil
     }
     var stringValue: String? {
-        if _type == .string || _type == .text {
-            return contents
+        switch _type {
+        case .string(let str):
+            return str
+        case .text(let str):
+            return str
+        default:
+            return nil
         }
-        return nil
     }
     static var inapplicable: CIFValue_S {
-        return CIFValue_S(type:.inapplicable,contents:nil)
+        return CIFValue_S(type:.inapplicable)
     }
     static var unknown: CIFValue_S {
-        return CIFValue_S(type:.unknown,contents:nil)
+        return CIFValue_S(type:.unknown)
     }
 
 }
