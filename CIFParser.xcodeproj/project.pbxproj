@@ -57,7 +57,7 @@
 		BFE2D66C20D16E1800DF07FE /* CIFLoopTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE2D66D20D16E1800DF07FE /* CIFLoopTag.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */; };
 		BFE2D66F20D1813200DF07FE /* CIFLex.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66E20D180B300DF07FE /* CIFLex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFF5125023257F18001F75DC /* CIFValue_S.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5124F23257F18001F75DC /* CIFValue_S.swift */; };
+		BFF5125023257F18001F75DC /* CIFValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5124F23257F18001F75DC /* CIFValue.swift */; };
 		BFFE0DB320D1F37700FF2AAB /* CACount.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFE0DB220D1F37700FF2AAB /* CACount.m */; };
 		BFFE0DB520D32D8300FF2AAB /* Handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = BFFE0DB420D32D8300FF2AAB /* Handlers.c */; };
 /* End PBXBuildFile section */
@@ -195,7 +195,7 @@
 		BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoopTag.h; sourceTree = "<group>"; };
 		BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CIFLoopTag.c; sourceTree = "<group>"; };
 		BFE2D66E20D180B300DF07FE /* CIFLex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLex.h; sourceTree = "<group>"; };
-		BFF5124F23257F18001F75DC /* CIFValue_S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIFValue_S.swift; sourceTree = "<group>"; };
+		BFF5124F23257F18001F75DC /* CIFValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIFValue.swift; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 		BFFE0DB120D1F37700FF2AAB /* CACount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CACount.h; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 				BF627E9620D1DACA0078BA85 /* CountPass.swift */,
 				BFFE0DB120D1F37700FF2AAB /* CACount.h */,
 				BFFE0DB220D1F37700FF2AAB /* CACount.m */,
-				BFF5124F23257F18001F75DC /* CIFValue_S.swift */,
+				BFF5124F23257F18001F75DC /* CIFValue.swift */,
 			);
 			path = Sample2;
 			sourceTree = "<group>";
@@ -411,8 +411,8 @@
 				BFE2D66C20D16E1800DF07FE /* CIFLoopTag.h in Headers */,
 				BFE2D66820D16C5200DF07FE /* CIFTag.h in Headers */,
 				BFE2D66F20D1813200DF07FE /* CIFLex.h in Headers */,
-				BF5111D120D026AA00E87696 /* CIFRawParser.h in Headers */,
 				BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */,
+				BF5111D120D026AA00E87696 /* CIFRawParser.h in Headers */,
 				BF5111F420D0345700E87696 /* Lexer.h in Headers */,
 				BFE2D65E20D1434300DF07FE /* Debug.h in Headers */,
 			);
@@ -656,7 +656,7 @@
 				BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */,
 				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
 				BFFE0DB320D1F37700FF2AAB /* CACount.m in Sources */,
-				BFF5125023257F18001F75DC /* CIFValue_S.swift in Sources */,
+				BFF5125023257F18001F75DC /* CIFValue.swift in Sources */,
 				BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */,
 				BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */,
 				BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */,

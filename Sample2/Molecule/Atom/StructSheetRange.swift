@@ -10,13 +10,13 @@ import Cocoa
 import CIFParser
 
 class StructSheetRange: NSObject {
-    var sheetID: CIFValue_S
-    var id: CIFValue_S
+    var sheetID: CIFValue
+    var id: CIFValue
     var begLabelID: LabelID
     var endLabelID: LabelID
     var begAuthID: AuthID
     var endAuthID: AuthID
-    init( sheetID s: CIFValue_S, id i: CIFValue_S, begLabelID bl: LabelID, endLabelID el: LabelID, begAuthID ba: AuthID, endAuthID ea: AuthID ) {
+    init( sheetID s: CIFValue, id i: CIFValue, begLabelID bl: LabelID, endLabelID el: LabelID, begAuthID ba: AuthID, endAuthID ea: AuthID ) {
         sheetID = s
         id = i
         begLabelID = bl
@@ -26,8 +26,8 @@ class StructSheetRange: NSObject {
     }
 }
 
-fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply6( LabelID.init,
@@ -39,8 +39,8 @@ fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID
                    d[tags[2]]! )
 }
 
-fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply4( AuthID.init,
@@ -50,7 +50,7 @@ fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
                    .inapplicable )
 }
 
-func makeStructSheetRange(_ d: [String:CIFValue_S] ) -> StructSheetRange? {
+func makeStructSheetRange(_ d: [String:CIFValue] ) -> StructSheetRange? {
     let bl = makeLabel( d, ["_struct_sheet_range.beg_label_comp_id","_struct_sheet_range.beg_label_asym_id","_struct_sheet_range.beg_label_seq_id"] )
     let el = makeLabel( d, ["_struct_sheet_range.end_label_comp_id","_struct_sheet_range.end_label_asym_id","_struct_sheet_range.end_label_seq_id"] )
     let ba = makeAuth( d, ["_struct_sheet_range.beg_auth_comp_id","_struct_sheet_range.beg_auth_asym_id","_struct_sheet_range.beg_auth_seq_id"] )

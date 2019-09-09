@@ -37,29 +37,29 @@ class AtomType: NSObject {
 
 
 struct LabelID {
-    var atom: CIFValue_S = .unknown
-    var alt: CIFValue_S = .unknown
-    var comp: CIFValue_S = .unknown
-    var asym: CIFValue_S = .unknown
-    var entity: CIFValue_S = .unknown
-    var seq: CIFValue_S = .unknown
+    var atom: CIFValue = .unknown
+    var alt: CIFValue = .unknown
+    var comp: CIFValue = .unknown
+    var asym: CIFValue = .unknown
+    var entity: CIFValue = .unknown
+    var seq: CIFValue = .unknown
 }
 
 
 struct AuthID {
-    var seq: CIFValue_S = .unknown
-    var comp: CIFValue_S = .unknown
-    var asym: CIFValue_S = .unknown
-    var atom: CIFValue_S = .unknown
+    var seq: CIFValue = .unknown
+    var comp: CIFValue = .unknown
+    var asym: CIFValue = .unknown
+    var atom: CIFValue = .unknown
 }
 
 
 class AtomSite {
 
-    var id: CIFValue_S = .unknown
+    var id: CIFValue = .unknown
     var groupPDB: GroupPDB?
     var cartn: SCNVector3 = SCNVector3()
-    var typeSymbol: CIFValue_S = .unknown
+    var typeSymbol: CIFValue = .unknown
     var label: LabelID = LabelID()
     var auth: AuthID = AuthID()
 
@@ -70,7 +70,7 @@ class AtomSite {
     init() {
     }
 
-    init( id i: CIFValue_S, symbol s: CIFValue_S, label l: LabelID, auth a: AuthID ) {
+    init( id i: CIFValue, symbol s: CIFValue, label l: LabelID, auth a: AuthID ) {
         id = i
         typeSymbol = s
         label = l
@@ -80,9 +80,9 @@ class AtomSite {
 }
 
 
-fileprivate func groupPDB(_ d:[String:CIFValue_S] ) ->GroupPDB? {
+fileprivate func groupPDB(_ d:[String:CIFValue] ) ->GroupPDB? {
     let a = d["_atom_site.group_PDB"]
-    func b(_ a: CIFValue_S ) -> GroupPDB? {
+    func b(_ a: CIFValue ) -> GroupPDB? {
         if (a.stringValue) == "ATOM" {
             return .atom
         }
@@ -95,13 +95,13 @@ fileprivate func groupPDB(_ d:[String:CIFValue_S] ) ->GroupPDB? {
 }
 
 
-func Cartn(_ x: CIFValue_S,_ y: CIFValue_S,_ z: CIFValue_S ) -> SCNVector3? {
+func Cartn(_ x: CIFValue,_ y: CIFValue,_ z: CIFValue ) -> SCNVector3? {
     return bind3( SCNVector3.init, x.doubleValue, y.doubleValue, z.doubleValue )
 }
 
 
-fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply6( LabelID.init,
@@ -114,8 +114,8 @@ fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID
 }
 
 
-fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply4( AuthID.init,
@@ -126,7 +126,7 @@ fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
 }
 
 
-fileprivate func atomSiteLabel(_ d: [String:CIFValue_S] ) -> LabelID {
+fileprivate func atomSiteLabel(_ d: [String:CIFValue] ) -> LabelID {
     return makeLabel( d, ["_atom_site.label_atom_id",
                           "_atom_site.label_alt_id",
                           "_atom_site.label_comp_id",
@@ -136,7 +136,7 @@ fileprivate func atomSiteLabel(_ d: [String:CIFValue_S] ) -> LabelID {
 }
 
 
-fileprivate func atomSiteAuthID(_ d: [String:CIFValue_S] ) -> AuthID {
+fileprivate func atomSiteAuthID(_ d: [String:CIFValue] ) -> AuthID {
     return makeAuth( d, ["_atom_site.auth_seq_id",
                          "_atom_site.auth_comp_id",
                          "_atom_site.auth_asym_id",
@@ -144,7 +144,7 @@ fileprivate func atomSiteAuthID(_ d: [String:CIFValue_S] ) -> AuthID {
 }
 
 
-func makeAtomSite(_ d: [String:CIFValue_S] ) -> AtomSite? {
+func makeAtomSite(_ d: [String:CIFValue] ) -> AtomSite? {
     let site = lift4( AtomSite.init, d["_atom_site.id"], d["_atom_site.type_symbol"], atomSiteLabel( d ), atomSiteAuthID( d ) )
     site?.groupPDB = groupPDB( d )
     bind3( Cartn, d["_atom_site.Cartn_x"], d["_atom_site.Cartn_y"], d["_atom_site.Cartn_z"] ).map{ site?.cartn = $0 }

@@ -11,13 +11,13 @@ import CIFParser
 
 
 class StructConf: NSObject {
-    var confTypeID: CIFValue_S
-    var id: CIFValue_S
+    var confTypeID: CIFValue
+    var id: CIFValue
     var begLabelID: LabelID
     var endLabelID: LabelID
     var begAuthID: AuthID
     var endAuthID: AuthID
-    init( confTypeID c: CIFValue_S, id i: CIFValue_S, begLabelID bl: LabelID, endLabelID el: LabelID, begAuthID ba: AuthID, endAuthID ea: AuthID ) {
+    init( confTypeID c: CIFValue, id i: CIFValue, begLabelID bl: LabelID, endLabelID el: LabelID, begAuthID ba: AuthID, endAuthID ea: AuthID ) {
         confTypeID = c
         id = i
         begLabelID = bl
@@ -28,8 +28,8 @@ class StructConf: NSObject {
 }
 
 
-fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply6( LabelID.init,
@@ -42,8 +42,8 @@ fileprivate func makeLabel(_ d:[String:CIFValue_S],_ tags: [String] ) -> LabelID
 }
 
 
-fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
-    func cifString(_ key: String ) -> CIFValue_S {
+fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
+    func cifString(_ key: String ) -> CIFValue {
         return d[key] ?? .unknown
     }
     return apply4( AuthID.init,
@@ -54,7 +54,7 @@ fileprivate func makeAuth(_ d:[String:CIFValue_S],_ tags: [String] ) -> AuthID {
 }
 
 
-func makeStructConf(_ d: [String:CIFValue_S] ) -> StructConf? {
+func makeStructConf(_ d: [String:CIFValue] ) -> StructConf? {
     let bl = makeLabel( d, ["_struct_conf.beg_label_comp_id","_struct_conf.beg_label_asym_id","_struct_conf.beg_label_seq_id"] )
     let el = makeLabel( d, ["_struct_conf.end_label_comp_id","_struct_conf.end_label_asym_id","_struct_conf.end_label_seq_id"] )
     let ba = makeAuth( d, ["_struct_conf.beg_auth_seq_id","_struct_conf.beg_auth_comp_id","_struct_conf.beg_auth_asym_id"] )
