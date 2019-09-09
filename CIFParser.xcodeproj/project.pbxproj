@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1F320D0AA2000A55A32 /* CIFValue.m */; };
 		BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */; };
 		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
 		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
@@ -135,8 +134,6 @@
 
 /* Begin PBXFileReference section */
 		BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample2-Bridging-Header.h"; sourceTree = "<group>"; };
-		BF4CC1F220D0AA2000A55A32 /* CIFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFValue.h; sourceTree = "<group>"; };
-		BF4CC1F320D0AA2000A55A32 /* CIFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIFValue.m; sourceTree = "<group>"; };
 		BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF4CC1FF20D0AB4800A55A32 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+Lattices.swift"; sourceTree = "<group>"; };
@@ -308,8 +305,6 @@
 				BF4CC1FF20D0AB4800A55A32 /* Test.swift */,
 				BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */,
 				BF7A2E021FDDE7110031EBA7 /* Main.storyboard */,
-				BF4CC1F220D0AA2000A55A32 /* CIFValue.h */,
-				BF4CC1F320D0AA2000A55A32 /* CIFValue.m */,
 				BF51120F20D062BE00E87696 /* AppDelegate.swift */,
 				BF51121320D062BF00E87696 /* Assets.xcassets */,
 				BF51121820D062BF00E87696 /* Info.plist */,
@@ -660,7 +655,6 @@
 				BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */,
 				BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */,
 				BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */,
-				BF4CC1F420D0AA2000A55A32 /* CIFValue.m in Sources */,
 				BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */,
 				BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */,
 				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
