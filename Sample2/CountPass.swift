@@ -9,47 +9,47 @@
 import Foundation
 import CIFParser
 
-class CountPass : CIFHandler {
+class CACount: CIFHandlerImpl {
     var count : Int = 0
     var atomCounting : Bool = false
     var idIndex: Int?
-    func beginData(_ lex: UnsafePointer<CIFLex>) {
+    func beginData(_ lex: CIFLex) {
     }
-    func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>) {
+    func item(_ tag: CIFTag, _ lex: CIFLex) {
     }
-    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>) {
-        let tags = NSStringsFromLoopTag(tags)
-        idIndex = tags.firstIndex(of: "_atom_site.label_atom_id" )
+    func beginLoop(_ tags: CIFLoopTag) {
+        idIndex = tags.find("_atom_site.label_atom_id")
     }
-    func loopItem(_ tags: UnsafePointer<CIFLoopTag>, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex>) {
-        idIndex.map {
-            if tagIndex == $0 && String(cString: lex.pointee.text) == "CA" {
-                count += 1
-            }
+    func loopItem(_ tags: CIFLoopTag, _ tagIndex: Int, _ lex: CIFLex) {
+        guard
+            let idIndex = idIndex
+            else { return }
+        if idIndex == tagIndex && lex.compare("CA") == 0 {
+            count += 1
         }
     }
     func loopItemTerm() {
     }
     func endLoop() {
     }
-    func parse( name: String ) {
-        CIFParser.parse( name, self)
-    }
-    static func hh() -> CIFRawHandlers {
+    func prepareHandlers() -> CIFRawHandlers
+    {
         var h = CIFRawHandlers()
         h.beginData = { (a,b) in }
-        h.beginLoop = { (a,b) in CountPass.shared.beginLoop(b!) }
+        h.beginLoop = { a,b in CACount.shared.beginLoop(b) }
         h.item = { (a,b,c) in }
-        h.loopItem = { (a,b,c,d) in CountPass.shared.loopItem(b!,c,d!) }
+        h.loopItem = { (a,b,c,d) in CACount.shared.loopItem(b,c,d) }
         h.loopItemTerm = { (a) in }
         h.endLoop = { (a) in }
         return h
     }
-    static let shared: CountPass = CountPass()
-    static func parse( name: String ) {
-        let fp = fopen(name, "r")
-        var handlers = self.hh()
-        CIFRawParse( fp, &handlers )
-        fclose(fp)
+
+    static let shared: CACount = CACount()
+
+    static func parse(_ fp: UnsafeMutablePointer<FILE>!) -> Int
+    {
+        CACount.shared.parse(fp)
+        return CACount.shared.count
     }
+
 }

@@ -32,7 +32,7 @@ typedef enum CIFLexType CIFLexType;
 
 typedef struct CIFLex {
     CIFLexType tag;
-    char *text;
+    const char *text;
     size_t len;
 } CIFLex;
 

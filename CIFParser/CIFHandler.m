@@ -9,24 +9,24 @@
 #import "CIFHandler.h"
 #include "CIFRawParser.h"
 
-static void HandleBeginData( void *ctx, const CIFLex *lex )
+static void HandleBeginData( void *ctx, const CIFLex lex )
 {
-    [(__bridge id<CIFHandler>)ctx beginData:lex];
+    [(__bridge id<CIFHandler>)ctx beginData:&lex];
 }
 
-static void HandleItem( void *ctx, const CIFTag *tag, CIFLex *lex )
+static void HandleItem( void *ctx, const CIFTag tag, CIFLex lex )
 {
-    [(__bridge id<CIFHandler>)ctx item:tag :lex];
+    [(__bridge id<CIFHandler>)ctx item:&tag :&lex];
 }
 
-static void HandleBeginLoop( void *ctx, CIFLoopTag *tags )
+static void HandleBeginLoop( void *ctx, CIFLoopTag tags )
 {
-    [(__bridge id<CIFHandler>)ctx beginLoop:tags];
+    [(__bridge id<CIFHandler>)ctx beginLoop:&tags];
 }
 
-static void HandleLoopItem( void *ctx, CIFLoopTag *tags, size_t tagIndex, CIFLex *lex )
+static void HandleLoopItem( void *ctx, CIFLoopTag tags, size_t tagIndex, CIFLex lex )
 {
-    [(__bridge id<CIFHandler>)ctx loopItem:tags :tagIndex :lex];
+    [(__bridge id<CIFHandler>)ctx loopItem:&tags :tagIndex :&lex];
 }
 
 static void HandleLoopItemTerm( void *ctx )

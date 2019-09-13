@@ -9,6 +9,29 @@
 import SceneKit
 import CIFParser
 
+extension CIFLoopTag {
+    var stringValues:[String] {
+        return (0..<count).map{ String(cString:list[$0].text) }
+    }
+    func find(_ str: String) -> Int? {
+        for i in 0..<count {
+            if strcmp(list[i].text,str) == 0 {
+                return i
+            }
+        }
+        return nil
+    }
+}
+
+extension CIFLex {
+    var stringValue: String {
+        return String(cString:text)
+    }
+    func compare(_ str: String) -> Int32 {
+        return strcmp( text, str )
+    }
+}
+
 extension CIFRawHandlers {
 
     typealias BeginDataFunc
@@ -43,6 +66,11 @@ extension CIFHandlerImpl
     func parse(_ path: String)
     {
         let fp = fopen(path, "r");
+        parse(fp)
+    }
+
+    func parse(_ fp: UnsafeMutablePointer<FILE>!)
+    {
         var handlers: CIFRawHandlers = prepareHandlers()
         let hpp = UnsafeMutablePointer<CIFRawHandlers>(&handlers)
         CIFRawParse( fp, hpp )
@@ -104,63 +132,24 @@ extension AtomSite {
 
 extension Simple : CIFHandlerImpl {
 
-    static func Context(_ ctx: UnsafeMutableRawPointer?) -> Simple? {
-        return ctx.map({ unsafeBitCast($0, to:Simple.self) })
+    static func Callback<T>(_ ctx: UnsafeMutableRawPointer?, func function: (Simple)->T) -> T?{
+        if let instance = ctx.map({ unsafeBitCast($0, to:Simple.self) }) {
+            return function(instance)
+        }
+        return nil;
     }
 
     func prepareHandlers() -> CIFRawHandlers
     {
-        let beginData: CIFRawHandlers.BeginDataFunc = { ctx, lex in
-            if
-                let ctx = Simple.Context(ctx),
-                let lex = lex
-            {
-                ctx.beginData(lex)
-            }
-        }
-
-        let item: CIFRawHandlers.ItemFunc = { ctx, tag, lex in
-            if
-                let ctx = Simple.Context(ctx),
-                let tag = tag,
-                let lex = lex
-            {
-                ctx.item(tag,lex)
-            }
-        }
-
-        let beginLoop: CIFRawHandlers.BeginLoopFunc = { ctx, looptag in
-            if
-                let ctx = Simple.Context(ctx),
-                let looptag = looptag
-            {
-                ctx.beginLoop(looptag)
-            }
-        }
-
-        let loopItem: CIFRawHandlers.LoopItemFunc = { ctx, looptag, itemIndex, lex in
-            if
-                let ctx = Simple.Context(ctx),
-                let looptag = looptag,
-                let lex = lex
-            {
-                ctx.loopItem(looptag,itemIndex,lex)
-            }
-        }
-        let loopItemTerm: CIFRawHandlers.LoopItemTermFunc = { Simple.Context($0)?.loopItemTerm() }
-        let endLoop: CIFRawHandlers.EndLoopFunc = { Simple.Context($0)?.endLoop() }
-        let endData: CIFRawHandlers.EndDataFunc = { _ in }
-
         var handlers: CIFRawHandlers = CIFRawHandlers()
         handlers.ctx = UnsafeMutableRawPointer(unsafeBitCast(self, to: UnsafeMutablePointer<Simple>.self))
-        handlers.beginData = beginData
-        handlers.item = item
-        handlers.beginLoop = beginLoop
-        handlers.loopItem = loopItem
-        handlers.loopItemTerm = loopItemTerm
-        handlers.endLoop = endLoop
-        handlers.endData = endData
-
+        handlers.beginData = { ctx, lex in Simple.Callback(ctx) { $0.beginData(lex) } }
+        handlers.item = { ctx, tag, lex in Simple.Callback(ctx) { $0.item(tag,lex) } }
+        handlers.beginLoop = { ctx, looptag in Simple.Callback(ctx) { $0.beginLoop(looptag) } }
+        handlers.loopItem = { ctx, looptag, itemIndex, lex in Simple.Callback(ctx) { $0.loopItem(looptag,itemIndex,lex) } }
+        handlers.loopItemTerm = { Simple.Callback($0) { $0.loopItemTerm() } }
+        handlers.endLoop = { Simple.Callback($0) { $0.endLoop() } }
+        handlers.endData = { _ in }
         return handlers
     }
 
@@ -169,7 +158,13 @@ extension Simple : CIFHandlerImpl {
 
 class Simple {
 
+    func beginData(_ lex: CIFLex) {
+    }
+
     func beginData(_ lex: UnsafePointer<CIFLex>) {
+    }
+
+    func item(_ tag: CIFTag, _ lex: CIFLex) {
     }
 
     func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>) {
@@ -184,8 +179,8 @@ class Simple {
 
     var mode: LoopMode = .ignore
 
-    func beginLoop(_ tags: UnsafePointer<CIFLoopTag>) {
-        let tags = NSStringsFromLoopTag(tags)
+    func beginLoop(_ tags: CIFLoopTag) {
+        let tags = tags.stringValues
 
         if tags.contains("_atom_site.Cartn_x") {
 
@@ -249,6 +244,21 @@ class Simple {
             break
         }
         loopValues = []
+    }
+
+    func loopItem( _ tags: CIFLoopTag, _ tagIndex: Int, _ lex: CIFLex ) {
+        switch mode {
+        case .helix:
+            fallthrough
+        case .sheet:
+            loopValues.append( TestValue( tag: lex.tag, textBytes: lex.text, textLength: lex.len ) )
+        case .atom:
+            atomKeyTable[tagIndex].map{
+                atomSite.loopItem(key: $0, tag: lex.tag, textBytes: lex.text, textLength: lex.len)
+            }
+        default:
+            break
+        }
     }
 
     func loopItem( _ tags: UnsafePointer<CIFLoopTag>, _ tagIndex: Int, _ lex: UnsafePointer<CIFLex> ) {
@@ -351,11 +361,17 @@ class Test: NSObject {
 
         #if true
             var count = 0
+        #if false
             path.map{
                 let fp = fopen($0,"r")
+                #if true
                 count = CACountParse(fp)
+                #else
+                count = CACount.parse(fp)
+                #endif
                 fclose(fp)
                 }
+        #endif
             print("atom count = \(count)")
 
         let time100 = CFAbsoluteTimeGetCurrent()
@@ -368,10 +384,11 @@ class Test: NSObject {
 //            parser.root.handler = Simple()
 //            path.map{ parser.parse(withFilePath: $0 ) }
 //            path.map{ CIFParser.parse( $0, handler ) }
-            path.map{ handler.parse($0) }
+                path.map{ handler.parse($0) }
+
             let time1 = CFAbsoluteTimeGetCurrent()
             let time_ = CFAbsoluteTimeGetCurrent()
-            print("test parse = \(time_ - time1)")
+            print("test parse = \(time_ - time0)")
 //            abort()
             let atomSites = handler.atomSites
             let structConfs = handler.structConfs

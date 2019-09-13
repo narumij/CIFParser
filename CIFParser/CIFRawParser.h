@@ -15,10 +15,10 @@
 
 typedef struct CIFRawHandlers {
     void *ctx;
-    void (*beginData)( void* ctx, const CIFLex* value );
-    void (*item)( void *ctx, const CIFTag *tag, CIFLex *value );
-    void (*beginLoop)( void *ctx, CIFLoopTag *tags );
-    void (*loopItem)( void *ctx, CIFLoopTag *tags, size_t itemIndex, CIFLex *value );
+    void (*beginData)( void* ctx, CIFLex value );
+    void (*item)( void *ctx, CIFTag tag, CIFLex value );
+    void (*beginLoop)( void *ctx, CIFLoopTag tags );
+    void (*loopItem)( void *ctx, CIFLoopTag tags, size_t itemIndex, CIFLex value );
     void (*loopItemTerm)( void *ctx );
     void (*endLoop)( void *ctx );
     void (*endData)( void *ctx );

@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 typedef struct CIFTag {
-    char *text;
+    const char *text;
     size_t len;
     size_t capa;
 } CIFTag;

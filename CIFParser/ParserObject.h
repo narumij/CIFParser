@@ -38,16 +38,16 @@ struct ParserObject {
 };
 
 static inline void CallBacBeginData( ParserObject *ctx, CIFLex *value ) {
-    ctx->handlers->beginData( ctx->handlers->ctx, value );
+    ctx->handlers->beginData( ctx->handlers->ctx, *value );
 }
 static inline void CallBackItem( ParserObject *ctx, CIFLex *value ) {
-    ctx->handlers->item( ctx->handlers->ctx, &ctx->itemTag, value );
+    ctx->handlers->item( ctx->handlers->ctx, ctx->itemTag, *value );
 }
 static inline void CallBackBeginLoop( ParserObject *ctx ) {
-    ctx->handlers->beginLoop( ctx->handlers->ctx, &ctx->loopTag );
+    ctx->handlers->beginLoop( ctx->handlers->ctx, ctx->loopTag );
 }
 static inline void CallBackLoopItem( ParserObject *ctx, CIFLex *value ) {
-    ctx->handlers->loopItem( ctx->handlers->ctx, &ctx->loopTag, ctx->loopTagIndex, value );
+    ctx->handlers->loopItem( ctx->handlers->ctx, ctx->loopTag, ctx->loopTagIndex, *value );
 }
 static inline void CallBackLoopItemTerm( ParserObject *ctx ) {
     ctx->handlers->loopItemTerm( ctx->handlers->ctx );
