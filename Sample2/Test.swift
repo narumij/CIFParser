@@ -9,78 +9,6 @@
 import SceneKit
 import CIFParser
 
-extension CIFLoopTag {
-    var stringValues:[String] {
-        return (0..<count).map{ String(cString:list[$0].text) }
-    }
-    func find(_ str: String) -> Int? {
-        for i in 0..<count {
-            if strcmp(list[i].text,str) == 0 {
-                return i
-            }
-        }
-        return nil
-    }
-}
-
-extension CIFLex {
-    var stringValue: String {
-        return String(cString:text)
-    }
-    func compare(_ str: String) -> Int32 {
-        return strcmp( text, str )
-    }
-}
-
-extension CIFRawHandlers {
-
-    typealias BeginDataFunc
-        = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFLex>?) -> Void
-
-    typealias ItemFunc
-        = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CIFTag>?, UnsafeMutablePointer<CIFLex>?) -> Void
-
-    typealias BeginLoopFunc
-        = @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?) -> Void
-
-    typealias LoopItemFunc
-        = @convention(c) (UnsafeMutableRawPointer?, UnsafeMutablePointer<CIFLoopTag>?, Int, UnsafeMutablePointer<CIFLex>?) -> Void
-
-    typealias LoopItemTermFunc
-        = @convention(c) (UnsafeMutableRawPointer?) -> Void
-
-    typealias EndLoopFunc
-        = @convention(c) (UnsafeMutableRawPointer?) -> Void
-
-    typealias EndDataFunc
-        = @convention(c) (UnsafeMutableRawPointer?) -> Void
-
-}
-
-protocol CIFHandlerImpl {
-    func prepareHandlers() -> CIFRawHandlers
-}
-
-extension CIFHandlerImpl
-{
-    func parse(_ path: String)
-    {
-        let fp = fopen(path, "r");
-        parse(fp)
-    }
-
-    func parse(_ fp: UnsafeMutablePointer<FILE>!)
-    {
-        var handlers: CIFRawHandlers = prepareHandlers()
-        let hpp = UnsafeMutablePointer<CIFRawHandlers>(&handlers)
-        CIFRawParse( fp, hpp )
-    }
-}
-
-
-
-
-
 fileprivate let xKey = "_atom_site.Cartn_x"
 fileprivate let yKey = "_atom_site.Cartn_y"
 fileprivate let zKey = "_atom_site.Cartn_z"
@@ -88,14 +16,16 @@ fileprivate let zKey = "_atom_site.Cartn_z"
 let atom = "ATOM"
 let hetatm = "HETATM"
 
-fileprivate func groupPDB_(_ textBytes: UnsafePointer<Int8>!,_ textLength: Int) ->GroupPDB? {
-    if strcmp( textBytes, (atom as NSString).utf8String ) == 0 {
-        return .atom
+extension CIFLex {
+    var groupPDBValue: GroupPDB? {
+        if isSame(as: atom ) {
+            return .atom
+        }
+        if isSame(as: hetatm ) {
+            return .hetatm
+        }
+        return nil
     }
-    if strcmp( textBytes, (hetatm as NSString).utf8String ) == 0 {
-        return .hetatm
-    }
-    return nil
 }
 
 extension AtomSite {
@@ -109,55 +39,122 @@ extension AtomSite {
         case groupPDB
     }
 
-    func loopItem( key: CIFKey, tag: CIFLexType, textBytes: UnsafePointer<Int8>!, textLength: Int )
+    func loopItem( key: CIFKey, lex: CIFLex )
     {
         switch key {
         case .atomID:
-            label.atom = CIFValue( tag: tag, bytes: textBytes, length: textLength )
+            label.atom = lex.cifValue
         case .seqID:
-            label.seq = CIFValue( tag: tag, bytes: textBytes, length: textLength )
+            label.seq  = lex.cifValue
         case .cartX:
-            cartn.x = CGFloat( atof(textBytes) )
+            cartn.x    = lex.CGFloatValue
         case .cartY:
-            cartn.y = CGFloat( atof(textBytes) )
+            cartn.y    = lex.CGFloatValue
         case .cartZ:
-            cartn.z = CGFloat( atof(textBytes) )
+            cartn.z    = lex.CGFloatValue
         case .groupPDB:
-            groupPDB = groupPDB_( textBytes, textLength )
+            groupPDB   = lex.groupPDBValue
         }
     }
-
 }
 
+#if true
+extension Simple : ParseCIFFile, PrepareParseCIFFile {
 
-extension Simple : CIFHandlerImpl {
+    internal var pointer: UnsafeMutableRawPointer {
+        return UnsafeMutableRawPointer(unsafeBitCast(self, to: UnsafeMutablePointer<Simple>.self))
+    }
 
-    static func Callback<T>(_ ctx: UnsafeMutableRawPointer?, func function: (Simple)->T) -> T?{
-        if let instance = ctx.map({ unsafeBitCast($0, to:Simple.self) }) {
+    private static func Callback<T>(_ ctx: UnsafeMutableRawPointer?, func function: (Simple)->T) -> T?{
+        if let instance = ctx.map( { unsafeBitCast($0, to:Simple.self) } ) {
             return function(instance)
         }
         return nil;
     }
 
-    func prepareHandlers() -> CIFRawHandlers
+    var BeginDataFunc: BeginDataFuncType?
     {
-        var handlers: CIFRawHandlers = CIFRawHandlers()
-        handlers.ctx = UnsafeMutableRawPointer(unsafeBitCast(self, to: UnsafeMutablePointer<Simple>.self))
-        handlers.beginData = { ctx, lex in Simple.Callback(ctx) { $0.beginData(lex) } }
-        handlers.item = { ctx, tag, lex in Simple.Callback(ctx) { $0.item(tag,lex) } }
-        handlers.beginLoop = { ctx, looptag in Simple.Callback(ctx) { $0.beginLoop(looptag) } }
-        handlers.loopItem = { ctx, looptag, itemIndex, lex in Simple.Callback(ctx) { $0.loopItem(looptag,itemIndex,lex) } }
-        handlers.loopItemTerm = { Simple.Callback($0) { $0.loopItemTerm() } }
-        handlers.endLoop = { Simple.Callback($0) { $0.endLoop() } }
-        handlers.endData = { _ in }
-        return handlers
+        { ctx, lex in Simple.Callback(ctx) { $0.beginData(lex) } }
+    }
+
+    var ItemFunc: ItemFuncType?
+    {
+        { ctx, tag, lex in Simple.Callback(ctx) { $0.item(tag,lex) } }
+    }
+
+    var BeginLoopFunc: BeginLoopFuncType?
+    {
+        { ctx, looptag in Simple.Callback(ctx) { $0.beginLoop(looptag) } }
+    }
+
+    var LoopItemFunc: LoopItemFuncType?
+    {
+        { ctx, tag, idx, lex in Simple.Callback(ctx) { $0.loopItem(tag,idx,lex) } }
+    }
+
+    var LoopItemTermFunc: LoopItemTermFuncType?
+    {
+        { Simple.Callback($0) { $0.loopItemTerm() } }
+    }
+
+    var EndLoopFunc: EndLoopFuncType?
+    {
+        { Simple.Callback($0) { $0.endLoop() } }
+    }
+
+    var EndDataFunc: EndDataFuncType?
+    {
+        { _ in }
     }
 
 }
-
+#endif
 
 class Simple {
 
+
+    enum LoopMode {
+        case ignore
+        case atom
+        case helix
+        case sheet
+    }
+
+    var mode: LoopMode = .ignore
+
+    func beginLoop(_ tags_: CIFLoopTag) {
+//        let tags = tags_.stringValues
+        if let _ = tags_.firstIndex(of: "_atom_site.Cartn_x") {
+            mode = .atom
+            atomKeyTable = [:]
+            for (str,key) in [
+                ("_atom_site.label_atom_id",AtomSite.CIFKey.atomID),
+                ("_atom_site.label_seq_id",AtomSite.CIFKey.seqID),
+                (xKey,AtomSite.CIFKey.cartX),
+                (yKey,AtomSite.CIFKey.cartY),
+                (zKey,AtomSite.CIFKey.cartZ),
+                ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
+                ] {
+                    if let idx = tags_.firstIndex(of: str) {
+                        atomKeyTable[idx] = key
+                    }
+            }
+        } else if let _ = tags_.firstIndex(of: "_struct_conf.id") {
+            mode = .helix
+        } else if let _ = tags_.firstIndex(of: "_struct_sheet_range.id") {
+            mode = .sheet
+        } else {
+            mode = .ignore
+        }
+        loopTags = tags_.stringValues
+    }
+
+    var atomCount = 0
+    var helixCount = 0
+    var sheetCount = 0
+    func beginData( name: String) -> Bool {
+        return true
+    }
     func beginData(_ lex: CIFLex) {
     }
 
@@ -170,55 +167,6 @@ class Simple {
     func item(_ tag: UnsafePointer<CIFTag>, _ lex: UnsafePointer<CIFLex>) {
     }
 
-    enum LoopMode {
-        case ignore
-        case atom
-        case helix
-        case sheet
-    }
-
-    var mode: LoopMode = .ignore
-
-    func beginLoop(_ tags: CIFLoopTag) {
-        let tags = tags.stringValues
-
-        if tags.contains("_atom_site.Cartn_x") {
-
-            mode = .atom
-            atomKeyTable = [:]
-
-            for (str,key) in [
-                ("_atom_site.label_atom_id",AtomSite.CIFKey.atomID),
-                ("_atom_site.label_seq_id",AtomSite.CIFKey.seqID),
-                (xKey,AtomSite.CIFKey.cartX),
-                (yKey,AtomSite.CIFKey.cartY),
-                (zKey,AtomSite.CIFKey.cartZ),
-                ("_atom_site.group_PDB",AtomSite.CIFKey.groupPDB)
-                ] {
-                    if let idx = tags.firstIndex(of: str) {
-                        atomKeyTable[idx] = key
-                    }
-            }
-
-        } else if tags.contains("_struct_conf.id") {
-            mode = .helix
-        } else if tags.contains("_struct_sheet_range.id") {
-            mode = .sheet
-        } else {
-            mode = .ignore
-        }
-        loopTags = tags
-
-    }
-
-    var atomCount = 0
-    var helixCount = 0
-    var sheetCount = 0
-    func beginData( name: String) -> Bool {
-        return true
-    }
-    func item( itemTag: String, tag: CIFLexType, textBytes: UnsafePointer<Int8>!, textLength: Int ) {
-    }
     var atomKeyTable : [Int:AtomSite.CIFKey] = [:]
 
     var loopTags: [String] = []
@@ -254,7 +202,7 @@ class Simple {
             loopValues.append( TestValue( tag: lex.tag, textBytes: lex.text, textLength: lex.len ) )
         case .atom:
             atomKeyTable[tagIndex].map{
-                atomSite.loopItem(key: $0, tag: lex.tag, textBytes: lex.text, textLength: lex.len)
+                atomSite.loopItem(key: $0, lex: lex)
             }
         default:
             break
@@ -269,7 +217,7 @@ class Simple {
             loopValues.append( TestValue( tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: lex.pointee.len ) )
         case .atom:
             atomKeyTable[tagIndex].map{
-                atomSite.loopItem(key: $0, tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: lex.pointee.len)
+                atomSite.loopItem(key: $0, lex: lex.pointee)
             }
         default:
             break
@@ -360,10 +308,12 @@ class Test: NSObject {
         let time0 = CFAbsoluteTimeGetCurrent()
 
         #if true
-            var count = 0
+
         #if false
+            var count = 0
             path.map{
                 let fp = fopen($0,"r")
+
                 #if true
                 count = CACountParse(fp)
                 #else
@@ -371,8 +321,8 @@ class Test: NSObject {
                 #endif
                 fclose(fp)
                 }
-        #endif
             print("atom count = \(count)")
+        #endif
 
         let time100 = CFAbsoluteTimeGetCurrent()
         print("count parse = \(time100 - time0)")

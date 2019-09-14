@@ -9,7 +9,7 @@
 import Foundation
 import CIFParser
 
-class CACount: CIFHandlerImpl {
+class CACount: ParseCIFFile {
     var count : Int = 0
     var atomCounting : Bool = false
     var idIndex: Int?
@@ -18,13 +18,13 @@ class CACount: CIFHandlerImpl {
     func item(_ tag: CIFTag, _ lex: CIFLex) {
     }
     func beginLoop(_ tags: CIFLoopTag) {
-        idIndex = tags.find("_atom_site.label_atom_id")
+        idIndex = tags.firstIndex(of: "_atom_site.label_atom_id")
     }
     func loopItem(_ tags: CIFLoopTag, _ tagIndex: Int, _ lex: CIFLex) {
         guard
             let idIndex = idIndex
             else { return }
-        if idIndex == tagIndex && lex.compare("CA") == 0 {
+        if idIndex == tagIndex && lex.isSame(as: "CA") {
             count += 1
         }
     }
@@ -32,17 +32,15 @@ class CACount: CIFHandlerImpl {
     }
     func endLoop() {
     }
+    #if true
     func prepareHandlers() -> CIFRawHandlers
     {
-        var h = CIFRawHandlers()
-        h.beginData = { (a,b) in }
+        var h = CIFMakeRawHandlers()
         h.beginLoop = { a,b in CACount.shared.beginLoop(b) }
-        h.item = { (a,b,c) in }
         h.loopItem = { (a,b,c,d) in CACount.shared.loopItem(b,c,d) }
-        h.loopItemTerm = { (a) in }
-        h.endLoop = { (a) in }
         return h
     }
+    #endif
 
     static let shared: CACount = CACount()
 

@@ -1,13 +1,124 @@
 //
-//  CIFValue_S.swift
+//  CIFParser+Utils.swift
 //  Sample2
 //
-//  Created by Jun Narumi on 2019/09/09.
+//  Created by Jun Narumi on 2019/09/14.
 //  Copyright © 2019 Jun Narumi. All rights reserved.
 //
 
-import Cocoa
+import Foundation
+
 import CIFParser
+
+extension CIFLoopTag {
+    var stringValues:[String] {
+        return (0..<count).map{ String(cString:list[$0].text) }
+    }
+    func firstIndex(of str: String) -> Int? {
+        for i in 0..<count {
+            if strcmp(list[i].text,str) == 0 {
+                return i
+            }
+        }
+        return nil
+    }
+}
+
+extension CIFLex {
+    var stringValue: String {
+        return String(cString:text)
+    }
+    var doubleValue: Double {
+        return atof(text)
+    }
+    var CGFloatValue: CGFloat {
+        return CGFloat(doubleValue)
+    }
+    var cifValue: CIFValue {
+        return CIFValue(tag: tag, bytes: text, length: len)
+    }
+    private func compare(_ str: String) -> Int32 {
+        return strcmp( text, str )
+    }
+    func isSame(as str: String) -> Bool {
+        return compare(str) == 0
+    }
+}
+
+protocol PrepareParseCIFFile {
+
+    typealias BeginDataFuncType
+        = @convention(c) (UnsafeMutableRawPointer?, CIFLex) -> Void
+
+    typealias ItemFuncType
+        = @convention(c) (UnsafeMutableRawPointer?, CIFTag, CIFLex) -> Void
+
+    typealias BeginLoopFuncType
+        = @convention(c) (UnsafeMutableRawPointer?, CIFLoopTag) -> Void
+
+    typealias LoopItemFuncType
+        = @convention(c) (UnsafeMutableRawPointer?, CIFLoopTag, Int, CIFLex) -> Void
+
+    typealias LoopItemTermFuncType
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+
+    typealias EndLoopFuncType
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+
+    typealias EndDataFuncType
+        = @convention(c) (UnsafeMutableRawPointer?) -> Void
+
+    var pointer: UnsafeMutableRawPointer { get }
+    var BeginDataFunc: BeginDataFuncType? { get }
+    var ItemFunc: ItemFuncType? { get }
+    var BeginLoopFunc: BeginLoopFuncType? { get }
+    var LoopItemFunc: LoopItemFuncType? { get }
+    var LoopItemTermFunc: LoopItemTermFuncType? { get }
+    var EndLoopFunc: EndLoopFuncType? { get }
+    var EndDataFunc: EndDataFuncType? { get }
+}
+
+extension PrepareParseCIFFile {
+
+    internal var pointer: UnsafeMutableRawPointer {
+        return UnsafeMutableRawPointer(unsafeBitCast(self, to: UnsafeMutablePointer<Self>.self))
+    }
+
+    func prepareHandlers() -> CIFRawHandlers
+    {
+        var handlers: CIFRawHandlers = CIFMakeRawHandlers()
+        handlers.ctx = pointer
+        if let _ = BeginDataFunc { handlers.beginData = BeginDataFunc }
+        if let _ = ItemFunc { handlers.item = ItemFunc }
+        if let _ = BeginLoopFunc { handlers.beginLoop = BeginLoopFunc }
+        if let _ = LoopItemFunc { handlers.loopItem = LoopItemFunc }
+        if let _ = LoopItemTermFunc { handlers.loopItemTerm = LoopItemTermFunc }
+        if let _ = EndLoopFunc { handlers.endLoop = EndLoopFunc }
+        if let _ = EndDataFunc { handlers.endData = EndDataFunc }
+        return handlers
+    }
+
+}
+
+protocol ParseCIFFile {
+    func prepareHandlers() -> CIFRawHandlers
+}
+
+extension ParseCIFFile
+{
+    func parse(_ path: String)
+    {
+        let fp = fopen(path, "r");
+        parse(fp)
+    }
+
+    func parse(_ fp: UnsafeMutablePointer<FILE>!)
+    {
+        let handlers: CIFRawHandlers = prepareHandlers()
+        CIFRawParse2( fp, handlers )
+    }
+}
+
 
 enum CIFValue {
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1DA65D232C73AC0066F4A2 /* CIFParser+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */; };
+		BF1DA65F232C94170066F4A2 /* CIFParser+Utils2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */; };
 		BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */; };
 		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
 		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
@@ -29,7 +31,7 @@
 		BF5111F220D032BF00E87696 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
 		BF5111F420D0345700E87696 /* Lexer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111D220D026DA00E87696 /* Lexer.h */; };
 		BF5111F720D0425800E87696 /* ParserObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F520D0425800E87696 /* ParserObject.h */; };
-		BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F920D0456F00E87696 /* CIFHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF5111FB20D0456F00E87696 /* CIFHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5111F920D0456F00E87696 /* CIFHandler.h */; };
 		BF5111FC20D0456F00E87696 /* CIFHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5111FA20D0456F00E87696 /* CIFHandler.m */; };
 		BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51120F20D062BE00E87696 /* AppDelegate.swift */; };
 		BF51121420D062BF00E87696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF51121320D062BF00E87696 /* Assets.xcassets */; };
@@ -56,7 +58,6 @@
 		BFE2D66C20D16E1800DF07FE /* CIFLoopTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE2D66D20D16E1800DF07FE /* CIFLoopTag.c in Sources */ = {isa = PBXBuildFile; fileRef = BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */; };
 		BFE2D66F20D1813200DF07FE /* CIFLex.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE2D66E20D180B300DF07FE /* CIFLex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFF5125023257F18001F75DC /* CIFValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5124F23257F18001F75DC /* CIFValue.swift */; };
 		BFFE0DB320D1F37700FF2AAB /* CACount.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFE0DB220D1F37700FF2AAB /* CACount.m */; };
 		BFFE0DB520D32D8300FF2AAB /* Handlers.c in Sources */ = {isa = PBXBuildFile; fileRef = BFFE0DB420D32D8300FF2AAB /* Handlers.c */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFParser+Utils.swift"; sourceTree = "<group>"; };
+		BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFParser+Utils2.swift"; sourceTree = "<group>"; };
 		BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample2-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF4CC1FF20D0AB4800A55A32 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -192,7 +195,6 @@
 		BFE2D66A20D16E1800DF07FE /* CIFLoopTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLoopTag.h; sourceTree = "<group>"; };
 		BFE2D66B20D16E1800DF07FE /* CIFLoopTag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CIFLoopTag.c; sourceTree = "<group>"; };
 		BFE2D66E20D180B300DF07FE /* CIFLex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFLex.h; sourceTree = "<group>"; };
-		BFF5124F23257F18001F75DC /* CIFValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIFValue.swift; sourceTree = "<group>"; };
 		BFF875C81FE3133100A561A3 /* 3j3y.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3j3y.cif; sourceTree = "<group>"; };
 		BFF875CD1FE4A4E700A561A3 /* TestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParser.swift; sourceTree = "<group>"; };
 		BFFE0DB120D1F37700FF2AAB /* CACount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CACount.h; sourceTree = "<group>"; };
@@ -312,7 +314,8 @@
 				BF627E9620D1DACA0078BA85 /* CountPass.swift */,
 				BFFE0DB120D1F37700FF2AAB /* CACount.h */,
 				BFFE0DB220D1F37700FF2AAB /* CACount.m */,
-				BFF5124F23257F18001F75DC /* CIFValue.swift */,
+				BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */,
+				BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */,
 			);
 			path = Sample2;
 			sourceTree = "<group>";
@@ -651,14 +654,15 @@
 				BF4CC20620D0AB4800A55A32 /* Utilities.swift in Sources */,
 				BF51122C20D0640F00E87696 /* TestParser.swift in Sources */,
 				BFFE0DB320D1F37700FF2AAB /* CACount.m in Sources */,
-				BFF5125023257F18001F75DC /* CIFValue.swift in Sources */,
 				BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */,
 				BF4CC20E20D0DBE500A55A32 /* StructSheetRange.swift in Sources */,
 				BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */,
 				BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */,
 				BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */,
+				BF1DA65F232C94170066F4A2 /* CIFParser+Utils2.swift in Sources */,
 				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
 				BF627E9720D1DACA0078BA85 /* CountPass.swift in Sources */,
+				BF1DA65D232C73AC0066F4A2 /* CIFParser+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

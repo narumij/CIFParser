@@ -26,7 +26,15 @@
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [bundle pathForResource:@"1wns" ofType:@"cif"];
     DummyHandler *h = [[DummyHandler alloc] init];
+#if 0
     [CIFParser parse:path :h];
+#else
+    CIFRawHandlers hh = [h parserHandler];
+    FILE *fp = fopen( path.UTF8String, "r" );
+    CIFRawParse2(fp, hh);
+    fclose(fp);
+#endif
+
     NSLog(@"done");
 }
 
