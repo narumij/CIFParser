@@ -16,6 +16,8 @@ fileprivate let zKey = "_atom_site.Cartn_z"
 let atom = "ATOM"
 let hetatm = "HETATM"
 
+typealias CIFLex = CIFToken
+
 extension CIFLex {
     var groupPDBValue: GroupPDB? {
         if isSame(as: atom ) {
@@ -199,7 +201,7 @@ class Simple {
         case .helix:
             fallthrough
         case .sheet:
-            loopValues.append( TestValue( tag: lex.tag, textBytes: lex.text, textLength: lex.len ) )
+            loopValues.append( TestValue( tag: lex.tag, textBytes: lex.text, textLength: Int(lex.len) ) )
         case .atom:
             atomKeyTable[tagIndex].map{
                 atomSite.loopItem(key: $0, lex: lex)
@@ -214,7 +216,7 @@ class Simple {
         case .helix:
             fallthrough
         case .sheet:
-            loopValues.append( TestValue( tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: lex.pointee.len ) )
+            loopValues.append( TestValue( tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: Int(lex.pointee.len) ) )
         case .atom:
             atomKeyTable[tagIndex].map{
                 atomSite.loopItem(key: $0, lex: lex.pointee)

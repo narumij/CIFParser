@@ -3,17 +3,53 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include "Lexer.h"
+#include "cif.h"
+#include "cif+callbacks.h"
 
-#if !CIF_LEXER_LOG
-#define TOKEN(TAG) { IssueLexeme(yyscanner,TAG,yytext,yyleng); }
+#if !LEXERMAIN && !MAIN
+//#include "cif.h"
+#include "cif.tab.h"
+#endif
+
+const char *TypeName(const char* tag);
+
+
+#if MAIN
+#define TOKEN(TAG) \
+{\
+    int col = yyget_column(yyscanner)+1;\
+    yyset_column(col,yyscanner);\
+    printf("LINE:%3d COL:%2d LEN:%2d %-15s |\t",yyget_lineno(yyscanner),col,yyget_leng(yyscanner),#TAG);\
+    ECHO;\
+    printf("\n");\
+}
+#elif LEXERMAIN
+#if 0
+#define TOKEN(TAG) { printf("{ type=\"%s\", contents=\"",#TAG); ECHO; printf("\"}\n"); }
 #else
-#define TOKEN(TAG) { printf("token(%s)\n",#TAG); ECHO; printf("\n"); }
+#define TOKEN(TAG) \
+{\
+    int col = yyget_column(yyscanner)+1;\
+    yyset_column(col,yyscanner);\
+    printf("%d.%d ", yyget_lineno(yyscanner),col);\
+    printf("{%s}", TypeName(#TAG));\
+    printf(" (%d)", yyget_leng(yyscanner));\
+    printf("\t");\
+    printf("\"");\
+    ECHO;\
+    printf("\"");\
+    printf("\t{%s}", #TAG);\
+    printf("\n");\
+}
+#endif
+#else
+#define TOKEN(TAG) { yyget_extra(yyscanner)->lineno = yylineno; yylval->lexeme.tokenType = TAG; yylval->lexeme.text = yytext; yylval->lexeme.len = yyleng; return TAG; }
 #endif
 
 %}
 
-%option reentrant noyywrap yylineno
+%option reentrant yylineno
+%option extra-type="struct yyextra_t *"
 
 sp                    [ ]
 ht                    [\t]
@@ -53,10 +89,10 @@ semiColonTextFiled_old    ";"{anyPrintChar}*{eol}(({textLeadChar}{anyPrintChar}*
 semiColonTextFiled    ^";"([^\;]+|[^\r^\n]";")*";"
 
 
-data_     [Dd][Aa][Tt][Aa][\_]{nonBlankChar}+
+data     [Dd][Aa][Tt][Aa][\_]{nonBlankChar}+
 savebegin [Ss][Aa][Vv][Ee][\_]{nonBlankChar}+
 saveend   [Ss][Aa][Vv][Ee][\_]
-loop_     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]{whiteSpace}
+loop     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]
 
 
 %x cd_loop
@@ -70,17 +106,17 @@ loop_     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]{whiteSpace}
 <*>"#"[^\n]*$   ;
 <*>"#"[^\n]*   ;
 
-{data_}           {TOKEN(LData_);}
-{savebegin}        TOKEN(LSaveBegin)
-{saveend}        TOKEN(LSaveEnd)
+{data}               {TOKEN(LData);}
+{savebegin}           TOKEN(LSaveBegin)
+{saveend}             TOKEN(LSaveEnd)
 
-{tag}             {BEGIN(cd_tag);TOKEN(LTag);}
-{loop_}           {BEGIN(cd_loop);TOKEN(LLoop_);}
+{tag}                 {BEGIN(cd_tag);TOKEN(LTag);}
+{loop}               {BEGIN(cd_loop);TOKEN(LLoop);}
 
-<cd_loop>{tag}       {BEGIN(cd_looptag);TOKEN(LTag);}
-<cd_looptag>{tag}    TOKEN(LTag)
+<cd_loop>{tag}        {BEGIN(cd_looptag);TOKEN(LTag);}
+<cd_looptag>{tag}     TOKEN(LTag)
 <cd_loopvalue>{tag}   {BEGIN(cd_tag);TOKEN(LTag)}
-<cd_loopvalue>{loop_} {BEGIN(cd_loop);TOKEN(LLoop_);}
+<cd_loopvalue>{loop} {BEGIN(cd_loop);TOKEN(LLoop);}
 
 <cd_looptag,cd_loopvalue>{numericFloat}       {BEGIN(cd_loopvalue);TOKEN(LNumericFloat);}
 <cd_looptag,cd_loopvalue>{numericInteger}     {BEGIN(cd_loopvalue);TOKEN(LNumericInteger);}
@@ -106,31 +142,62 @@ loop_     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]{whiteSpace}
 <cd_tag,cd_tageol>[\.]                        {BEGIN(INITIAL);TOKEN(LDot);}
 <cd_tag,cd_tageol>[\?]                        {BEGIN(INITIAL);TOKEN(LQue);}
 <cd_tag,cd_tageol>{unquoteString2}            {BEGIN(INITIAL);TOKEN(LUnquoteString2);}
-<cd_tag,cd_tageol>{unquoteString1}             {BEGIN(INITIAL);TOKEN(LUnquoteString1);}
+<cd_tag,cd_tageol>{unquoteString1}            {BEGIN(INITIAL);TOKEN(LUnquoteString1);}
 <cd_tageol>{semiColonTextFiled}               {BEGIN(INITIAL);TOKEN(LTextField);}
-
-
-
 
 
 ({eol}|{sp}|{ht})                             ;
 
-<<EOF>> { TOKEN(LEOF); yyterminate(); }
+<INITIAL><<EOF>> { yyterminate(); }
+<<EOF>> { yyterminate(); }
 
-. { printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",cifget_lineno(yyscanner),cifget_column(yyscanner),yytext,yy_flex_debug);TOKEN(LexerError);yyterminate(); }
+. {
+//     printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",yyget_lineno(yyscanner),yyget_column(yyscanner),yytext,yy_flex_debug);
+    char msg[1024];
+    sprintf(msg,"Tokenize Error at Line %d.",yyget_lineno(yyscanner));
+     yyget_extra(yyscanner)->handlers->error(yyget_extra(yyscanner)->handlers->ctx, CIFDataInputTokenizeError, msg);
+//     TOKEN(LexerError);
+     yyterminate(); 
+     }
 
 %%
 
 //. { printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",cifget_lineno(yyscanner),cifget_column(yyscanner),yytext,yy_flex_debug); assert( 0 && "Tokenize Error Occur" );TOKEN1(LEXER_ERROR); }
 
-#if 0
+const char *TypeName(const char* tag)
+{
+    if (strcmp(tag,"LData") == 0)
+        return "DATA";
+    if (strcmp(tag,"LLoop") == 0)
+        return "LOOP";
+    if (strcmp(tag,"LTag") == 0)
+        return "TAG";
+            if (strcmp(tag,"LNumericInteger") == 0)
+        return "INT";
+            if (strcmp(tag,"LNumericFloat") == 0)
+        return "FLT";
+            if (strcmp(tag,"LUnquoteString1") == 0)
+        return "STR";
+            if (strcmp(tag,"LUnquoteString2") == 0)
+        return "STR";
+            if (strcmp(tag,"LQuoteString") == 0)
+        return "STR";
+            if (strcmp(tag,"LTextField") == 0)
+        return "STR";
+            if (strcmp(tag,"LDot") == 0)
+        return ".";
+            if (strcmp(tag,"LQue") == 0)
+        return "?";
+    return "N/A";
+}
+
 #if 1
+#if LEXERMAIN
+#if 0
 int main ( int argc, char * argv[] )
 {
     FILE *fp = NULL;
     yyscan_t scanner;
-    CIFParseExtra extra;
-    ciflex_init_extra( &extra, &scanner );
 
     if ( argc == 2 )
     {
@@ -151,14 +218,23 @@ int main ( int argc, char * argv[] )
     return 0;
 }
 #else
-int main ( int argc, char * argv[] )
+int main( int argc, char** argv )
 {
-yyscan_t scanner;
-CIFParseExtra extra;
-ciflex_init_extra( &extra, &scanner );yylex ( scanner );
-yylex_destroy( scanner );
-return 0;
+    FILE *fp = stdin;
+    if (argc > 1)
+        fp = fopen(argv[1],"r");
+    if (fp == NULL)
+        return 1;
+  yyscan_t scanner; 
+  yylex_init( &scanner );
+#if YYDEBUG
+     yyset_debug(1,scanner);
+#endif
+  yyset_in(fp,scanner);
+  yylex(scanner);
+  yylex_destroy(scanner);
+  return 0;
 }
 #endif
 #endif
-
+#endif

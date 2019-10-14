@@ -10,13 +10,15 @@ import Foundation
 
 import CIFParser
 
+typealias CIFLoopTag = CIFLoopHeader
+
 extension CIFLoopTag {
     var stringValues:[String] {
-        return (0..<count).map{ String(cString:list[$0].text) }
+        return (0..<Int(count)).map{ String(cString:list[$0].text) }
     }
     func firstIndex(of str: String) -> Int? {
-        for i in 0..<count {
-            if strcmp(list[i].text,str) == 0 {
+        for i in 0..<Int(count) {
+            if strcmp(list?[i].text,str) == 0 {
                 return i
             }
         }
@@ -25,6 +27,9 @@ extension CIFLoopTag {
 }
 
 extension CIFLex {
+    var tag: Int {
+        return Int(tokenType)
+    }
     var stringValue: String {
         return String(cString:text)
     }
@@ -35,7 +40,7 @@ extension CIFLex {
         return CGFloat(doubleValue)
     }
     var cifValue: CIFValue {
-        return CIFValue(tag: tag, bytes: text, length: len)
+        return CIFValue(tag: tag, bytes: text, length: Int(len))
     }
     private func compare(_ str: String) -> Int32 {
         return strcmp( text, str )
@@ -78,6 +83,8 @@ protocol PrepareParseCIFFile {
     var EndDataFunc: EndDataFuncType? { get }
 }
 
+typealias CIFRawHandlers = CIFDataConsumerCallbacks
+
 extension PrepareParseCIFFile {
 
     internal var pointer: UnsafeMutableRawPointer {
@@ -86,7 +93,8 @@ extension PrepareParseCIFFile {
 
     func prepareHandlers() -> CIFRawHandlers
     {
-        var handlers: CIFRawHandlers = CIFMakeRawHandlers()
+//        var handlers: CIFRawHandlers = CIFMakeRawHandlers()
+        var handlers: CIFDataConsumerCallbacks = CIFDataConsumerCallbacks();
         handlers.ctx = pointer
         if let _ = BeginDataFunc { handlers.beginData = BeginDataFunc }
         if let _ = ItemFunc { handlers.item = ItemFunc }
@@ -130,6 +138,7 @@ extension ParseCIFFile
     }
 }
 
+typealias CIFLexType = Int
 
 enum CIFValue {
 
@@ -143,7 +152,8 @@ enum CIFValue {
 
     init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
     {
-        switch (tag) {
+        let t: yytokentype = yytokentype(rawValue: UInt32(tag))
+        switch (t) {
             case LNumericFloat:
                 self = .float( String(cString:bytes) )
                 break

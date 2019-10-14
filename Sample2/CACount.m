@@ -10,12 +10,15 @@
 
 #import <CIFParser/CIFParser.h>
 
+#include <string.h>
+
 typedef struct CACount {
     size_t count;
     int atomID;
 } CACount;
 
-void beginLoop( CACount *ctx, CIFLoopTag tags ) {
+
+void beginLoop( CACount *ctx, CIFLoopHeader tags ) {
     ctx->atomID = -1;
     for ( int i = 0; i < tags.count; ++i ) {
         if ( strcmp(tags.list[i].text, "_atom_site.label_atom_id") == 0 ) {
@@ -25,7 +28,7 @@ void beginLoop( CACount *ctx, CIFLoopTag tags ) {
     }
 }
 
-void loopItem( CACount *ctx, CIFLoopTag tags, size_t itemIndex, CIFLex value ) {
+void loopItem( CACount *ctx, CIFLoopHeader tags, size_t itemIndex, CIFToken value ) {
     if ( ctx->atomID == -1 || ctx->atomID != itemIndex )
         return;
     if ( strcmp(value.text, "CA") == 0 ) {
@@ -36,10 +39,10 @@ void loopItem( CACount *ctx, CIFLoopTag tags, size_t itemIndex, CIFLex value ) {
 size_t CACountParse( FILE *fp ) {
 #if 1
     CACount c = {};
-    CIFRawHandlers h = CIFMakeRawHandlers();
+    CIFDataConsumerCallbacks h;
     h.ctx = &c;
-    h.beginLoop = (void(*)(void*,CIFLoopTag))beginLoop;
-    h.loopItem = (void(*)(void*,CIFLoopTag,size_t,CIFLex))loopItem;
+    h.beginLoop = (void(*)(void*,CIFLoopHeader))beginLoop;
+    h.loopItem = (void(*)(void*,CIFLoopHeader,size_t,CIFToken))loopItem;
     CIFRawParse(fp, &h);
     return c.count;
 #else

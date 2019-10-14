@@ -35,7 +35,8 @@ class CACount: ParseCIFFile {
     #if true
     func prepareHandlers() -> CIFRawHandlers
     {
-        var h = CIFMakeRawHandlers()
+//        var h = CIFMakeRawHandlers()
+        var h = CIFDataConsumerCallbacks()
         h.beginLoop = { a,b in CACount.shared.beginLoop(b) }
         h.loopItem = { (a,b,c,d) in CACount.shared.loopItem(b,c,d) }
         return h
