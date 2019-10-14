@@ -311,12 +311,11 @@ class Test: NSObject {
 
         #if true
 
-        #if false
+        #if true
             var count = 0
             path.map{
                 let fp = fopen($0,"r")
-
-                #if true
+                #if false
                 count = CACountParse(fp)
                 #else
                 count = CACount.parse(fp)

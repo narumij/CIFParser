@@ -14,15 +14,26 @@ typealias CIFLoopTag = CIFLoopHeader
 
 extension CIFLoopTag {
     var stringValues:[String] {
-        return (0..<Int(count)).map{ String(cString:list[$0].text) }
+        return (0..<Int(count)).map{ list[$0].stringValue }
     }
     func firstIndex(of str: String) -> Int? {
         for i in 0..<Int(count) {
-            if strcmp(list?[i].text,str) == 0 {
+            if strncmp(list![i].text,str,Int(list![i].len)) == 0 {
                 return i
             }
         }
         return nil
+    }
+}
+
+extension CIFTag {
+    var stringValue: String {
+        #if false
+        return String(cString:text)
+        #else
+        let s = NSString(bytes: text, length: Int(len), encoding: String.Encoding.utf8.rawValue)
+        return s! as String
+        #endif
     }
 }
 
@@ -31,7 +42,12 @@ extension CIFLex {
         return Int(tokenType)
     }
     var stringValue: String {
+        #if false
         return String(cString:text)
+        #else
+        let s = NSString(bytes: text, length: Int(len), encoding: String.Encoding.utf8.rawValue)
+        return s! as String
+        #endif
     }
     var doubleValue: Double {
         return atof(text)
@@ -43,7 +59,7 @@ extension CIFLex {
         return CIFValue(tag: tag, bytes: text, length: Int(len))
     }
     private func compare(_ str: String) -> Int32 {
-        return strcmp( text, str )
+        return strncmp( text, str, Int(len) )
     }
     func isSame(as str: String) -> Bool {
         return compare(str) == 0

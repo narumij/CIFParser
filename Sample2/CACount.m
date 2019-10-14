@@ -21,7 +21,7 @@ typedef struct CACount {
 void beginLoop( CACount *ctx, CIFLoopHeader tags ) {
     ctx->atomID = -1;
     for ( int i = 0; i < tags.count; ++i ) {
-        if ( strcmp(tags.list[i].text, "_atom_site.label_atom_id") == 0 ) {
+        if ( strncmp(tags.list[i].text, "_atom_site.label_atom_id",tags.list[i].len) == 0 ) {
             ctx->atomID = i;
             return;
         }
@@ -31,7 +31,7 @@ void beginLoop( CACount *ctx, CIFLoopHeader tags ) {
 void loopItem( CACount *ctx, CIFLoopHeader tags, size_t itemIndex, CIFToken value ) {
     if ( ctx->atomID == -1 || ctx->atomID != itemIndex )
         return;
-    if ( strcmp(value.text, "CA") == 0 ) {
+    if ( strncmp(value.text, "CA", value.len) == 0 ) {
         ctx->count += 1;
     }
 }
@@ -39,7 +39,7 @@ void loopItem( CACount *ctx, CIFLoopHeader tags, size_t itemIndex, CIFToken valu
 size_t CACountParse( FILE *fp ) {
 #if 1
     CACount c = {};
-    CIFDataConsumerCallbacks h;
+    CIFDataConsumerCallbacks h = {};
     h.ctx = &c;
     h.beginLoop = (void(*)(void*,CIFLoopHeader))beginLoop;
     h.loopItem = (void(*)(void*,CIFLoopHeader,size_t,CIFToken))loopItem;
