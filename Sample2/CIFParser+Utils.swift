@@ -106,11 +106,22 @@ protocol ParseCIFFile {
 
 extension ParseCIFFile
 {
+    #if false
     func parse(_ path: String)
     {
         let fp = fopen(path, "r");
         parse(fp)
     }
+    #else
+    func parse(_ path: String)
+    {
+        let str = (try? String(contentsOfFile: path)) ?? ""
+        var cstr = str.cString(using: .utf8) ?? []
+        let count = cstr.count
+        let fp = fmemopen(&cstr, count, "r")
+        parse(fp)
+    }
+    #endif
 
     func parse(_ fp: UnsafeMutablePointer<FILE>!)
     {

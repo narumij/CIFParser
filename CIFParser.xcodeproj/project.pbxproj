@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		BF1DA65D232C73AC0066F4A2 /* CIFParser+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */; };
 		BF1DA65F232C94170066F4A2 /* CIFParser+Utils2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */; };
+		BF3D90AD2338705600BC9989 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
+		BF3D90AF233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
+		BF3D90B0233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
+		BF3D90B1233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
+		BF3D90B2233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
 		BF4CC20320D0AB4800A55A32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */; };
 		BF4CC20420D0AB4800A55A32 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC1FF20D0AB4800A55A32 /* Test.swift */; };
 		BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4CC20020D0AB4800A55A32 /* SCNGeometry+Lattices.swift */; };
@@ -136,6 +141,7 @@
 /* Begin PBXFileReference section */
 		BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFParser+Utils.swift"; sourceTree = "<group>"; };
 		BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIFParser+Utils2.swift"; sourceTree = "<group>"; };
+		BF3D90AE233871B000BC9989 /* 1gof.cif */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1gof.cif; sourceTree = "<group>"; };
 		BF4CC1EA20D0A85C00A55A32 /* Sample2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample2-Bridging-Header.h"; sourceTree = "<group>"; };
 		BF4CC1FE20D0AB4800A55A32 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF4CC1FF20D0AB4800A55A32 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -362,6 +368,7 @@
 		BF7A2DCE1FDD8E3E0031EBA7 /* CIF Files */ = {
 			isa = PBXGroup;
 			children = (
+				BF3D90AE233871B000BC9989 /* 1gof.cif */,
 				BF557F891FDF09F200D1F251 /* 1wns.cif */,
 				BFF875C81FE3133100A561A3 /* 3j3y.cif */,
 			);
@@ -583,6 +590,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3D90AF233871B000BC9989 /* 1gof.cif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5111F120D032BA00E87696 /* 3j3y.cif in Resources */,
+				BF3D90B0233871B000BC9989 /* 1gof.cif in Resources */,
 				BF5111F220D032BF00E87696 /* 1wns.cif in Resources */,
 				BF5111E320D0324B00E87696 /* Assets.xcassets in Resources */,
 				BF5111E620D0324B00E87696 /* Main.storyboard in Resources */,
@@ -602,6 +611,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF51122D20D06C3A00E87696 /* 3j3y.cif in Resources */,
+				BF3D90B1233871B000BC9989 /* 1gof.cif in Resources */,
+				BF3D90AD2338705600BC9989 /* 1wns.cif in Resources */,
 				BF51122220D0630700E87696 /* Main.storyboard in Resources */,
 				BF51121420D062BF00E87696 /* Assets.xcassets in Resources */,
 			);
@@ -612,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE22EC920D189BE00B832F4 /* LaunchScreen.storyboard in Resources */,
+				BF3D90B2233871B000BC9989 /* 1gof.cif in Resources */,
 				BFE22ED720D18F6100B832F4 /* 1wns.cif in Resources */,
 				BFE22EC620D189BE00B832F4 /* Assets.xcassets in Resources */,
 				BFE22EC420D189BE00B832F4 /* Main.storyboard in Resources */,

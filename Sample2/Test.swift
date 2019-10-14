@@ -301,8 +301,8 @@ class Simple {
 class Test: NSObject {
     static func test() -> [AtomSite] {
 //        let name = "3ixn"
-        let name = "3j3y"
-//        let name = "1wns"
+//        let name = "3j3y"
+        let name = "1wns"
 //        let name = "1gof"
         let path = Bundle.main.path(forResource: name, ofType: "cif")
         let time0 = CFAbsoluteTimeGetCurrent()
