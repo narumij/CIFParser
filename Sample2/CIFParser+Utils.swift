@@ -18,7 +18,7 @@ extension CIFLoopTag {
     }
     func firstIndex(of str: String) -> Int? {
         for i in 0..<Int(count) {
-            if strncmp(list![i].text,str,Int(list![i].len)) == 0 {
+            if strncmp( list![i].text, str, Int(list![i].len) ) == 0 {
                 return i
             }
         }
