@@ -109,6 +109,15 @@ extension Simple : ParseCIFFile, PrepareParseCIFFile {
         { _ in }
     }
 
+    var ErrorHandleFunc: ErrorHandleFuncType?
+    {
+        { ctx, errorType, msg in
+            if let msg = msg.map({ String(cString: $0) }) {
+                print("error = \(String(describing: msg))")
+            }
+        }
+    }
+
 }
 #endif
 
@@ -201,7 +210,7 @@ class Simple {
         case .helix:
             fallthrough
         case .sheet:
-            loopValues.append( TestValue( tag: lex.tag, textBytes: lex.text, textLength: Int(lex.len) ) )
+            loopValues.append( TestValue( tag: lex.tokenType, textBytes: lex.text, textLength: Int(lex.len) ) )
         case .atom:
             atomKeyTable[tagIndex].map{
                 atomSite.loopItem(key: $0, lex: lex)
@@ -216,7 +225,7 @@ class Simple {
         case .helix:
             fallthrough
         case .sheet:
-            loopValues.append( TestValue( tag: lex.pointee.tag, textBytes: lex.pointee.text, textLength: Int(lex.pointee.len) ) )
+            loopValues.append( TestValue( tag: lex.pointee.tokenType, textBytes: lex.pointee.text, textLength: Int(lex.pointee.len) ) )
         case .atom:
             atomKeyTable[tagIndex].map{
                 atomSite.loopItem(key: $0, lex: lex.pointee)
@@ -302,10 +311,12 @@ class Simple {
 
 class Test: NSObject {
     static func test() -> [AtomSite] {
+        
 //        let name = "3ixn"
-//        let name = "3j3y"
-        let name = "1wns"
+        let name = "3j3y"
+//        let name = "1wns"
 //        let name = "1gof"
+
         let path = Bundle.main.path(forResource: name, ofType: "cif")
         let time0 = CFAbsoluteTimeGetCurrent()
 

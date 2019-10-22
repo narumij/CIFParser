@@ -28,7 +28,7 @@ extension CIFLoopTag {
 
 extension CIFTag {
     var stringValue: String {
-        #if false
+        #if true
         return String(cString:text)
         #else
         let s = NSString(bytes: text, length: Int(len), encoding: String.Encoding.utf8.rawValue)
@@ -39,10 +39,10 @@ extension CIFTag {
 
 extension CIFLex {
     var tag: Int {
-        return Int(tokenType)
+        return Int(tokenType.rawValue)
     }
     var stringValue: String {
-        #if false
+        #if true
         return String(cString:text)
         #else
         let s = NSString(bytes: text, length: Int(len), encoding: String.Encoding.utf8.rawValue)
@@ -56,7 +56,7 @@ extension CIFLex {
         return CGFloat(doubleValue)
     }
     var cifValue: CIFValue {
-        return CIFValue(tag: tag, bytes: text, length: Int(len))
+        return CIFValue(tag: tokenType, bytes: text, length: Int(len))
     }
     private func compare(_ str: String) -> Int32 {
         return strncmp( text, str, Int(len) )
@@ -89,6 +89,9 @@ protocol PrepareParseCIFFile {
     typealias EndDataFuncType
         = @convention(c) (UnsafeMutableRawPointer?) -> Void
 
+    typealias ErrorHandleFuncType
+        = @convention(c) (UnsafeMutableRawPointer?, CIFDataInputError, UnsafePointer<Int8>? ) -> Void
+
     var pointer: UnsafeMutableRawPointer { get }
     var BeginDataFunc: BeginDataFuncType? { get }
     var ItemFunc: ItemFuncType? { get }
@@ -97,6 +100,7 @@ protocol PrepareParseCIFFile {
     var LoopItemTermFunc: LoopItemTermFuncType? { get }
     var EndLoopFunc: EndLoopFuncType? { get }
     var EndDataFunc: EndDataFuncType? { get }
+    var ErrorHandleFunc: ErrorHandleFuncType? { get }
 }
 
 typealias CIFRawHandlers = CIFDataConsumerCallbacks
@@ -119,6 +123,7 @@ extension PrepareParseCIFFile {
         if let _ = LoopItemTermFunc { handlers.loopItemTerm = LoopItemTermFunc }
         if let _ = EndLoopFunc { handlers.endLoop = EndLoopFunc }
         if let _ = EndDataFunc { handlers.endData = EndDataFunc }
+        if let _ = ErrorHandleFunc { handlers.error = ErrorHandleFunc }
         return handlers
     }
 
@@ -133,8 +138,9 @@ extension ParseCIFFile
     #if false
     func parse(_ path: String)
     {
-        let fp = fopen(path, "r");
+        let fp = fopen(path, "r")
         parse(fp)
+        fclose(fp)
     }
     #else
     func parse(_ path: String)
@@ -144,6 +150,7 @@ extension ParseCIFFile
         let count = cstr.count
         let fp = fmemopen(&cstr, count, "r")
         parse(fp)
+        fclose(fp)
     }
     #endif
 
@@ -154,7 +161,7 @@ extension ParseCIFFile
     }
 }
 
-typealias CIFLexType = Int
+typealias CIFLexType = CIFTokenType
 
 enum CIFValue {
 
@@ -166,25 +173,26 @@ enum CIFValue {
     case unknown
     case unexpected(String)
 
-    init( tag: CIFLexType, bytes: UnsafePointer<Int8>!, length: Int )
+    init( tag: CIFTokenType, bytes: UnsafePointer<Int8>!, length: Int )
     {
-        let t: yytokentype = yytokentype(rawValue: UInt32(tag))
-        switch (t) {
-            case LNumericFloat:
+//        let t: yytokentype = yytokentype(rawValue: UInt32(tag))
+        switch (tag) {
+            case CIFTokenNumericFloat:
                 self = .float( String(cString:bytes) )
                 break
-            case LNumericInteger:
+            case CIFTokenNumericInteger:
                 self = .integer( String(cString:bytes) )
                 break
-            case LUnquoteString1: fallthrough
-            case LUnquoteString2: fallthrough
-            case LQuoteString:
+            case CIFTokenString:
                 self = .string( String(cString:bytes) )
                 break
-            case LTextField:
+            case CIFTokenTextField:
                 self = .text( String(cString:bytes) )
                 break
-            case LDot:
+            case CIFTokenQue:
+                self = .unknown
+                break
+            case CIFTokenDot:
                 self = .inapplicable
                 break
             default:

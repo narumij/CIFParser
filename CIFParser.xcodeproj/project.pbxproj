@@ -42,11 +42,13 @@
 		BF8BEE2F2354959A00D329FE /* cif.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE252354959900D329FE /* cif.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8BEE302354959A00D329FE /* cif+callbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = BF8BEE262354959900D329FE /* cif+callbacks.c */; };
 		BF8BEE322354959A00D329FE /* cif+callbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE282354959900D329FE /* cif+callbacks.h */; };
-		BF8BEE332354959A00D329FE /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE292354959900D329FE /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF8BEE332354959A00D329FE /* CIFParserAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE292354959900D329FE /* CIFParserAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8BEE38235495B700D329FE /* cif.tab.c in Sources */ = {isa = PBXBuildFile; fileRef = BF8BEE34235495B600D329FE /* cif.tab.c */; };
 		BF8BEE39235495B700D329FE /* cif.tab.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE35235495B600D329FE /* cif.tab.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF8BEE3A235495B700D329FE /* lex.yy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE36235495B600D329FE /* lex.yy.h */; };
+		BF8BEE3A235495B700D329FE /* lex.yy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF8BEE36235495B600D329FE /* lex.yy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF8BEE3B235495B700D329FE /* lex.yy.c in Sources */ = {isa = PBXBuildFile; fileRef = BF8BEE37235495B600D329FE /* lex.yy.c */; };
+		BFD15931235EF91800E2B611 /* CIFParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD15930235EF8C800E2B611 /* CIFParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFD15933235EFCF500E2B611 /* cif.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD15932235EFCF500E2B611 /* cif.c */; };
 		BFE22EBF20D189BE00B832F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */; };
 		BFE22EC120D189BE00B832F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE22EC020D189BE00B832F4 /* ViewController.swift */; };
 		BFE22EC420D189BE00B832F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE22EC220D189BE00B832F4 /* Main.storyboard */; };
@@ -157,12 +159,14 @@
 		BF8BEE262354959900D329FE /* cif+callbacks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "cif+callbacks.c"; sourceTree = "<group>"; };
 		BF8BEE272354959900D329FE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BF8BEE282354959900D329FE /* cif+callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cif+callbacks.h"; sourceTree = "<group>"; };
-		BF8BEE292354959900D329FE /* CIFParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
+		BF8BEE292354959900D329FE /* CIFParserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIFParserAPI.h; sourceTree = "<group>"; };
 		BF8BEE34235495B600D329FE /* cif.tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cif.tab.c; sourceTree = "<group>"; };
 		BF8BEE35235495B600D329FE /* cif.tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cif.tab.h; sourceTree = "<group>"; };
 		BF8BEE36235495B600D329FE /* lex.yy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lex.yy.h; sourceTree = "<group>"; };
 		BF8BEE37235495B600D329FE /* lex.yy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lex.yy.c; sourceTree = "<group>"; };
 		BFC0E717235498530098946F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFD15930235EF8C800E2B611 /* CIFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFParser.h; sourceTree = "<group>"; };
+		BFD15932235EFCF500E2B611 /* cif.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cif.c; sourceTree = "<group>"; };
 		BFE22EBC20D189BE00B832F4 /* Sample3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE22EBE20D189BE00B832F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE22EC020D189BE00B832F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -241,14 +245,16 @@
 				BF8BEE37235495B600D329FE /* lex.yy.c */,
 				BF8BEE36235495B600D329FE /* lex.yy.h */,
 				BF8BEE252354959900D329FE /* cif.h */,
+				BFD15932235EFCF500E2B611 /* cif.c */,
 				BF8BEE212354959900D329FE /* cif.l */,
 				BF8BEE202354959900D329FE /* cif.y */,
 				BF8BEE262354959900D329FE /* cif+callbacks.c */,
 				BF8BEE282354959900D329FE /* cif+callbacks.h */,
-				BF8BEE292354959900D329FE /* CIFParser.h */,
+				BF8BEE292354959900D329FE /* CIFParserAPI.h */,
 				BF8BEE222354959900D329FE /* Debug.c */,
 				BF8BEE242354959900D329FE /* Debug.h */,
 				BF8BEE272354959900D329FE /* Makefile */,
+				BFD15930235EF8C800E2B611 /* CIFParser.h */,
 			);
 			path = CIFParser;
 			sourceTree = "<group>";
@@ -373,8 +379,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8BEE332354959A00D329FE /* CIFParser.h in Headers */,
+				BF8BEE332354959A00D329FE /* CIFParserAPI.h in Headers */,
 				BF8BEE2E2354959A00D329FE /* Debug.h in Headers */,
+				BFD15931235EF91800E2B611 /* CIFParser.h in Headers */,
 				BF8BEE322354959A00D329FE /* cif+callbacks.h in Headers */,
 				BF8BEE3A235495B700D329FE /* lex.yy.h in Headers */,
 				BF8BEE39235495B700D329FE /* cif.tab.h in Headers */,
@@ -598,6 +605,7 @@
 				BF8BEE302354959A00D329FE /* cif+callbacks.c in Sources */,
 				BF8BEE38235495B700D329FE /* cif.tab.c in Sources */,
 				BF8BEE3B235495B700D329FE /* lex.yy.c in Sources */,
+				BFD15933235EFCF500E2B611 /* cif.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
