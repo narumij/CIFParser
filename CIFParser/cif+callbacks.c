@@ -2,11 +2,12 @@
 #include <string.h>
 #include <assert.h>
 
-#include "cif.h"
-#include "CIFParser.h"
+//#include "cif.h"
+#include "cif+callbacks.h"
+//#include "CIFParserAPI.h"
 #include "Debug.h"
 
-#define USE_TAG_COPY 0
+#define USE_TAG_COPY 1
 
 const CIFLoopHeader CIFLoopHeaderZero = { .list = NULL, .capacity = 0, .count = 0 };
 const CIFTag CIFTagZero = { .text = NULL, .len = 0 };
@@ -24,9 +25,10 @@ void CIFTagClear(CIFTag *tag)
     if (tag->text != NULL)
     {
         FREE((void*)tag->text,0);
-        tag->len = 0;
     }
 #endif
+    tag->text = NULL;
+    tag->len = 0;
 }
 
 void CIFTagCopy(CIFTag *tag, CIFToken *lex)
@@ -37,11 +39,10 @@ void CIFTagCopy(CIFTag *tag, CIFToken *lex)
     buffer[lex->len] = 0;
     sprintf(buffer,"%.*s",lex->len,lex->text);
     tag->text = buffer;
-    tag->len = lex->len;
 #else
-tag->text = lex->text;
-tag->len = lex->len;
+    tag->text = lex->text;
 #endif
+    tag->len = lex->len;
 }
 
 void CIFLoopHeaderInit( CIFLoopHeader *loopHeader )

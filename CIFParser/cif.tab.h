@@ -82,6 +82,6 @@ typedef union YYSTYPE YYSTYPE;
 
 
 
-//int yyparse (yyscan_t scanner);
+int yyparse (yyscan_t scanner);
 
 #endif /* !YY_YY_CIF_TAB_H_INCLUDED  */

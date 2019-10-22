@@ -12,6 +12,7 @@
 #endif
 
 const char *TypeName(const char* tag);
+CIFTokenType CIFTokenTypeFromTokenType(int tokenType);
 
 
 #if MAIN
@@ -43,7 +44,7 @@ const char *TypeName(const char* tag);
 }
 #endif
 #else
-#define TOKEN(TAG) { yyget_extra(yyscanner)->lineno = yylineno; yylval->lexeme.tokenType = TAG; yylval->lexeme.text = yytext; yylval->lexeme.len = yyleng; return TAG; }
+#define TOKEN(TAG) { yyget_extra(yyscanner)->lineno = yylineno; yylval->lexeme.tokenType = CIFTokenTypeFromTokenType(TAG); yylval->lexeme.text = yytext; yylval->lexeme.len = yyleng; return TAG; }
 #endif
 
 %}
@@ -151,14 +152,27 @@ loop     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]
 <INITIAL><<EOF>> { yyterminate(); }
 <<EOF>> { yyterminate(); }
 
+<INITIAL>\0 { fprintf(stderr,"NULL found.\n");yyterminate(); }
+\0 { fprintf(stderr,"NULL found.\n");yyterminate(); }
+
 . {
 //     printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",yyget_lineno(yyscanner),yyget_column(yyscanner),yytext,yy_flex_debug);
     char msg[1024];
-    sprintf(msg,"Tokenize Error at Line %d.",yyget_lineno(yyscanner));
-     yyget_extra(yyscanner)->handlers->error(yyget_extra(yyscanner)->handlers->ctx, CIFDataInputTokenizeError, msg);
+    sprintf(msg,"Tokenize Error at Line %d.(%s)",yyget_lineno(yyscanner),yytext);
+    if (yyget_extra(yyscanner)->handlers->error != NULL)
+    {
+        yyget_extra(yyscanner)->handlers->error(
+        yyget_extra(yyscanner)->handlers->ctx,
+        CIFDataInputTokenizeError,
+        msg);
+    }
+    else
+    {
+        printf("%s\n",msg);
+    }
 //     TOKEN(LexerError);
-     yyterminate(); 
-     }
+     yyterminate();
+}
 
 %%
 
@@ -190,6 +204,30 @@ const char *TypeName(const char* tag)
         return "?";
     return "N/A";
 }
+
+CIFTokenType CIFTokenTypeFromTokenType(int tokenType)
+{
+    switch(tokenType)
+    {
+    case LNumericFloat:
+        return CIFTokenNumericFloat;
+    case LNumericInteger:
+        return CIFTokenNumericInteger;
+    case LQuoteString:
+    case LUnquoteString1:
+    case LUnquoteString2:
+        return CIFTokenString;
+    case LTextField:
+        return CIFTokenTextField;
+    case LDot:
+        return CIFTokenDot;
+    case LQue:
+        return CIFTokenQue;
+    default:
+        return CIFTokenUnknown;
+    }
+}
+
 
 #if 1
 #if LEXERMAIN

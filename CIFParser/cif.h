@@ -9,8 +9,20 @@
 #ifndef CIF_H
 #define CIF_H
 
+typedef enum CIFTokenType {
+    CIFTokenUnknown = -1,
+    CIFTokenNumericFloat = 0,
+    CIFTokenNumericInteger,
+    CIFTokenString,
+    CIFTokenTextField,
+    CIFTokenDot,
+    CIFTokenQue,
+    CIFTokenTypeCount
+} CIFTokenType;
+
+
 typedef struct CIFToken {
-    int tokenType;
+    CIFTokenType tokenType;
     const char *text;
     int len;
 } CIFToken;
@@ -19,10 +31,6 @@ typedef struct CIFTag {
     const char *text;
     int len;
 } CIFTag;
-
-typedef struct CIFLoop {
-      int bodyIndex;
-} CIFLoop;
 
 typedef struct CIFLoopHeader {
     CIFTag *list;

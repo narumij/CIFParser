@@ -1,14 +1,18 @@
 
 #include "cif.h"
-#include "CIFParser.h"
+#include "CIFParserAPI.h"
 
 #ifndef CIFRawParserInternal_h
 #define CIFRawParserInternal_h
 
+typedef struct CIFLoop {
+      int bodyIndex;
+} CIFLoop;
+
+
 extern const CIFLoopHeader CIFLoopHeaderZero;
 extern const CIFTag CIFTagZero;
 CIFTag CIFTagFromLex(CIFToken *lex);
-
 
 
 void CIFLoopHeaderInit( CIFLoopHeader *stack );
