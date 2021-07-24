@@ -30,7 +30,7 @@ class StructConf: NSObject {
 
 fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
     func cifString(_ key: String ) -> CIFValue {
-        return d[key] ?? .unknown
+        return d[key] ?? .missing
     }
     return apply6( LabelID.init,
                    .inapplicable,
@@ -44,7 +44,7 @@ fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
 
 fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
     func cifString(_ key: String ) -> CIFValue {
-        return d[key] ?? .unknown
+        return d[key] ?? .missing
     }
     return apply4( AuthID.init,
                    d[tags[0]]!,

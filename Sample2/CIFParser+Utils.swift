@@ -113,7 +113,6 @@ extension PrepareParseCIFFile {
 
     func prepareHandlers() -> CIFRawHandlers
     {
-//        var handlers: CIFRawHandlers = CIFMakeRawHandlers()
         var handlers: CIFDataConsumerCallbacks = CIFDataConsumerCallbacks();
         handlers.ctx = pointer
         if let _ = BeginDataFunc { handlers.beginData = BeginDataFunc }
@@ -135,7 +134,7 @@ protocol ParseCIFFile {
 
 extension ParseCIFFile
 {
-    #if false
+    #if true
     func parse(_ path: String)
     {
         let fp = fopen(path, "r")
@@ -148,7 +147,7 @@ extension ParseCIFFile
         let str = (try? String(contentsOfFile: path)) ?? ""
         var cstr = str.cString(using: .utf8) ?? []
         let count = cstr.count
-        let fp = fmemopen(&cstr, count, "r")
+        let fp = fmemopen(&cstr, count - (cstr.last == 0 ? 1 : 0), "r")
         parse(fp)
         fclose(fp)
     }
@@ -170,12 +169,11 @@ enum CIFValue {
     case string(String)
     case text(String)
     case inapplicable
-    case unknown
+    case missing
     case unexpected(String)
 
     init( tag: CIFTokenType, bytes: UnsafePointer<Int8>!, length: Int )
     {
-//        let t: yytokentype = yytokentype(rawValue: UInt32(tag))
         switch (tag) {
             case CIFTokenNumericFloat:
                 self = .float( String(cString:bytes) )
@@ -190,7 +188,7 @@ enum CIFValue {
                 self = .text( String(cString:bytes) )
                 break
             case CIFTokenQue:
-                self = .unknown
+                self = .missing
                 break
             case CIFTokenDot:
                 self = .inapplicable
@@ -257,7 +255,7 @@ extension CIFValue {
         case InternalType.integer:
             return .some(contents!)
         default:
-            return .unknown
+            return .missing
         }
     }
     #endif
@@ -267,14 +265,14 @@ extension CIFValue {
 
 #if false
 enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
-    case unknown
+    case missing
     case inapplicable
     case some(Wrapped)
     init(_ some: Wrapped) {
         self = .some(some)
     }
     init(nilLiteral: ()) {
-        self = .unknown
+        self = .missing
     }
     func map<U>(_ transform: (Wrapped) throws -> U) rethrows -> CIFVal<U> {
         switch self {
@@ -283,11 +281,11 @@ enum CIFVal<Wrapped> : ExpressibleByNilLiteral {
         case .inapplicable:
             return .inapplicable
         default:
-            return .unknown
+            return .missing
         }
     }
     public func flatMap<U>(_ transform: (Wrapped) throws -> CIFVal<U>) rethrows -> CIFVal<U> {
-        return .unknown
+        return .missing
     }
     var unsafelyUnwrapped: Wrapped {
         switch self {

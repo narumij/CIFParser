@@ -22,9 +22,9 @@ typedef enum CIFTokenType {
 
 
 typedef struct CIFToken {
-    CIFTokenType tokenType;
     const char *text;
     int len;
+    CIFTokenType tokenType;
 } CIFToken;
 
 typedef struct CIFTag {
@@ -34,8 +34,8 @@ typedef struct CIFTag {
 
 typedef struct CIFLoopHeader {
     CIFTag *list;
-    int capacity;
     int count;
+    int capacity;
 } CIFLoopHeader;
 
 #endif /* cif_h */

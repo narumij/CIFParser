@@ -152,8 +152,8 @@ loop     ^({sp}|{ht})*[Ll][Oo][Oo][Pp][\_]
 <INITIAL><<EOF>> { yyterminate(); }
 <<EOF>> { yyterminate(); }
 
-<INITIAL>\0 { fprintf(stderr,"NULL found.\n");yyterminate(); }
-\0 { fprintf(stderr,"NULL found.\n");yyterminate(); }
+<INITIAL>\0 { fprintf(stderr,"unexpected NULL terminate.\n");yyterminate(); }
+\0 { fprintf(stderr,"unexpected NULL terminate.\n");yyterminate(); }
 
 . {
 //     printf("**** Tokenize Error at line %d,column %d (%s) %d ****\n",yyget_lineno(yyscanner),yyget_column(yyscanner),yytext,yy_flex_debug);

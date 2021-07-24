@@ -273,15 +273,15 @@ class Simple {
         let beg = dict["_struct_conf.beg_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let end = dict["_struct_conf.end_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let blabel = beg.flatMap{ seq in
-                LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
+                LabelID(atom: .missing, alt: .missing, comp: .missing, asym: .missing, entity: .missing, seq: seq )
             }
         let elabel = end.flatMap{ seq in
-            LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
+            LabelID(atom: .missing, alt: .missing, comp: .missing, asym: .missing, entity: .missing, seq: seq )
         }
-        let auth = AuthID(seq: .unknown, comp: .unknown, asym: .unknown, atom: .unknown)
+        let auth = AuthID(seq: .missing, comp: .missing, asym: .missing, atom: .missing)
         let s = blabel.flatMap{ b in
             elabel.flatMap{ e in
-                StructConf(confTypeID: .unknown, id: .unknown, begLabelID: b, endLabelID: e, begAuthID: auth, endAuthID: auth)
+                StructConf(confTypeID: .missing, id: .missing, begLabelID: b, endLabelID: e, begAuthID: auth, endAuthID: auth)
             }
         }
         s.map{ structConfs.append($0) }
@@ -293,15 +293,15 @@ class Simple {
         let beg = dict["_struct_sheet_range.beg_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let end = dict["_struct_sheet_range.end_label_seq_id"].flatMap{ CIFValue( tag: $0.tag, bytes: $0.textBytes, length: $0.textLength ) }
         let blabel = beg.flatMap{ seq in
-            LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
+            LabelID(atom: .missing, alt: .missing, comp: .missing, asym: .missing, entity: .missing, seq: seq )
         }
         let elabel = end.flatMap{ seq in
-            LabelID(atom: .unknown, alt: .unknown, comp: .unknown, asym: .unknown, entity: .unknown, seq: seq )
+            LabelID(atom: .missing, alt: .missing, comp: .missing, asym: .missing, entity: .missing, seq: seq )
         }
-        let auth = AuthID(seq: .unknown, comp: .unknown, asym: .unknown, atom: .unknown)
+        let auth = AuthID(seq: .missing, comp: .missing, asym: .missing, atom: .missing)
         let s = blabel.flatMap{ b in
             elabel.flatMap{ e in
-                StructSheetRange(sheetID: .unknown, id: .unknown, begLabelID: b, endLabelID: e, begAuthID: auth, endAuthID: auth)
+                StructSheetRange(sheetID: .missing, id: .missing, begLabelID: b, endLabelID: e, begAuthID: auth, endAuthID: auth)
             }
         }
         s.map{ structSheet.append($0) }
@@ -322,11 +322,11 @@ class Test: NSObject {
 
         #if true
 
-        #if true
+        #if false
             var count = 0
             path.map{
                 let fp = fopen($0,"r")
-                #if false
+                #if true
                 count = CACountParse(fp)
                 #else
                 count = CACount.parse(fp)

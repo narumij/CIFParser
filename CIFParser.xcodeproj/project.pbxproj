@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF1DA65D232C73AC0066F4A2 /* CIFParser+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65C232C73AC0066F4A2 /* CIFParser+Utils.swift */; };
-		BF1DA65F232C94170066F4A2 /* CIFParser+Utils2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1DA65E232C94170066F4A2 /* CIFParser+Utils2.swift */; };
 		BF3D90AD2338705600BC9989 /* 1wns.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF557F891FDF09F200D1F251 /* 1wns.cif */; };
 		BF3D90AF233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
 		BF3D90B0233871B000BC9989 /* 1gof.cif in Resources */ = {isa = PBXBuildFile; fileRef = BF3D90AE233871B000BC9989 /* 1gof.cif */; };
@@ -633,7 +632,6 @@
 				BF4CC20F20D0DBE500A55A32 /* AtomSite.swift in Sources */,
 				BF4CC20520D0AB4800A55A32 /* SCNGeometry+Lattices.swift in Sources */,
 				BF4CC21020D0DBE500A55A32 /* StructConf.swift in Sources */,
-				BF1DA65F232C94170066F4A2 /* CIFParser+Utils2.swift in Sources */,
 				BF51121020D062BE00E87696 /* AppDelegate.swift in Sources */,
 				BF627E9720D1DACA0078BA85 /* CountPass.swift in Sources */,
 				BF1DA65D232C73AC0066F4A2 /* CIFParser+Utils.swift in Sources */,

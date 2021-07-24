@@ -37,29 +37,29 @@ class AtomType: NSObject {
 
 
 struct LabelID {
-    var atom: CIFValue = .unknown
-    var alt: CIFValue = .unknown
-    var comp: CIFValue = .unknown
-    var asym: CIFValue = .unknown
-    var entity: CIFValue = .unknown
-    var seq: CIFValue = .unknown
+    var atom: CIFValue = .missing
+    var alt: CIFValue = .missing
+    var comp: CIFValue = .missing
+    var asym: CIFValue = .missing
+    var entity: CIFValue = .missing
+    var seq: CIFValue = .missing
 }
 
 
 struct AuthID {
-    var seq: CIFValue = .unknown
-    var comp: CIFValue = .unknown
-    var asym: CIFValue = .unknown
-    var atom: CIFValue = .unknown
+    var seq: CIFValue = .missing
+    var comp: CIFValue = .missing
+    var asym: CIFValue = .missing
+    var atom: CIFValue = .missing
 }
 
 
 class AtomSite {
 
-    var id: CIFValue = .unknown
+    var id: CIFValue = .missing
     var groupPDB: GroupPDB?
     var cartn: SCNVector3 = SCNVector3()
-    var typeSymbol: CIFValue = .unknown
+    var typeSymbol: CIFValue = .missing
     var label: LabelID = LabelID()
     var auth: AuthID = AuthID()
 
@@ -102,7 +102,7 @@ func Cartn(_ x: CIFValue,_ y: CIFValue,_ z: CIFValue ) -> SCNVector3? {
 
 fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
     func cifString(_ key: String ) -> CIFValue {
-        return d[key] ?? .unknown
+        return d[key] ?? .missing
     }
     return apply6( LabelID.init,
                    cifString(tags[0]),
@@ -116,7 +116,7 @@ fileprivate func makeLabel(_ d:[String:CIFValue],_ tags: [String] ) -> LabelID {
 
 fileprivate func makeAuth(_ d:[String:CIFValue],_ tags: [String] ) -> AuthID {
     func cifString(_ key: String ) -> CIFValue {
-        return d[key] ?? .unknown
+        return d[key] ?? .missing
     }
     return apply4( AuthID.init,
                    d[tags[0]]!,
